@@ -74,7 +74,6 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "vite.config.ts",
-    "__tests__/*",
     "volar.d.ts"
   ],
   // 不需要编译的文件

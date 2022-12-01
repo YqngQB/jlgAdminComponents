@@ -2,7 +2,7 @@
   "compilerOptions": {
     "outDir": "dist",
     "jsx": "preserve",
-    "target": "ES2017",
+    "target": "ESNext",
     "module": "ESNext",
     "declaration": true,
     "lib": ["DOM", "ESNext"],
