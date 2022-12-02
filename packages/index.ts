@@ -1,10 +1,14 @@
 import type { App } from 'vue'
 import Layout from './components/layout/index.vue'
+export * from './components/layout/index.vue'
 
-export const JlgLayout = Object.assign(Layout, {
+const components = [Layout]
+export const jlgAdminComponents = Object.assign(Layout, {
 	install: function (app: App) {
-		app.component(Layout.name, Layout)
+		components.forEach((item) => {
+			app.component(item.name, item)
+		})
 	}
 })
 
-export default JlgLayout
+export default jlgAdminComponents

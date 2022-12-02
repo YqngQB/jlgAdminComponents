@@ -14,7 +14,7 @@ function getConfigs(): any {
 				build: {
 					lib: {
 						entry: path.resolve(__dirname, 'packages/index.ts'),
-						name: '@jlgAdmin/layout',
+						name: 'jlg-admin-components',
 						fileName: (format: string) => `index.${format}.js`
 					},
 					// https://rollupjs.org/guide/en/#big-list-of-options

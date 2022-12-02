@@ -1,0 +1,25 @@
+{
+  "name": "jlg-admin-components",
+  "version": "0.0.0-alpha.1",
+  "description": "",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "unpkg": "dist/index.umd.js",
+  "jsdelivr": "dist/index.umd.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "element-plus",
+    "typescript",
+    "vue3",
+    "vite",
+    "tsx"
+  ],
+  "author": "yqb_828",
+  "license": "MIT",
+  "dependencies": {
+    "jlg-admin-components": "0.0.0-alpha.1"
+  }
+}

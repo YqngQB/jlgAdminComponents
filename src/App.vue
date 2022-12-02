@@ -1,5 +1,9 @@
 <template>
-	<jlg-layout class="layout-container-demo" asideWidth="210px" @change="()=>{}">
+	<jlg-layout
+		ref="layoutRef"
+		class="layout-container-demo"
+		asideWidth="210px"
+	>
 		<template #aside>
 			<div style="height: 60px; background: aquamarine">
 				<sapn>这是logo</sapn>
@@ -65,63 +69,19 @@
 		</template>
 		<template #header>header</template>
 		<template #main>
-      <pure-table :data="[]" ></pure-table>
-      <el-table :data="[]"></el-table>
-    </template>
+			<pure-table :data="[]"></pure-table>
+			<el-table :data="[]"></el-table>
+		</template>
 		<template #footer>footer</template>
 	</jlg-layout>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { JlgLayoutInstance} from '../packages/types/layout'
 
-const isCollapse = ref(true)
-const handleOpen = (key: string, keyPath: string[]) => {
-	console.log(key, keyPath)
-}
-const handleClose = (key: string, keyPath: string[]) => {
-	console.log(key, keyPath)
-}
-const nestedRouter = {
-	path: '/nested',
-	meta: {
-		title: '多级菜单',
-		rank: 8
-	},
-	children: [
-		{
-			path: '/nested/menu1',
-			meta: {
-				title: '菜单1'
-			},
-			children: [
-				{
-					path: '/nested/menu1/menu1-1/index',
-					name: 'Menu1-1',
-					meta: {
-						title: '菜单1-1'
-					}
-				},
-				{
-					path: '/nested/menu1/menu1-2',
-					meta: {
-						title: '菜单1-2'
-					},
-					children: [
-						{
-							path: '/nested/menu1/menu1-2/menu1-2-1',
-							name: 'Menu1-2-1',
-							meta: {
-								title: '菜单1-2-1',
-								showParent: true
-							}
-						}
-					]
-				}
-			]
-		}
-	]
-}
+let layoutRef = ref<JlgLayoutInstance>()
+console.log(layoutRef.value)
 </script>
 
 <style lang="scss">

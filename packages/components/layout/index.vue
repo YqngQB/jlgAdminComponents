@@ -8,10 +8,10 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { useGlobalConfig } from '../../hooks/useGlobalConfig'
+// import { useGlobalConfig } from '../../hooks/useGlobalConfig'
 import vertical from './components/container/vertical.vue'
 import horizontal from './components/container/horizontal.vue'
-console.log(useGlobalConfig())
+// console.log(useGlobalConfig())
 
 let props = defineProps({
 	layout: {
@@ -19,8 +19,8 @@ let props = defineProps({
 		default: 'vertical'
 	}
 })
-type ComponentLayout = typeof vertical | typeof horizontal | string
-let computedLayout = computed<ComponentLayout>(() => {
+
+let computedLayout = computed<any>(() => {
 	switch (props.layout) {
 		case 'vertical':
 			return vertical

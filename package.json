@@ -1,5 +1,5 @@
 {
-	"name": "jlgadmin-components",
+	"name": "jlg-admin-components",
 	"version": "1.0.0-alpha.1",
 	"packageManager": "pnpm@7.0.1",
 	"description": "",
@@ -34,7 +34,8 @@
 	},
 	"files": [
 		"dist",
-		"volar.d.ts"
+		"lib",
+		"global.d.ts"
 	],
 	"sideEffects": false,
 	"scripts": {
@@ -42,7 +43,7 @@
 		"test": "vitest run",
 		"build": "vite build",
 		"preview": "vite preview",
-		"lib": "vite build && vue-tsc -p tsconfig.build.json && node helper/generateHelper.js",
+		"lib": "vite build && vue-tsc -p tsconfig.build.json && node scripts/generateHelper.js",
 		"lint": "prettier --write  \"packages/**/*.{ts,tsx}\" \"src/*.{ts,tsx,vue}\"",
 		"lint:lint-staged": "lint-staged -c ./.husky/lintstagedrc.js",
 		"lint:pretty": "pretty-quick --staged",
@@ -55,13 +56,12 @@
 		"@pureadmin/table": "^1.8.1",
 		"animate.css": "^4.1.1",
 		"element-plus": "^2.2.22",
-		"jlgadmin_layout": "^1.0.2-alpha.1",
 		"vue": "^3.2.45"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^17.0.2",
 		"@commitlint/config-conventional": "^17.0.2",
-		"@esbuild-kit/cjs-loader": "^2.2.0",
+		"@esbuild-kit/cjs-loader": "^2.4.1",
 		"@types/node": "^18.0.0",
 		"@vitejs/plugin-vue": "^3.2.0",
 		"@vitejs/plugin-vue-jsx": "^2.1.1",
@@ -72,7 +72,7 @@
 		"lint-staged": "^13.0.2",
 		"prettier": "^2.7.1",
 		"resize-observer-polyfill": "^1.5.1",
-		"rollup": "^2.75.7",
+		"rollup": "^2.79.1",
 		"rollup-plugin-terser": "^7.0.2",
 		"sass": "^1.56.1",
 		"sass-loader": "^13.2.0",
@@ -90,8 +90,8 @@
 		}
 	},
 	"vetur": {
-		"tags": "dist/tags.json",
-		"attributes": "dist/attributes.json"
+		"tags": "lib/tags.json",
+		"attributes": "lib/attributes.json"
 	},
-	"web-types": "dist/web-types.json"
+	"web-types": "lib/web-types.json"
 }

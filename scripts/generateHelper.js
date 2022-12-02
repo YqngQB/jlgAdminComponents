@@ -8,9 +8,9 @@ const root = resolve(__dirname, '..')
 // const docsRoot = resolve(root, 'docs')
 
 // output
-const output = resolve(root, 'dist')
+const output = resolve(root, 'lib')
 // package
-const compPackage = resolve(root, 'package.json')
+const compPackage = resolve(output, 'package.json')
 
 const { version } = require(compPackage)
 
@@ -69,7 +69,7 @@ const reWebTypesSource = (title) => {
 
 main({
 	// 基本配置
-	name: 'jlg',
+	name: 'jlg-admin-components',
 	version,
 	entry: `docs/**/*.md`,
 	outDir: output,

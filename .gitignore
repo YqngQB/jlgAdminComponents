@@ -70,6 +70,7 @@ typings/
 
 # Nuxt generate
 dist
+lib
 
 # vuepress build output
 .vuepress/dist
@@ -80,6 +81,8 @@ dist
 # IDE
 .idea
 docs
+
+lib
 
 .DS_Store
 # 项目排除路径

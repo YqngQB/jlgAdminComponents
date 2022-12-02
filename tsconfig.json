@@ -74,12 +74,13 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "vite.config.ts",
-    "volar.d.ts"
+    "global.d.ts"
   ],
   // 不需要编译的文件
   "exclude": [
     "node_modules",
     "dist",
+    "list",
     "**/*.js"
   ],
   // 引用其他tsconfig文件
