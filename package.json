@@ -15,7 +15,7 @@
 		"url": ""
 	},
 	"license": "MIT",
-	"author": "yqb",
+	"author": "yqb_828",
 	"repository": {
 		"type": "git",
 		"url": ""
@@ -38,6 +38,10 @@
 		"global.d.ts"
 	],
 	"sideEffects": false,
+	"publishConfig": {
+		"access": "public"
+	},
+	"style": "dist/index.css",
 	"scripts": {
 		"dev": "vite",
 		"test": "vitest run",
@@ -50,12 +54,12 @@
 		"prepare": "husky install"
 	},
 	"peerDependencies": {
-		"element-plus": "^2.0.0"
+		"element-plus": "^2.0.0",
+		"vue": "^3.2.0"
 	},
 	"dependencies": {
-		"@pureadmin/table": "^1.8.1",
-		"animate.css": "^4.1.1",
 		"element-plus": "^2.2.22",
+		"jlg-admin-components": "1.0.0-alpha.1",
 		"vue": "^3.2.45"
 	},
 	"devDependencies": {
@@ -88,10 +92,5 @@
 				"webpack"
 			]
 		}
-	},
-	"vetur": {
-		"tags": "lib/tags.json",
-		"attributes": "lib/attributes.json"
-	},
-	"web-types": "lib/web-types.json"
+	}
 }

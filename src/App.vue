@@ -1,9 +1,5 @@
 <template>
-	<jlg-layout
-		ref="layoutRef"
-		class="layout-container-demo"
-		asideWidth="210px"
-	>
+	<jlg-layout ref="layoutRef" class="layout-container-demo" asideWidth="210px">
 		<template #aside>
 			<div style="height: 60px; background: aquamarine">
 				<sapn>这是logo</sapn>
@@ -69,7 +65,11 @@
 		</template>
 		<template #header>header</template>
 		<template #main>
-			<pure-table :data="[]"></pure-table>
+			<jlg-form :model="formData">
+				<JlgInput label="测试按需导入" prop="name"></JlgInput>
+				<JlgNumberInput label="测试全局导入" prop="age"></JlgNumberInput>
+			</jlg-form>
+			<pre>{{ formData }}</pre>
 			<el-table :data="[]"></el-table>
 		</template>
 		<template #footer>footer</template>
@@ -78,10 +78,15 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { JlgLayoutInstance} from '../packages/types/layout'
+import { JlgLayoutInstance } from '../packages/types'
+import { JlgInput } from '../packages'
 
 let layoutRef = ref<JlgLayoutInstance>()
-console.log(layoutRef.value)
+
+let formData = ref({
+	name: 'jlg',
+	age: 18
+})
 </script>
 
 <style lang="scss">

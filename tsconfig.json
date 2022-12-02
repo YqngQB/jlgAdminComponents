@@ -1,88 +1,72 @@
 {
-  "compilerOptions": {
-    "target": "esnext",
-    // 前端模块化规范
-    "module": "esnext",
-    // 开启严格模式
-    "strict": true,
-    // jsx的编译方式
-    "jsx": "preserve",
-    // 是否允许有未使用的变量
-    "noUnusedLocals": false,
-    // 允许引入js文件
-    "allowJs": true,
-    // 允许默认导入
-    "allowSyntheticDefaultImports": true,
-    // 是否允许代码中出现永远无法被执行到的代码
-    "allowUnreachableCode": false,
-    // 基础路径
-    "baseUrl": ".",
-    // 强制代码中使用的模块文件名必须和文件系统中的文件名保持大小写一致
-    "forceConsistentCasingInFileNames": true,
-    // 模块解析方式，按node的方式递归查找node_modulse
-    "moduleResolution": "node",
-    // 不在插入具体的辅助方法的代码到对应的位置, 而是从 tslib 导入辅助工具函数
-    "importHelpers": true,
-    // 允许导入json文件
-    "resolveJsonModule": true,
-    // 使每个文件成为单独的模块，这样可以确保它们的转换是独立的
-    "isolatedModules": true,
-    // 为 JavaScript 文件创建源映射文件。
-    "sourceMap": true,
-    // 允许导入commonjs模块
-    "esModuleInterop": true,
-    // 允许使用装饰器
-    "experimentalDecorators": true,
-    // 编译环境
-    "lib": [
-      "esnext",
-      "dom"
-    ],
-    // 跳过声明文件的类型检查
-    "skipLibCheck": true,
-    // 索引签名的参数类型为 any 时不报错
-    "suppressImplicitAnyIndexErrors": true,
-    // 路径别名
-    "paths": {
-      "/@/*": [
-        "src/*"
-      ],
-      "@build/*": [
-        "build/*"
-      ],
-      "/#/*": [
-        "types/*"
-      ]
-  },
-    // 需要引入的类型声明文件
-    "types": [
-      "node",
-      "vite/client",
-      "element-plus/global"
-    ],
-    // 需要引入的类型声明文件的路径
-    "typeRoots": [
-      "./node_modules/@types/",
-      "./types"
-    ]
-  },
-  // 需要编译的文件
-  "include": [
-    "build/**/*.ts",
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "vite.config.ts",
-    "global.d.ts"
-  ],
-  // 不需要编译的文件
-  "exclude": [
-    "node_modules",
-    "dist",
-    "list",
-    "**/*.js"
-  ],
-  // 引用其他tsconfig文件
-  "references": []
+	"compilerOptions": {
+		"target": "esnext",
+		// 前端模块化规范
+		"module": "esnext",
+		// 开启严格模式
+		"strict": true,
+		// jsx的编译方式
+		"jsx": "preserve",
+		// 是否允许有未使用的变量
+		"noUnusedLocals": false,
+		// 允许引入js文件
+		"allowJs": true,
+		// 允许默认导入
+		"allowSyntheticDefaultImports": true,
+		// 是否允许代码中出现永远无法被执行到的代码
+		"allowUnreachableCode": false,
+		// 基础路径
+		"baseUrl": ".",
+		// 强制代码中使用的模块文件名必须和文件系统中的文件名保持大小写一致
+		"forceConsistentCasingInFileNames": true,
+		// 模块解析方式，按node的方式递归查找node_modulse
+		"moduleResolution": "node",
+		// 不在插入具体的辅助方法的代码到对应的位置, 而是从 tslib 导入辅助工具函数
+		"importHelpers": true,
+		// 允许导入json文件
+		"resolveJsonModule": true,
+		// 使每个文件成为单独的模块，这样可以确保它们的转换是独立的
+		"isolatedModules": true,
+		// 为 JavaScript 文件创建源映射文件。
+		"sourceMap": true,
+		// 允许导入commonjs模块
+		"esModuleInterop": true,
+		// 允许使用装饰器
+		"experimentalDecorators": true,
+		// 编译环境
+		"lib": ["esnext", "dom"],
+		// 跳过声明文件的类型检查
+		"skipLibCheck": true,
+		// 索引签名的参数类型为 any 时不报错
+		"suppressImplicitAnyIndexErrors": true,
+		// 路径别名
+		"paths": {
+			"/@/*": ["src/*"],
+			"@build/*": ["build/*"],
+			"/#/*": ["types/*"]
+		},
+		// 需要引入的类型声明文件
+		"types": [
+			"node",
+			"vite/client",
+			"element-plus/global",
+			"unplugin-vue-define-options/macros-global"
+		],
+		// 需要引入的类型声明文件的路径
+		"typeRoots": ["./node_modules/@types/", "./types"]
+	},
+	// 需要编译的文件
+	"include": [
+		"build/**/*.ts",
+		"src/**/*.ts",
+		"src/**/*.d.ts",
+		"src/**/*.tsx",
+		"src/**/*.vue",
+		"vite.config.ts",
+		"global.d.ts"
+	],
+	// 不需要编译的文件
+	"exclude": ["node_modules", "dist", "list", "**/*.js"],
+	// 引用其他tsconfig文件
+	"references": []
 }

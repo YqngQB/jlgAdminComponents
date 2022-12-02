@@ -33,7 +33,7 @@ function getConfigs(): any {
 				}
 		  }
 		: {
-				base: '/jlg-admin-layout/',
+				base: '/jlg-admin-components/',
 				build: {
 					sourcemap: false,
 					chunkSizeWarningLimit: 4000
