@@ -43,7 +43,6 @@ function useInjectModel(injectModel: any, props: any) {
 					for (let i = 0; i < propArr.length - 1; i++) {
 						if (!propArr[i]) {
 							throw new Error('传递的prop字段格式错误，请自行检查')
-							return
 						}
 						if (
 							!value[propArr[i]] ||

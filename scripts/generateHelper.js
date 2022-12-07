@@ -5,7 +5,9 @@ const { main } = require('components-helper')
 
 // root
 const root = resolve(__dirname, '..')
-// const docsRoot = resolve(root, 'docs')
+const docsRoot = resolve(root, 'docs')
+
+console.log('docs:', resolve(docsRoot, 'components'))
 
 // output
 const output = resolve(root, 'lib')

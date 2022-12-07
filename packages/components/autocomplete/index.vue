@@ -104,7 +104,8 @@ defineExpose({
 <script lang="ts">
 import { defineComponent } from 'vue'
 export default defineComponent({
-  name: 'JlgAutocomplete'
+  name: 'JlgAutocomplete',
+  inheritAttrs: false
 })
 </script>
 

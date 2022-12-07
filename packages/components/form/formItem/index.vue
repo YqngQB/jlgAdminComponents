@@ -51,7 +51,8 @@ defineExpose({
 <script lang="ts">
 import { defineComponent } from 'vue'
 export default defineComponent({
-  name: 'JlgFormItem'
+  name: 'JlgFormItem',
+  inheritAttrs: false
 })
 </script>
 

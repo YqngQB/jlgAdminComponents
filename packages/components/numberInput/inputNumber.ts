@@ -5,6 +5,8 @@ export const numberInputProps = {
 	// 双向绑定的input值
 	modelValue: [Number, String],
 	/*_________________ end ____________________*/
+	// 占位符，注意：禁用时不显示
+	placeholder: String,
 	// 精度
 	precision: Number,
 	// 最大值
@@ -19,4 +21,4 @@ export const numberInputProps = {
 	}
 }
 
-export const numberInputEmits = ['update:modelValue', 'change']
+export const numberInputEmits = ['update:modelValue', 'change','input']

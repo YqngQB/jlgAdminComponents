@@ -179,7 +179,8 @@ defineExpose({
 <script lang="ts">
 import { defineComponent } from 'vue'
 export default defineComponent({
-  name: 'JlgDatePicker'
+  name: 'JlgDatePicker',
+  inheritAttrs: false
 })
 </script>
 

@@ -114,7 +114,8 @@ defineExpose({
 <script lang="ts">
 import { defineComponent } from 'vue'
 export default defineComponent({
-  name: 'JlgInput'
+  name: 'JlgInput',
+  inheritAttrs: false
 })
 </script>
 

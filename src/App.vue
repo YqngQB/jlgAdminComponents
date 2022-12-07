@@ -66,7 +66,7 @@
 		<template #header>header</template>
 		<template #main>
 			<jlg-form :model="formData">
-				<JlgInput label="测试按需导入" prop="name"></JlgInput>
+        <jlg-input label="测试按需导入" prop="name"></jlg-input>
 				<JlgNumberInput label="测试全局导入" prop="age"></JlgNumberInput>
 			</jlg-form>
 			<pre>{{ formData }}</pre>

@@ -1,4 +1,8 @@
 export default {
+	model: {
+	 type: String,
+	 default: 'vertical',
+	},
 	// 顶部栏高度
 	headerHeight: {
 		type: String,

@@ -27,7 +27,6 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps } from 'vue'
 import defaultProps from './props'
 
 let props = defineProps(defaultProps)

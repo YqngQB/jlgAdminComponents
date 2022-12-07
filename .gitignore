@@ -80,7 +80,7 @@ lib/
 
 # IDE
 .idea
-docs
+# docs
 
 lib
 
