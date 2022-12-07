@@ -5,9 +5,7 @@ const { main } = require('components-helper')
 
 // root
 const root = resolve(__dirname, '..')
-const docsRoot = resolve(root, 'docs')
-
-console.log('docs:', resolve(docsRoot, 'components'))
+// const docsRoot = resolve(root, 'docs')
 
 // output
 const output = resolve(root, 'lib')
@@ -84,7 +82,7 @@ main({
 	reWebTypesSource,
 
 	// 表头配置
-	propsName: '属性',
+	propsName: '属性名',
 	propsDescription: '说明',
 	propsType: '类型',
 	propsOptions: '可选值',

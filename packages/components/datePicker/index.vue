@@ -124,8 +124,8 @@ let valueFormat = computed(() => {
 
 // 禁用日期通过 disabledDate 设置，传入函数
 let disabledDate = (time: Date) => {
-	const minTimestamp = +new Date(props.min);
-	const maxTimestamp = +new Date(props.max);
+	const minTimestamp = +new Date(props.min as number);
+	const maxTimestamp = +new Date(props.max as number);
 	return (
 		(!!maxTimestamp && time.getTime() > maxTimestamp) ||
 		(!!minTimestamp && time.getTime() < minTimestamp)
@@ -133,8 +133,8 @@ let disabledDate = (time: Date) => {
 };
 
 watch([() => props.min, () => props.max], ([min, max]) => {
-	const minTimestamp = +new Date(min);
-	const maxTimestamp = +new Date(max);
+	const minTimestamp = +new Date(min as number);
+	const maxTimestamp = +new Date(max as number);
 	// 范围选择
 	if (Array.isArray(inputValue.value) && inputValue.value.length === 2) {
 		let starTime = inputValue.value[0] ? +new Date(inputValue.value[0]) : 0;

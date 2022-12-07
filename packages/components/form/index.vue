@@ -1,5 +1,5 @@
 <template>
-	<el-form ref="epRef" v-bind="$attrs" :model="props.model">
+	<el-form ref="epRef" v-bind="$attrs" :model="props.model" @submit.prevent>
 		<slot />
 	</el-form>
 </template>

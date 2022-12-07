@@ -7,7 +7,7 @@ export const itemProps = {
 			return {}
 		}
 	},
-	// 重新定义一个class,style ,避免 class与style 被透传到组件的 el-input 根元素上
+	// 重新定义一个class,style ,避免 class与style 被透传到组件的根元素上
 	class: String,
 	style: Object,
 	// 标签文本
