@@ -65,10 +65,10 @@
 		</template>
 		<template #header>header</template>
 		<template #main>
-			<jlg-form :model="formData">
+      <jlg-form :model="formData">
         <jlg-input label="测试按需导入" prop="name"></jlg-input>
-				<JlgNumberInput label="测试全局导入" prop="age"></JlgNumberInput>
-			</jlg-form>
+        <JlgNumberInput label="测试全局导入" prop="age"></JlgNumberInput>
+      </jlg-form>
 			<pre>{{ formData }}</pre>
 			<el-table :data="[]"></el-table>
 		</template>
@@ -79,7 +79,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { JlgLayoutInstance } from '../packages/types'
-import { JlgInput } from '../packages'
+import { JlgInput } from 'jlg-admin-components'
 
 let layoutRef = ref<JlgLayoutInstance>()
 
