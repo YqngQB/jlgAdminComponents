@@ -184,6 +184,7 @@
       "tabindex",
       "validate-event",
       "input-style",
+      "precision",
       "blur",
       "focus",
       "change",

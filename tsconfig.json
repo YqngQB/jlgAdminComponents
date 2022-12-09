@@ -50,6 +50,8 @@
 			"node",
 			"vite/client",
 			"element-plus/global",
+			"jlg-admin-components/global",
+			"@pureadmin/table/volar",
 			"unplugin-vue-define-options/macros-global"
 		],
 		// 需要引入的类型声明文件的路径

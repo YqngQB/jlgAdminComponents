@@ -2,6 +2,8 @@ import { FormInstance } from 'element-plus'
 import { SetupContext, RenderFunction, ComponentPublicInstance } from 'vue'
 import { ValueOf } from './component'
 
+export declare type RulesType = string | Array<string | Record<string, any>>
+
 export type JlgFormInstance = ComponentPublicInstance<
 	{
 		/**

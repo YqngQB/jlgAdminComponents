@@ -1,12 +1,13 @@
 import { createApp } from 'vue'
-import app from './App.vue'
+import App from './App.vue'
 
 import ElementPlus from 'element-plus'
-// import jlgAdminComponents from 'jlg-admin-components'
+import jlgAdminComponents from 'jlg-admin-components'
+import Table from '@pureadmin/table'
 import './index.scss'
 import 'element-plus/dist/index.css'
 
-const App = createApp(app)
+const app = createApp(App)
 
-App.use(ElementPlus)
-App.mount('#app')
+app.use(ElementPlus).use(jlgAdminComponents).use(Table)
+app.mount('#app')

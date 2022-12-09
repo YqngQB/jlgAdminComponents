@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/web-types",
   "framework": "vue",
   "name": "jlg-admin-components",
-  "version": "1.0.0-alpha.2.6",
+  "version": "1.0.0-alpha.2.9",
   "js-types-syntax": "typescript",
   "description-markup": "markdown",
   "contributions": {
@@ -701,12 +701,12 @@
             },
             {
               "name": "prop",
-              "description": "model 的键名。 它可以是一个路径数组(例如 ['a', 'b', 0])",
+              "description": "model 的键名。 它可以是一个路径数组(例如 ['a', 'b', 0])，或者一个点分隔的路径(例如 'a.b.0')",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
             },
             {
               "name": "rules",
-              "description": "表单校验规则",
+              "description": "表单校验规则。可以是一个以管状符分隔的字符串 例如 'required'，也可以是一个包含验证规则的对象数组 例如 ['required',{ required: true, message: '请输入邮箱地址', trigger: 'blur' }]",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
             },
             {
@@ -1845,6 +1845,19 @@
                 }
               ],
               "default": "{}"
+            },
+            {
+              "name": "precision",
+              "description": "设置精度（小数位数，四舍五入）",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                {
+                  "name": "`number`",
+                  "source": {
+                    "symbol": "`number`"
+                  }
+                }
+              ]
             }
           ],
           "slots": [
