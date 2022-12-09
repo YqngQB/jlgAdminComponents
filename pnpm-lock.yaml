@@ -13,7 +13,7 @@ specifiers:
   cross-env: ^7.0.3
   element-plus: ^2.2.22
   husky: ^8.0.1
-  jlg-admin-components: 1.0.0-alpha.2.0.0
+  jlg-admin-components: 1.0.0-alpha.2.0.5
   jsdom: ^20.0.2
   lint-staged: ^13.0.2
   prettier: ^2.7.1
@@ -34,7 +34,7 @@ specifiers:
 dependencies:
   '@pureadmin/table': 1.8.1_element-plus@2.2.26
   element-plus: 2.2.26_vue@3.2.45
-  jlg-admin-components: 1.0.0-alpha.2.0.0_vhuu5gj2nsknbh5nrlryncqbvm
+  jlg-admin-components: 1.0.0-alpha.2.0.5_element-plus@2.2.26
   vue: 3.2.45
 
 devDependencies:
@@ -2546,23 +2546,12 @@ packages:
       supports-color: 7.2.0
     dev: true
 
-  /jlg-admin-components/1.0.0-alpha.2.0.0_vhuu5gj2nsknbh5nrlryncqbvm:
-    resolution: {integrity: sha512-84einpjlJEUctf3aKriivwTThJiHGWPoUFMzhrKWHXzkTonUfU+jMdng/X2aXh20CQH5hHSCzhdmXy3JIsZSeA==}
+  /jlg-admin-components/1.0.0-alpha.2.0.5_element-plus@2.2.26:
+    resolution: {integrity: sha512-iHWzNvV2G2RkddMZQ3UXcpQE89cYsG7W/lux2gZUsbmlUprBnrKHQavUCEFG3ndp0W0I06cLlT02WE3xCBVbxg==}
     peerDependencies:
       element-plus: ^2.0.0
-      vue: ^3.2.0
     dependencies:
-      element-plus: 2.2.26_vue@3.2.45
-      jlg-admin-components: 1.0.0-alpha.2.9_vhuu5gj2nsknbh5nrlryncqbvm
-      vue: 3.2.45
-    dev: false
-
-  /jlg-admin-components/1.0.0-alpha.2.9_vhuu5gj2nsknbh5nrlryncqbvm:
-    resolution: {integrity: sha512-pqUXSB0vumia4NoJyIwYp1pNXMVTPxf+RMTY9DvF2OSIVd7N0yyMSYWRScwsaSykqbwY/q52fR+O8Nzaex9CQA==}
-    peerDependencies:
-      element-plus: ^2.0.0
-      vue: ^3.2.0
-    dependencies:
+      '@pureadmin/table': 1.8.1_element-plus@2.2.26
       element-plus: 2.2.26_vue@3.2.45
       vue: 3.2.45
     dev: false

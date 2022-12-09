@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/web-types",
   "framework": "vue",
   "name": "jlg-admin-components",
-  "version": "1.0.0-alpha.2.9",
+  "version": "1.0.0-alpha.2.0.5",
   "js-types-syntax": "typescript",
   "description-markup": "markdown",
   "contributions": {
@@ -41,12 +41,7 @@
               "description": "输入框前置文本",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "'string’",
-                  "source": {
-                    "symbol": "'string’"
-                  }
-                }
+                "string"
               ]
             },
             {
@@ -54,12 +49,7 @@
               "description": "输入框后置文本内容",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "'string’",
-                  "source": {
-                    "symbol": "'string’"
-                  }
-                }
+                "string"
               ]
             },
             {
@@ -67,12 +57,7 @@
               "description": "输入框头部文本内容",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "'string’",
-                  "source": {
-                    "symbol": "'string’"
-                  }
-                }
+                "string"
               ]
             },
             {
@@ -80,12 +65,7 @@
               "description": "输入框尾部文本内容",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "'string’",
-                  "source": {
-                    "symbol": "'string’"
-                  }
-                }
+                "string"
               ]
             },
             {
@@ -431,36 +411,17 @@
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
                 "boolean"
-              ],
-              "default": "false"
+              ]
             },
             {
               "name": "prefix-icon",
               "description": "自定义前缀图标",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
-              "type": [
-                {
-                  "name": "`string ",
-                  "source": {
-                    "symbol": "`string "
-                  }
-                }
-              ],
-              "default": "Component`"
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
             },
             {
               "name": "clear-icon",
               "description": "自定义清除图标",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
-              "type": [
-                {
-                  "name": "`string ",
-                  "source": {
-                    "symbol": "`string "
-                  }
-                }
-              ],
-              "default": "Component`"
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
             },
             {
               "name": "validate-event",
@@ -482,16 +443,7 @@
             {
               "name": "shortcuts",
               "description": "设置快捷选项，需要传入数组对象",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
-              "type": [
-                {
-                  "name": "`Array<{ text: string, value: Date ",
-                  "source": {
-                    "symbol": "`Array<{ text: string, value: Date "
-                  }
-                }
-              ],
-              "default": "Function }>`"
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
             },
             {
               "name": "cell-class-name",
@@ -525,12 +477,7 @@
               "description": "表单数据对象",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "`Record<string, any>`",
-                  "source": {
-                    "symbol": "`Record<string, any>`"
-                  }
-                }
+                "Record<string, any>"
               ]
             },
             {
@@ -538,12 +485,7 @@
               "description": "行内表单模式",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "`boolean`",
-                  "source": {
-                    "symbol": "`boolean`"
-                  }
-                }
+                "boolean"
               ],
               "default": "`false`"
             },
@@ -552,16 +494,23 @@
               "description": "表单域标签的位置， 当设置为 `left` 或 `right` 时，则也需要设置 `label-width` 属性",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                "`'left' | 'right' | 'top'`"
-              ],
-              "default": "`'right'`"
+                "'left'",
+                {
+                  "name": "'right' ",
+                  "source": {
+                    "symbol": "'right' "
+                  }
+                },
+                "'top'"
+              ]
             },
             {
               "name": "`label-width`",
               "description": "标签的长度，例如 `'50px'`。 作为 Form 直接子元素的 form-item 会继承该值。 可以使用 `auto`。",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                "`string | number`"
+                "string",
+                "number"
               ]
             },
             {
@@ -569,12 +518,7 @@
               "description": "是否隐藏必填字段标签旁边的红色星号。",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "`boolean`",
-                  "source": {
-                    "symbol": "`boolean`"
-                  }
-                }
+                "boolean"
               ],
               "default": "`false`"
             },
@@ -583,21 +527,16 @@
               "description": "星号的位置。",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                "`'left' | 'right'`"
-              ],
-              "default": "`'left'`"
+                "'left'",
+                "'right'"
+              ]
             },
             {
               "name": "`show-message`",
               "description": "是否显示校验错误信息",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "`boolean`",
-                  "source": {
-                    "symbol": "`boolean`"
-                  }
-                }
+                "boolean"
               ],
               "default": "`true`"
             },
@@ -606,12 +545,7 @@
               "description": "是否以行内形式展示校验信息",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "`boolean`",
-                  "source": {
-                    "symbol": "`boolean`"
-                  }
-                }
+                "boolean"
               ],
               "default": "`false`"
             },
@@ -620,12 +554,7 @@
               "description": "是否在输入框中显示校验结果反馈图标",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "`boolean`",
-                  "source": {
-                    "symbol": "`boolean`"
-                  }
-                }
+                "boolean"
               ],
               "default": "`false`"
             },
@@ -634,12 +563,7 @@
               "description": "是否在 `rules` 属性改变后立即触发一次验证",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "`boolean`",
-                  "source": {
-                    "symbol": "`boolean`"
-                  }
-                }
+                "boolean"
               ],
               "default": "`true`"
             },
@@ -648,7 +572,9 @@
               "description": "用于控制该表单内组件的尺寸",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                "`'large' | 'default' | 'small'`"
+                "'large'",
+                "'default'",
+                "'small'"
               ]
             },
             {
@@ -656,12 +582,7 @@
               "description": "是否禁用该表单内的所有组件。 如果设置为 `true`, 它将覆盖内部组件的 `disabled` 属性",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "`boolean`",
-                  "source": {
-                    "symbol": "`boolean`"
-                  }
-                }
+                "boolean"
               ],
               "default": "`false`"
             },
@@ -670,12 +591,7 @@
               "description": "当校验失败时，滚动到第一个错误表单项",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "`boolean`",
-                  "source": {
-                    "symbol": "`boolean`"
-                  }
-                }
+                "boolean"
               ],
               "default": "`false`"
             }
@@ -714,12 +630,7 @@
               "description": "输入框前置文本",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "'string’",
-                  "source": {
-                    "symbol": "'string’"
-                  }
-                }
+                "string"
               ]
             },
             {
@@ -727,12 +638,7 @@
               "description": "输入框后置文本内容",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "'string’",
-                  "source": {
-                    "symbol": "'string’"
-                  }
-                }
+                "string"
               ]
             },
             {
@@ -740,12 +646,7 @@
               "description": "输入框头部文本内容",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "'string’",
-                  "source": {
-                    "symbol": "'string’"
-                  }
-                }
+                "string"
               ]
             },
             {
@@ -753,12 +654,7 @@
               "description": "输入框尾部文本内容",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "'string’",
-                  "source": {
-                    "symbol": "'string’"
-                  }
-                }
+                "string"
               ]
             },
             {
@@ -766,8 +662,7 @@
               "description": "类型",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                "'text'",
-                "'textarea'"
+                "string"
               ]
             },
             {
@@ -775,8 +670,8 @@
               "description": "绑定值",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                "'string'",
-                "'number'"
+                "string",
+                "number"
               ]
             },
             {
@@ -784,8 +679,8 @@
               "description": "最大输入长度",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                "'string'",
-                "'number'"
+                "string",
+                "number"
               ]
             },
             {
@@ -793,7 +688,7 @@
               "description": "原生属性，最小输入长度",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                "'number'"
+                "number"
               ]
             },
             {
@@ -801,7 +696,7 @@
               "description": "是否显示统计字数, 只在 `type` 为 'text' 或 'textarea' 的时候生效",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                "'boolean'"
+                "boolean"
               ],
               "default": "'boolean'"
             },
@@ -810,7 +705,7 @@
               "description": "输入框占位文本",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                "'string'"
+                "string"
               ]
             },
             {
@@ -818,7 +713,7 @@
               "description": "是否显示清除按钮，只有当 `type` 不是 textarea 时生效",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                "'boolean'"
+                "boolean"
               ],
               "default": "false"
             },
@@ -827,26 +722,15 @@
               "description": "指定输入值的格式。(只有当 `type` 是\"text\"时才能工作)",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "`(value: string ",
-                  "source": {
-                    "symbol": "`(value: string "
-                  }
-                }
-              ],
-              "default": "number) => string`"
+                "(value: any) => string"
+              ]
             },
             {
               "name": "parser",
               "description": "指定从格式化器输入中提取的值。(仅当 `type` 是\"text\"时才起作用)",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "`(value: string) => string`",
-                  "source": {
-                    "symbol": "`(value: string) => string`"
-                  }
-                }
+                "(value: string) => string"
               ]
             },
             {
@@ -854,7 +738,7 @@
               "description": "是否显示切换密码图标",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                "'boolean'"
+                "boolean"
               ],
               "default": "false"
             },
@@ -863,7 +747,7 @@
               "description": "是否禁用",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                "'boolean'"
+                "boolean"
               ],
               "default": "false"
             },
@@ -874,12 +758,7 @@
               "type": [
                 "'large'",
                 "'default'",
-                {
-                  "name": "'small'`",
-                  "source": {
-                    "symbol": "'small'`"
-                  }
-                }
+                "'small'"
               ]
             },
             {
@@ -887,13 +766,7 @@
               "description": "自定义前缀图标",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                "'string'",
-                {
-                  "name": "^[Component]",
-                  "source": {
-                    "symbol": "^[Component]"
-                  }
-                }
+                "string"
               ]
             },
             {
@@ -901,13 +774,7 @@
               "description": "自定义后缀图标",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                "'string'",
-                {
-                  "name": "^[Component]",
-                  "source": {
-                    "symbol": "^[Component]"
-                  }
-                }
+                "string"
               ]
             },
             {
@@ -915,7 +782,7 @@
               "description": "输入框行数，仅 `type` 为 'textarea' 时有效",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                "'number'"
+                "number"
               ],
               "default": "'number'"
             },
@@ -924,13 +791,8 @@
               "description": "textarea 高度是否自适应，仅 `type` 为 'textarea' 时生效。 可以接受一个对象，比如: `{ minRows: 2, maxRows: 6 }`",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                "'boolean'",
-                {
-                  "name": "`Pows?: numer, maxRows?: number }`",
-                  "source": {
-                    "symbol": "`Pows?: numer, maxRows?: number }`"
-                  }
-                }
+                "boolean",
+                "{minRows?: numer, maxRows?: number }"
               ],
               "default": "false"
             },
@@ -939,7 +801,7 @@
               "description": "原生 `autocomplete` 属性",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                "'string'"
+                "string"
               ],
               "default": "off"
             },
@@ -948,7 +810,7 @@
               "description": "等价于原生 input `name` 属性",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                "'string'"
+                "string"
               ]
             },
             {
@@ -956,12 +818,7 @@
               "description": "原生 `readonly` 属性，是否只读",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "boolean'",
-                  "source": {
-                    "symbol": "boolean'"
-                  }
-                }
+                "boolean"
               ],
               "default": "false"
             },
@@ -985,30 +842,7 @@
               "description": "控制是否能被用户缩放",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "`none`",
-                  "source": {
-                    "symbol": "`none`"
-                  }
-                },
-                {
-                  "name": "`both`",
-                  "source": {
-                    "symbol": "`both`"
-                  }
-                },
-                {
-                  "name": "`horizontal`",
-                  "source": {
-                    "symbol": "`horizontal`"
-                  }
-                },
-                {
-                  "name": "`vertical`",
-                  "source": {
-                    "symbol": "`vertical`"
-                  }
-                }
+                "string"
               ]
             },
             {
@@ -1016,12 +850,7 @@
               "description": "原生属性，自动获取焦点",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "`boolean`",
-                  "source": {
-                    "symbol": "`boolean`"
-                  }
-                }
+                "boolean"
               ],
               "default": "false"
             },
@@ -1030,12 +859,7 @@
               "description": "原生属性",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "`string`",
-                  "source": {
-                    "symbol": "`string`"
-                  }
-                }
+                "string"
               ]
             },
             {
@@ -1043,12 +867,7 @@
               "description": "等价于原生 input `aria-label` 属性",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "`string`",
-                  "source": {
-                    "symbol": "`string`"
-                  }
-                }
+                "string"
               ]
             },
             {
@@ -1056,18 +875,8 @@
               "description": "输入框的 tabindex",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "`string`",
-                  "source": {
-                    "symbol": "`string`"
-                  }
-                },
-                {
-                  "name": "`number`",
-                  "source": {
-                    "symbol": "`number`"
-                  }
-                }
+                "string",
+                "number"
               ]
             },
             {
@@ -1075,12 +884,7 @@
               "description": "输入时是否触发表单的校验",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "`boolean`",
-                  "source": {
-                    "symbol": "`boolean`"
-                  }
-                }
+                "boolean"
               ],
               "default": "true"
             },
@@ -1090,31 +894,12 @@
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
                 {
-                  "name": "`string`",
+                  "name": "any",
                   "source": {
-                    "symbol": "`string`"
-                  }
-                },
-                {
-                  "name": "`CSSProperties`",
-                  "source": {
-                    "symbol": "`CSSProperties`"
-                  }
-                },
-                {
-                  "name": "`CSSProperties[]`",
-                  "source": {
-                    "symbol": "`CSSProperties[]`"
-                  }
-                },
-                {
-                  "name": "`string[]`",
-                  "source": {
-                    "symbol": "`string[]`"
+                    "symbol": "any"
                   }
                 }
-              ],
-              "default": "{}"
+              ]
             }
           ],
           "slots": [
@@ -1608,11 +1393,11 @@
               "description": "自定义前缀图标",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                "'string'",
+                "string",
                 {
-                  "name": "^[Component]",
+                  "name": "Component",
                   "source": {
-                    "symbol": "^[Component]"
+                    "symbol": "Component"
                   }
                 }
               ]
@@ -1622,11 +1407,11 @@
               "description": "自定义后缀图标",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                "'string'",
+                "string",
                 {
-                  "name": "^[Component]",
+                  "name": "Component",
                   "source": {
-                    "symbol": "^[Component]"
+                    "symbol": "Component"
                   }
                 }
               ]
@@ -1636,7 +1421,7 @@
               "description": "输入框行数，仅 `type` 为 'textarea' 时有效",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                "'number'"
+                "number"
               ],
               "default": "'number'"
             },
@@ -1645,7 +1430,7 @@
               "description": "textarea 高度是否自适应，仅 `type` 为 'textarea' 时生效。 可以接受一个对象，比如: `{ minRows: 2, maxRows: 6 }`",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                "'boolean'",
+                "boolean",
                 {
                   "name": "`Pows?: numer, maxRows?: number }`",
                   "source": {
@@ -1660,7 +1445,7 @@
               "description": "原生 `autocomplete` 属性",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                "'string'"
+                "string"
               ],
               "default": "off"
             },
@@ -1669,7 +1454,7 @@
               "description": "等价于原生 input `name` 属性",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                "'string'"
+                "string"
               ]
             },
             {
@@ -1677,12 +1462,7 @@
               "description": "原生 `readonly` 属性，是否只读",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "boolean'",
-                  "source": {
-                    "symbol": "boolean'"
-                  }
-                }
+                "boolean"
               ],
               "default": "false"
             },
@@ -1691,7 +1471,7 @@
               "description": "设置最大值",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                "'number'"
+                "number"
               ]
             },
             {
@@ -1699,46 +1479,23 @@
               "description": "设置最小值",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                "'number'"
+                "number"
               ]
             },
             {
               "name": "step",
-              "description": "设置输入字段的合法数字间隔",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
-              "type": [
-                "'number'"
-              ]
+              "description": "设置输入字段的合法数字间隔number",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
             },
             {
               "name": "resize",
               "description": "控制是否能被用户缩放",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "`none`",
-                  "source": {
-                    "symbol": "`none`"
-                  }
-                },
-                {
-                  "name": "`both`",
-                  "source": {
-                    "symbol": "`both`"
-                  }
-                },
-                {
-                  "name": "`horizontal`",
-                  "source": {
-                    "symbol": "`horizontal`"
-                  }
-                },
-                {
-                  "name": "`vertical`",
-                  "source": {
-                    "symbol": "`vertical`"
-                  }
-                }
+                "'none'",
+                "'both'",
+                "'horizontal'",
+                "'vertical'"
               ]
             },
             {
@@ -1746,12 +1503,7 @@
               "description": "原生属性，自动获取焦点",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "`boolean`",
-                  "source": {
-                    "symbol": "`boolean`"
-                  }
-                }
+                "boolean"
               ],
               "default": "false"
             },
@@ -1760,12 +1512,7 @@
               "description": "原生属性",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "`string`",
-                  "source": {
-                    "symbol": "`string`"
-                  }
-                }
+                "string"
               ]
             },
             {
@@ -1773,12 +1520,7 @@
               "description": "等价于原生 input `aria-label` 属性",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "`string`",
-                  "source": {
-                    "symbol": "`string`"
-                  }
-                }
+                "string"
               ]
             },
             {
@@ -1786,18 +1528,8 @@
               "description": "输入框的 tabindex",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "`string`",
-                  "source": {
-                    "symbol": "`string`"
-                  }
-                },
-                {
-                  "name": "`number`",
-                  "source": {
-                    "symbol": "`number`"
-                  }
-                }
+                "string",
+                "number"
               ]
             },
             {
@@ -1805,12 +1537,7 @@
               "description": "输入时是否触发表单的校验",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "`boolean`",
-                  "source": {
-                    "symbol": "`boolean`"
-                  }
-                }
+                "boolean"
               ],
               "default": "true"
             },
@@ -1818,32 +1545,6 @@
               "name": "input-style",
               "description": "input 元素的 style",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
-              "type": [
-                {
-                  "name": "`string`",
-                  "source": {
-                    "symbol": "`string`"
-                  }
-                },
-                {
-                  "name": "`CSSProperties`",
-                  "source": {
-                    "symbol": "`CSSProperties`"
-                  }
-                },
-                {
-                  "name": "`CSSProperties[]`",
-                  "source": {
-                    "symbol": "`CSSProperties[]`"
-                  }
-                },
-                {
-                  "name": "`string[]`",
-                  "source": {
-                    "symbol": "`string[]`"
-                  }
-                }
-              ],
               "default": "{}"
             },
             {
@@ -1851,12 +1552,7 @@
               "description": "设置精度（小数位数，四舍五入）",
               "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
               "type": [
-                {
-                  "name": "`number`",
-                  "source": {
-                    "symbol": "`number`"
-                  }
-                }
+                "number"
               ]
             }
           ],

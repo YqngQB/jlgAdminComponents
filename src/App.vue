@@ -65,15 +65,20 @@
 		</template>
 		<template #header>header</template>
 		<template #main>
-      <jlg-form :model="formData" ref="formRef">
-        <jlg-input label="输入框" prop="name" :disabled="true"></jlg-input>
-        <jlg-number-input label="测试全局导入" prop="age"></jlg-number-input>
-      </jlg-form>
+			<jlg-form :model="formData" ref="formRef">
+				<jlg-input
+					label="输入框"
+					prop="name"
+					:disabled="true"
+					:autosize="{ minRows: 1, maxRows: 4 }"
+					:readonly="true"
+				></jlg-input>
+				<jlg-number-input label="测试全局导入" prop="age"></jlg-number-input>
+			</jlg-form>
 			<pre>{{ formData }}</pre>
-			 <el-input></el-input>
-      <div>
-        <pure-table :data="tableData" :columns="columns"></pure-table>
-      </div>
+			<div>
+				<pure-table></pure-table>
+			</div>
 		</template>
 		<template #footer>footer</template>
 	</jlg-layout>
@@ -86,7 +91,7 @@ import type { JlgFormInstance } from '../packages'
 let layoutRef = ref<JlgLayoutInstance>()
 let formRef = ref<JlgFormInstance>()
 formRef.value?.submit().then((res) => {
-  console.log(res)
+	console.log(res)
 })
 
 let formData = ref({
@@ -94,37 +99,41 @@ let formData = ref({
 	age: 18
 })
 
-const columns = [{
-  label: "Date",
-  prop: "date",
-}, {
-  label: "Name",
-  prop: "name",
-}, {
-  label: "Address",
-  prop: "address",
-}]
+const columns = [
+	{
+		label: 'Date',
+		prop: 'date'
+	},
+	{
+		label: 'Name',
+		prop: 'name'
+	},
+	{
+		label: 'Address',
+		prop: 'address'
+	}
+]
 const tableData = [
-  {
-    date: '2016-05-03',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-02',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-04',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
-  {
-    date: '2016-05-01',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles',
-  },
+	{
+		date: '2016-05-03',
+		name: 'Tom',
+		address: 'No. 189, Grove St, Los Angeles'
+	},
+	{
+		date: '2016-05-02',
+		name: 'Tom',
+		address: 'No. 189, Grove St, Los Angeles'
+	},
+	{
+		date: '2016-05-04',
+		name: 'Tom',
+		address: 'No. 189, Grove St, Los Angeles'
+	},
+	{
+		date: '2016-05-01',
+		name: 'Tom',
+		address: 'No. 189, Grove St, Los Angeles'
+	}
 ]
 </script>
 

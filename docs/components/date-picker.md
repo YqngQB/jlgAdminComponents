@@ -344,19 +344,19 @@ const shortcuts = [
 | end-placeholder       | 范围选择时结束日期的占位内容                                        | string                               | —            |
 | type                  | 显示类型                                                  | string                               | date         |
 | format                | 显示在输入框中的格式                                            | string                               | YYYY-MM-DD   |
-| popper-class          | DatePicker 下拉框的类名                                     | string                               | —            |
+| popper-class          | DatePicker 下拉框的类名                                     | string                               |             |
 | range-separator       | 选择范围时的分隔符                                             | string                               | '-'          |
-| default-value         | 可选，选择器打开时默认显示的时间                                      | Date / [Date, Date]                  | —            |
-| default-time          | 范围选择时选中日期所使用的当日内具体时刻                                  | Date / [Date, Date]                  | —            |
-| value-format          | 可选，绑定值的格式。 不指定则绑定值为 Date 对象                           | string                               | —            |
-| id                    | 等价于原生 `id` 属性                                         | string / [string, string]            | —            |
-| name                  | 等价于原生 `name` 属性                                       | string                               | —            |
-| unlink-panels         | 在范围选择器里取消两个日期面板之间的联动                                  | boolean                              | false        |
-| prefix-icon           | 自定义前缀图标                                               | `string \                            | Component`   | Date        |
-| clear-icon            | 自定义清除图标                                               | `string \                            | Component`   | CircleClose |
+| default-value         | 可选，选择器打开时默认显示的时间                                      | Date / [Date, Date]                  |             |
+| default-time          | 范围选择时选中日期所使用的当日内具体时刻                                  | Date / [Date, Date]                  |             |
+| value-format          | 可选，绑定值的格式。 不指定则绑定值为 Date 对象                           | string                               |             |
+| id                    | 等价于原生 `id` 属性                                         | string / [string, string]            |             |
+| name                  | 等价于原生 `name` 属性                                       | string                               |             |
+| unlink-panels         | 在范围选择器里取消两个日期面板之间的联动                                  | boolean                              |         |
+| prefix-icon           | 自定义前缀图标                                               |  |         |
+| clear-icon            | 自定义清除图标                                               |    |  |
 | validate-event        | 输入时是否触发表单的校验                                          | boolean                              | true         |
 | disabled-date         | 一个用来判断该日期是否被禁用的函数，接受一个 Date 对象作为参数。 应该返回一个 Boolean 值。 | function                             | —            |
-| shortcuts             | 设置快捷选项，需要传入数组对象                                       | `Array<{ text: string, value: Date \ | Function }>` | —           |
+| shortcuts             | 设置快捷选项，需要传入数组对象                                       |  |            |
 | cell-class-name       | 设置自定义类名                                               | Function(Date)                       | —            |
 | teleported            | 是否将 date-picker 的下拉列表插入至 body 元素                      | boolean                              | true         |
 

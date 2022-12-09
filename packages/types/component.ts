@@ -50,7 +50,7 @@ export interface InputBasicProps {
 	/**
 	 * 表单校验规则。可以是一个以管状符分隔的字符串 例如 'required|email'，也可以是一个包含验证规则的对象数组 例如 ['required',{ required: true, message: '请输入邮箱地址', trigger: 'blur' }]。
 	 */
-	rules?: FormItemInstance['props']['rules'] | string
+	rules?: (FormItemInstance['props']['rules'] | string)
 	/**
 	 * 是否禁用
 	 */

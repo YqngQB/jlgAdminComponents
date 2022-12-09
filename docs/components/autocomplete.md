@@ -274,16 +274,16 @@ onMounted(() => {
 
 ## Props
 
-| 属性名                               | 说明                                                         | 类型     | 默认值       |
-|-----------------------------------| ------------------------------------------------------------ | -------- | ------------ |
+| 属性名                            | 说明                                                         | 类型     | 默认值       |
+| --------------------------------- | ------------------------------------------------------------ | -------- | ------------ |
 | formItemConfig                    | el-form-item 属性                                            |          | —            |
 | label                             | 标签文本                                                     |          | —            |
 | prop                              | model 的键名。 它可以是一个路径数组(例如 ['a', 'b', 0])      |          | —            |
 | rules                             | 表单校验规则                                                 |          | —            |
-| prependText                       | 输入框前置文本                                               | 'string’ | —            |
-| appendText                        | 输入框后置文本内容                                           | 'string’ |              |
-| prefixText                        | 输入框头部文本内容                                           | 'string’ |              |
-| suffixTex                         | 输入框尾部文本内容                                           | 'string’ |              |
+| prependText                       | 输入框前置文本                                               | string   | —            |
+| appendText                        | 输入框后置文本内容                                           | string   |              |
+| prefixText                        | 输入框头部文本内容                                           | string   |              |
+| suffixTex                         | 输入框尾部文本内容                                           | string   |              |
 | disabled                          | 自动补全组件是否被禁用                                       | boolean  | false        |
 | value-key                         | 输入建议对象中用于显示的键名                                 | string   | value        |
 | model-value / v-model             | 选中项绑定值                                                 | string   | —            |
