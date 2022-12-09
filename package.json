@@ -1,6 +1,6 @@
 {
 	"name": "jlg-admin-components",
-	"version": "1.0.0-alpha.2",
+	"version": "1.0.0-alpha.2.6",
 	"packageManager": "pnpm@7.0.1",
 	"description": "",
 	"keywords": [
@@ -34,7 +34,9 @@
 	},
 	"files": [
 		"dist",
-		"lib",
+		"attributes.json",
+		"tags.json",
+		"web-types.json",
 		"global.d.ts"
 	],
 	"sideEffects": false,
@@ -99,5 +101,10 @@
 				"webpack"
 			]
 		}
-	}
+	},
+	"vetur": {
+		"tags": "tags.json",
+		"attributes": "attributes.json"
+	},
+	"web-types": "web-types.json"
 }

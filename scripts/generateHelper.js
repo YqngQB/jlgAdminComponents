@@ -8,7 +8,9 @@ const root = resolve(__dirname, '..')
 // const docsRoot = resolve(root, 'docs')
 
 // output
-const output = resolve(root, 'lib')
+// const output = resolve(root, 'lib')
+const output = resolve(root)
+
 // package
 const compPackage = resolve(output, 'package.json')
 

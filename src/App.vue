@@ -65,9 +65,9 @@
 		</template>
 		<template #header>header</template>
 		<template #main>
-      <jlg-form :model="formData">
-        <jlg-input label="测试按需导入" prop="name"></jlg-input>
-        <JlgNumberInput label="测试全局导入" prop="age"></JlgNumberInput>
+      <jlg-form :model="formData" ref="formRef" @submit>
+        <JlgInput label="测试按需导入" prop="name"></JlgInput>
+        <jlg-number-input label="测试全局导入" prop="age"></jlg-number-input>
       </jlg-form>
 			<pre>{{ formData }}</pre>
 			<el-table :data="[]"></el-table>
@@ -78,10 +78,13 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { JlgLayoutInstance } from '../packages/types'
-import { JlgInput } from 'jlg-admin-components'
-
+import type { JlgLayoutInstance } from 'jlg-admin-components/dist/types'
+import type { JlgFormInstance } from '../packages'
 let layoutRef = ref<JlgLayoutInstance>()
+let formRef = ref<JlgFormInstance>()
+formRef.value?.submit().then((res) => {
+  console.log(res)
+})
 
 let formData = ref({
 	name: 'jlg',

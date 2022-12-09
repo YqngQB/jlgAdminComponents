@@ -1,0 +1,757 @@
+{
+  "jlg-autocomplete/formItemConfig": {
+    "description": "el-form-item 属性\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-autocomplete/label": {
+    "description": "标签文本\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-autocomplete/prop": {
+    "description": "model 的键名。 它可以是一个路径数组(例如 ['a', 'b', 0])\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-autocomplete/rules": {
+    "description": "表单校验规则\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-autocomplete/prependText": {
+    "type": "'string’",
+    "description": "输入框前置文本\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-autocomplete/appendText": {
+    "type": "'string’",
+    "description": "输入框后置文本内容\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-autocomplete/prefixText": {
+    "type": "'string’",
+    "description": "输入框头部文本内容\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-autocomplete/suffixTex": {
+    "type": "'string’",
+    "description": "输入框尾部文本内容\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-autocomplete/disabled": {
+    "type": "boolean",
+    "description": "自动补全组件是否被禁用, default: false.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-autocomplete/value-key": {
+    "type": "string",
+    "description": "输入建议对象中用于显示的键名, default: value.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-autocomplete/model-value / v-model": {
+    "type": "string",
+    "description": "选中项绑定值\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-autocomplete/debounce": {
+    "type": "number",
+    "description": "获取输入建议的防抖延时，单位为毫秒, default: 300.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-autocomplete/placement": {
+    "description": "菜单弹出位置, default: bottom-start.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-autocomplete/fetch-suggestions": {
+    "type": "Function",
+    "description": "获取输入建议的方法， 仅当你的输入建议数据 resolve 时，通过调用 `callback(data:[]) ` 来返回它\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-autocomplete/popper-class": {
+    "type": "string",
+    "description": "下拉列表的类名\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-autocomplete/trigger-on-focus": {
+    "type": "boolean",
+    "description": "获取焦点时是否显示建议, default: true.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-autocomplete/name": {
+    "type": "string",
+    "description": "等价于原生 input `name` 属性\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-autocomplete/select-when-unmatched": {
+    "type": "boolean",
+    "description": "在输入没有任何匹配建议的情况下，按下回车是否触发 `select` 事件, default: false.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-autocomplete/hide-loading": {
+    "type": "boolean",
+    "description": "是否隐藏远程加载时的加载图标, default: false.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-autocomplete/popper-append-to-body(deprecated)": {
+    "type": "boolean",
+    "description": "是否将下拉列表插入至 body 元素。 在下拉列表的定位出现问题时，可将该属性设置为 false, default: false.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-autocomplete/teleported": {
+    "type": "boolean",
+    "description": "是否将下拉列表元素插入 append-to 指向的元素下, default: true.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-autocomplete/highlight-first-item": {
+    "type": "boolean",
+    "description": "是否默认高亮远程搜索结果的第一项, default: false.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-autocomplete/fit-input-width": {
+    "type": "boolean",
+    "description": "下拉框的宽度是否与输入框相同, default: false.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-autocomplete/select": {
+    "type": "event",
+    "description": "点击选中建议项时触发\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#events)"
+  },
+  "jlg-autocomplete/change": {
+    "type": "event",
+    "description": "在 Input 值改变时触发\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#events)"
+  },
+  "jlg-date-picker-日期选择器/model-value / v-model": {
+    "type": "Date | number | string | Array",
+    "description": "绑定值，如果它是数组，长度应该是 2\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-date-picker-日期选择器/readonly": {
+    "type": "boolean",
+    "description": "只读, default: false.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-date-picker-日期选择器/disabled": {
+    "type": "boolean",
+    "description": "禁用, default: false.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-date-picker-日期选择器/size": {
+    "type": "string",
+    "description": "输入框尺寸, default: default.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-date-picker-日期选择器/editable": {
+    "type": "boolean",
+    "description": "文本框可输入, default: true.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-date-picker-日期选择器/clearable": {
+    "type": "boolean",
+    "description": "是否显示清除按钮, default: true.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-date-picker-日期选择器/placeholder": {
+    "type": "string",
+    "description": "非范围选择时的占位内容\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-date-picker-日期选择器/start-placeholder": {
+    "type": "string",
+    "description": "范围选择时开始日期的占位内容\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-date-picker-日期选择器/end-placeholder": {
+    "type": "string",
+    "description": "范围选择时结束日期的占位内容\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-date-picker-日期选择器/type": {
+    "type": "string",
+    "description": "显示类型, default: date.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-date-picker-日期选择器/format": {
+    "type": "string",
+    "description": "显示在输入框中的格式, default: YYYY-MM-DD.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-date-picker-日期选择器/popper-class": {
+    "type": "string",
+    "description": "DatePicker 下拉框的类名\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-date-picker-日期选择器/range-separator": {
+    "type": "string",
+    "description": "选择范围时的分隔符, default: '-'.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-date-picker-日期选择器/default-value": {
+    "type": "Date | [Date, Date]",
+    "description": "可选，选择器打开时默认显示的时间\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-date-picker-日期选择器/default-time": {
+    "type": "Date | [Date, Date]",
+    "description": "范围选择时选中日期所使用的当日内具体时刻\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-date-picker-日期选择器/value-format": {
+    "type": "string",
+    "description": "可选，绑定值的格式。 不指定则绑定值为 Date 对象\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-date-picker-日期选择器/id": {
+    "type": "string | [string, string]",
+    "description": "等价于原生 `id` 属性\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-date-picker-日期选择器/name": {
+    "type": "string",
+    "description": "等价于原生 `name` 属性\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-date-picker-日期选择器/unlink-panels": {
+    "type": "boolean",
+    "description": "在范围选择器里取消两个日期面板之间的联动, default: false.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-date-picker-日期选择器/prefix-icon": {
+    "type": "`string \\",
+    "description": "自定义前缀图标, default: Component`.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-date-picker-日期选择器/clear-icon": {
+    "type": "`string \\",
+    "description": "自定义清除图标, default: Component`.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-date-picker-日期选择器/validate-event": {
+    "type": "boolean",
+    "description": "输入时是否触发表单的校验, default: true.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-date-picker-日期选择器/disabled-date": {
+    "type": "function",
+    "description": "一个用来判断该日期是否被禁用的函数，接受一个 Date 对象作为参数。 应该返回一个 Boolean 值。\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-date-picker-日期选择器/shortcuts": {
+    "type": "`Array<{ text: string, value: Date \\",
+    "description": "设置快捷选项，需要传入数组对象, default: Function }>`.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-date-picker-日期选择器/cell-class-name": {
+    "type": "Function(Date)",
+    "description": "设置自定义类名\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-date-picker-日期选择器/teleported": {
+    "type": "boolean",
+    "description": "是否将 date-picker 的下拉列表插入至 body 元素, default: true.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-form/`model`": {
+    "type": "`Record<string, any>`",
+    "description": "表单数据对象\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-form/`inline`": {
+    "type": "`boolean`",
+    "description": "行内表单模式, default: `false`.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-form/`label-position`": {
+    "type": "`'left' | 'right' | 'top'`",
+    "options": [
+      "right"
+    ],
+    "description": "表单域标签的位置， 当设置为 `left` 或 `right` 时，则也需要设置 `label-width` 属性, default: `'right'`.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-form/`label-width`": {
+    "type": "`string | number`",
+    "description": "标签的长度，例如 `'50px'`。 作为 Form 直接子元素的 form-item 会继承该值。 可以使用 `auto`。\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-form/`hide-required-asterisk`": {
+    "type": "`boolean`",
+    "description": "是否隐藏必填字段标签旁边的红色星号。, default: `false`.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-form/`require-asterisk-position`": {
+    "type": "`'left' | 'right'`",
+    "description": "星号的位置。, default: `'left'`.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-form/`show-message`": {
+    "type": "`boolean`",
+    "description": "是否显示校验错误信息, default: `true`.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-form/`inline-message`": {
+    "type": "`boolean`",
+    "description": "是否以行内形式展示校验信息, default: `false`.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-form/`status-icon`": {
+    "type": "`boolean`",
+    "description": "是否在输入框中显示校验结果反馈图标, default: `false`.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-form/`validate-on-rule-change`": {
+    "type": "`boolean`",
+    "description": "是否在 `rules` 属性改变后立即触发一次验证, default: `true`.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-form/`size`": {
+    "type": "`'large' | 'default' | 'small'`",
+    "options": [
+      "default"
+    ],
+    "description": "用于控制该表单内组件的尺寸\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-form/`disabled`": {
+    "type": "`boolean`",
+    "description": "是否禁用该表单内的所有组件。 如果设置为 `true`, 它将覆盖内部组件的 `disabled` 属性, default: `false`.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-form/`scroll-to-error`": {
+    "type": "`boolean`",
+    "description": "当校验失败时，滚动到第一个错误表单项, default: `false`.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/formItemConfig": {
+    "description": "el-form-item 属性\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/label": {
+    "type": "`string`",
+    "description": "等价于原生 input `aria-label` 属性\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/prop": {
+    "description": "model 的键名。 它可以是一个路径数组(例如 ['a', 'b', 0])\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/rules": {
+    "description": "表单校验规则\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/prependText": {
+    "type": "'string’",
+    "description": "输入框前置文本\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/appendText": {
+    "type": "'string’",
+    "description": "输入框后置文本内容\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/prefixText": {
+    "type": "'string’",
+    "description": "输入框头部文本内容\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/suffixTex": {
+    "type": "'string’",
+    "description": "输入框尾部文本内容\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/type": {
+    "type": "'text' | 'textarea'",
+    "options": [
+      "text",
+      "textarea"
+    ],
+    "description": "类型\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/model-value / v-model": {
+    "type": "'string' | 'number'",
+    "options": [
+      "string",
+      "number"
+    ],
+    "description": "绑定值\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/maxlength": {
+    "type": "'string' | 'number'",
+    "options": [
+      "string",
+      "number"
+    ],
+    "description": "最大输入长度\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/minlength": {
+    "type": "'number'",
+    "options": [
+      "number"
+    ],
+    "description": "原生属性，最小输入长度\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/show-word-limit": {
+    "type": "'boolean'",
+    "options": [
+      "boolean"
+    ],
+    "description": "是否显示统计字数, 只在 `type` 为 'text' 或 'textarea' 的时候生效, default: 'boolean'.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/placeholder": {
+    "type": "'string'",
+    "options": [
+      "string"
+    ],
+    "description": "输入框占位文本\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/clearable": {
+    "type": "'boolean'",
+    "options": [
+      "boolean"
+    ],
+    "description": "是否显示清除按钮，只有当 `type` 不是 textarea 时生效, default: false.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/formatter": {
+    "type": "`(value: string \\",
+    "description": "指定输入值的格式。(只有当 `type` 是\"text\"时才能工作), default: number) => string`.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/parser": {
+    "type": "`(value: string) => string`",
+    "description": "指定从格式化器输入中提取的值。(仅当 `type` 是\"text\"时才起作用)\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/show-password": {
+    "type": "'boolean'",
+    "options": [
+      "boolean"
+    ],
+    "description": "是否显示切换密码图标, default: false.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/disabled": {
+    "type": "'boolean'",
+    "options": [
+      "boolean"
+    ],
+    "description": "是否禁用, default: false.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/size": {
+    "type": "'large' | 'default' | 'small'`",
+    "options": [
+      "large",
+      "default"
+    ],
+    "description": "输入框尺寸，只在 `type` 不为 'textarea' 时有效\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/prefix-icon": {
+    "type": "'string' | ^[Component]",
+    "options": [
+      "string"
+    ],
+    "description": "自定义前缀图标\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/suffix-icon": {
+    "type": "'string' | ^[Component]",
+    "options": [
+      "string"
+    ],
+    "description": "自定义后缀图标\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/rows": {
+    "type": "'number'",
+    "options": [
+      "number"
+    ],
+    "description": "输入框行数，仅 `type` 为 'textarea' 时有效, default: 'number'.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/autosize": {
+    "type": "'boolean' | `Pows?: numer, maxRows?: number }`",
+    "options": [
+      "boolean"
+    ],
+    "description": "textarea 高度是否自适应，仅 `type` 为 'textarea' 时生效。 可以接受一个对象，比如: `{ minRows: 2, maxRows: 6 }`, default: false.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/autocomplete": {
+    "type": "'string'",
+    "options": [
+      "string"
+    ],
+    "description": "原生 `autocomplete` 属性, default: off.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/name": {
+    "type": "'string'",
+    "options": [
+      "string"
+    ],
+    "description": "等价于原生 input `name` 属性\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/readonly": {
+    "type": "boolean'",
+    "description": "原生 `readonly` 属性，是否只读, default: false.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/max": {
+    "description": "原生 `max` 属性，设置最大值\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/min": {
+    "description": "原生属性，设置最小值\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/step": {
+    "description": "原生属性，设置输入字段的合法数字间隔\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/resize": {
+    "type": "`none` | `both` | `horizontal` | `vertical`",
+    "description": "控制是否能被用户缩放\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/autofocus": {
+    "type": "`boolean`",
+    "description": "原生属性，自动获取焦点, default: false.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/form": {
+    "type": "`string`",
+    "description": "原生属性\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/tabindex": {
+    "type": "`string` | `number`",
+    "description": "输入框的 tabindex\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/validate-event": {
+    "type": "`boolean`",
+    "description": "输入时是否触发表单的校验, default: true.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/input-style": {
+    "type": "`string` | `CSSProperties` | `CSSProperties[]` | `string[]`",
+    "description": "input 元素或 textarea 元素的 style, default: {}.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-input/blur": {
+    "type": "event",
+    "description": "当选择器的输入框失去焦点时触发\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#events)"
+  },
+  "jlg-input/focus": {
+    "type": "event",
+    "description": "当选择器的输入框获得焦点时触发\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#events)"
+  },
+  "jlg-input/change": {
+    "type": "event",
+    "description": "仅当 modelValue 改变时，当输入框失去焦点或用户按 Enter 时触发\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#events)"
+  },
+  "jlg-input/input": {
+    "type": "event",
+    "description": "在 Input 值改变时触发\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#events)"
+  },
+  "jlg-input/clear": {
+    "type": "event",
+    "description": "在点击由 `clearable` 属性生成的清空按钮时触发\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#events)"
+  },
+  "jlg-layout/layout": {
+    "type": "string",
+    "options": [
+      "vertical",
+      "horizontal"
+    ],
+    "description": "布局类型, default: '60px'.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-layout/headerHeight": {
+    "type": "string",
+    "description": "顶部栏高度, default: '60px'.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-layout/showHeader": {
+    "type": "boolean",
+    "options": [
+      "true",
+      "false"
+    ],
+    "description": "顶部栏是否显示, default: true.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-layout/asideWidth": {
+    "type": "string",
+    "description": "侧边栏宽度, default: '200px'.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-layout/showAside": {
+    "type": "boolean",
+    "options": [
+      "true",
+      "false"
+    ],
+    "description": "侧边栏是否显示, default: true.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-layout/footerHeight": {
+    "type": "string",
+    "description": "底部区域高度, default: '60px'.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-layout/showFooter": {
+    "type": "boolean",
+    "options": [
+      "true",
+      "false"
+    ],
+    "description": "底部区域是否显示, default: true.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-modal/layout": {
+    "type": "string",
+    "options": [
+      "vertical",
+      "horizontal"
+    ],
+    "description": "布局类型, default: '60px'.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-modal/headerHeight": {
+    "type": "string",
+    "description": "顶部栏高度, default: '60px'.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-modal/showHeader": {
+    "type": "boolean",
+    "options": [
+      "true",
+      "false"
+    ],
+    "description": "顶部栏是否显示, default: true.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-modal/asideWidth": {
+    "type": "string",
+    "description": "侧边栏宽度, default: '200px'.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-modal/showAside": {
+    "type": "boolean",
+    "options": [
+      "true",
+      "false"
+    ],
+    "description": "侧边栏是否显示, default: true.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-modal/footerHeight": {
+    "type": "string",
+    "description": "底部区域高度, default: '60px'.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-modal/showFooter": {
+    "type": "boolean",
+    "options": [
+      "true",
+      "false"
+    ],
+    "description": "底部区域是否显示, default: true.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/formItemConfig": {
+    "description": "el-form-item 属性\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/label": {
+    "type": "`string`",
+    "description": "等价于原生 input `aria-label` 属性\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/prop": {
+    "description": "model 的键名。 它可以是一个路径数组(例如 ['a', 'b', 0])\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/rules": {
+    "description": "表单校验规则\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/prependText": {
+    "type": "'string’",
+    "description": "输入框前置文本\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/appendText": {
+    "type": "'string’",
+    "description": "输入框后置文本内容\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/prefixText": {
+    "type": "'string’",
+    "description": "输入框头部文本内容\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/suffixTex": {
+    "type": "'string’",
+    "description": "输入框尾部文本内容\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/type": {
+    "type": "'text' | 'textarea'",
+    "options": [
+      "text",
+      "textarea"
+    ],
+    "description": "类型\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/model-value / v-model": {
+    "type": "'string' | 'number'",
+    "options": [
+      "string",
+      "number"
+    ],
+    "description": "绑定值\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/maxlength": {
+    "type": "'string' | 'number'",
+    "options": [
+      "string",
+      "number"
+    ],
+    "description": "最大输入长度\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/minlength": {
+    "type": "'number'",
+    "options": [
+      "number"
+    ],
+    "description": "原生属性，最小输入长度\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/placeholder": {
+    "type": "'string'",
+    "options": [
+      "string"
+    ],
+    "description": "输入框占位文本\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/clearable": {
+    "type": "'boolean'",
+    "options": [
+      "boolean"
+    ],
+    "description": "是否显示清除按钮, default: false.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/disabled": {
+    "type": "'boolean'",
+    "options": [
+      "boolean"
+    ],
+    "description": "是否禁用, default: false.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/size": {
+    "type": "'large' | 'default' | 'small'`",
+    "options": [
+      "large",
+      "default"
+    ],
+    "description": "输入框尺寸，只在 `type` 不为 'textarea' 时有效\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/prefix-icon": {
+    "type": "'string' | ^[Component]",
+    "options": [
+      "string"
+    ],
+    "description": "自定义前缀图标\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/suffix-icon": {
+    "type": "'string' | ^[Component]",
+    "options": [
+      "string"
+    ],
+    "description": "自定义后缀图标\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/rows": {
+    "type": "'number'",
+    "options": [
+      "number"
+    ],
+    "description": "输入框行数，仅 `type` 为 'textarea' 时有效, default: 'number'.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/autosize": {
+    "type": "'boolean' | `Pows?: numer, maxRows?: number }`",
+    "options": [
+      "boolean"
+    ],
+    "description": "textarea 高度是否自适应，仅 `type` 为 'textarea' 时生效。 可以接受一个对象，比如: `{ minRows: 2, maxRows: 6 }`, default: false.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/autocomplete": {
+    "type": "'string'",
+    "options": [
+      "string"
+    ],
+    "description": "原生 `autocomplete` 属性, default: off.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/name": {
+    "type": "'string'",
+    "options": [
+      "string"
+    ],
+    "description": "等价于原生 input `name` 属性\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/readonly": {
+    "type": "boolean'",
+    "description": "原生 `readonly` 属性，是否只读, default: false.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/max": {
+    "type": "'number'",
+    "options": [
+      "number"
+    ],
+    "description": "设置最大值\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/min": {
+    "type": "'number'",
+    "options": [
+      "number"
+    ],
+    "description": "设置最小值\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/step": {
+    "type": "'number'",
+    "options": [
+      "number"
+    ],
+    "description": "设置输入字段的合法数字间隔\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/resize": {
+    "type": "`none` | `both` | `horizontal` | `vertical`",
+    "description": "控制是否能被用户缩放\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/autofocus": {
+    "type": "`boolean`",
+    "description": "原生属性，自动获取焦点, default: false.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/form": {
+    "type": "`string`",
+    "description": "原生属性\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/tabindex": {
+    "type": "`string` | `number`",
+    "description": "输入框的 tabindex\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/validate-event": {
+    "type": "`boolean`",
+    "description": "输入时是否触发表单的校验, default: true.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/input-style": {
+    "type": "`string` | `CSSProperties` | `CSSProperties[]` | `string[]`",
+    "description": "input 元素的 style, default: {}.\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#props)"
+  },
+  "jlg-number-input/blur": {
+    "type": "event",
+    "description": "当选择器的输入框失去焦点时触发\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#events)"
+  },
+  "jlg-number-input/focus": {
+    "type": "event",
+    "description": "当选择器的输入框获得焦点时触发\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#events)"
+  },
+  "jlg-number-input/change": {
+    "type": "event",
+    "description": "仅当 modelValue 改变时，当输入框失去焦点或用户按 Enter 时触发\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#events)"
+  },
+  "jlg-number-input/input": {
+    "type": "event",
+    "description": "在 Input 值改变时触发\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#events)"
+  },
+  "jlg-number-input/clear": {
+    "type": "event",
+    "description": "在点击由 `clearable` 属性生成的清空按钮时触发\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#events)"
+  }
+}

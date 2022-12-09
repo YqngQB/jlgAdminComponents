@@ -101,11 +101,7 @@ const input = ref('')
 
 ```vue
 <template>
-	<jlg-number-input
-		v-model="input"
-		placeholder="设置精度为2"
-		:precision="2"
-	/>
+	<jlg-number-input v-model="input" placeholder="设置精度为2" :precision="2" />
 </template>
 
 <script lang="ts" setup>
@@ -189,13 +185,16 @@ const input4 = ref('')
 
 组件内置了 `placeholder` 默认值，也可以手动设置 `placeholder` 属性来自定义站位符
 
-:::demo 
+:::demo
 
 ```vue
 <template>
-    默认占位符：	<jlg-number-input v-model="input" />
-  默认占位符：	<jlg-number-input v-model="input" maxlength="4" />
-    自定义占位符：	<jlg-number-input v-model="input" placeholder="自定义占位符"/>
+	默认占位符：
+	<jlg-number-input v-model="input" />
+	默认占位符：
+	<jlg-number-input v-model="input" maxlength="4" />
+	自定义占位符：
+	<jlg-number-input v-model="input" placeholder="自定义占位符" />
 </template>
 
 <script lang="ts" setup>
@@ -351,8 +350,8 @@ const textarea = ref('')
 
 ## Props
 
-| 属性名                   | 说明                                                                                                           | 类型                                                        | 默认值   |
-|-----------------------| -------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------- |
+| 属性名                | 说明                                                                                                           | 类型                                                        | 默认值   |
+| --------------------- | -------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------- |
 | formItemConfig        | el-form-item 属性                                                                                              |                                                             | —        |
 | label                 | 标签文本                                                                                                       |                                                             | —        |
 | prop                  | model 的键名。 它可以是一个路径数组(例如 ['a', 'b', 0])                                                        |                                                             | —        |
@@ -386,6 +385,7 @@ const textarea = ref('')
 | tabindex              | 输入框的 tabindex                                                                                              | `string` / `number`                                         | —        |
 | validate-event        | 输入时是否触发表单的校验                                                                                       | `boolean`                                                   | true     |
 | input-style           | input 元素的 style                                                                                             | `string` / `CSSProperties` / `CSSProperties[]` / `string[]` | {}       |
+| precision             | 设置精度（小数位数，四舍五入）                                                                                 | `number`                                                    |          |
 
 ## Events
 
