@@ -1,4 +1,5 @@
 import { itemProps } from '../../hooks/itemType'
+import { inputEmits as epInputEmits } from 'element-plus'
 
 export const numberInputProps = {
 	...itemProps,
@@ -21,4 +22,4 @@ export const numberInputProps = {
 	}
 }
 
-export const numberInputEmits = ['update:modelValue', 'change','input']
+export const numberInputEmits = epInputEmits

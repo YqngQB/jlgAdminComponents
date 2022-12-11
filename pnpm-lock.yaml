@@ -13,7 +13,7 @@ specifiers:
   cross-env: ^7.0.3
   element-plus: ^2.2.22
   husky: ^8.0.1
-  jlg-admin-components: 1.0.0-alpha.2.0.5
+  jlg-admin-components: 1.0.0-alpha.2.0.6
   jsdom: ^20.0.2
   lint-staged: ^13.0.2
   prettier: ^2.7.1
@@ -32,9 +32,9 @@ specifiers:
   vue-tsc: ^1.0.9
 
 dependencies:
-  '@pureadmin/table': 1.8.1_element-plus@2.2.26
+  '@pureadmin/table': 1.8.1
   element-plus: 2.2.26_vue@3.2.45
-  jlg-admin-components: 1.0.0-alpha.2.0.5_element-plus@2.2.26
+  jlg-admin-components: 1.0.0-alpha.2.0.6
   vue: 3.2.45
 
 devDependencies:
@@ -817,13 +817,13 @@ packages:
       fastq: 1.14.0
     dev: true
 
-  /@pureadmin/table/1.8.1_element-plus@2.2.26:
+  /@pureadmin/table/1.8.1:
     resolution: {integrity: sha512-oZ5GYmLTDgQ64U6+yKFjvpZG2Seuudk3hOWnUogMvKxhIvaRQsGBHbvyg47asMmXxUyeilq+nRumyuiuV7WJTg==}
-    peerDependencies:
-      element-plus: ^2.0.0
     dependencies:
       element-plus: 2.2.26_vue@3.2.45
       vue: 3.2.45
+    transitivePeerDependencies:
+      - '@vue/composition-api'
     dev: false
 
   /@sxzz/popperjs-es/2.11.7:
@@ -1612,8 +1612,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
-      JSONStream: 1.3.5
       is-text-path: 1.0.1
+      JSONStream: 1.3.5
       lodash: 4.17.21
       meow: 8.1.2
       split2: 3.2.2
@@ -2546,14 +2546,14 @@ packages:
       supports-color: 7.2.0
     dev: true
 
-  /jlg-admin-components/1.0.0-alpha.2.0.5_element-plus@2.2.26:
-    resolution: {integrity: sha512-iHWzNvV2G2RkddMZQ3UXcpQE89cYsG7W/lux2gZUsbmlUprBnrKHQavUCEFG3ndp0W0I06cLlT02WE3xCBVbxg==}
-    peerDependencies:
-      element-plus: ^2.0.0
+  /jlg-admin-components/1.0.0-alpha.2.0.6:
+    resolution: {integrity: sha512-I3onY21p/5WxMioMJUPZGqFH92oJ7N2q4cYwQITq6d8actB7pQRIaaT+OcRvvTuY9hSzZz8N/3DsnDXPdopCqw==}
     dependencies:
-      '@pureadmin/table': 1.8.1_element-plus@2.2.26
+      '@pureadmin/table': 1.8.1
       element-plus: 2.2.26_vue@3.2.45
       vue: 3.2.45
+    transitivePeerDependencies:
+      - '@vue/composition-api'
     dev: false
 
   /js-tokens/4.0.0:

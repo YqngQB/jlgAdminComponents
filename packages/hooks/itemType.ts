@@ -23,7 +23,7 @@ export const itemProps = {
 		default: ''
 	},
 	rules: {
-		type: [String, Array] as PropType<Array<string | Record<string, any>>>,
+		type: [String, Array] as PropType<string | Array<string | Record<string, any>>>,
 		default: () => {
 			return []
 		}

@@ -69,11 +69,27 @@
 				<jlg-input
 					label="输入框"
 					prop="name"
-					:disabled="true"
-					:autosize="{ minRows: 1, maxRows: 4 }"
+					rules="required|email"
+					type="textarea"
+					:disabled="false"
 					:readonly="true"
+					:formItemConfig="{ labelWidth: '100px' }"
+					tabindex="1"
+					:validateEvent="true"
+					id="1"
+					:clearable="true"
+					:autosize="{ minRows: 2, maxRows: 4 }"
+					autocomplete="autocomplete"
+					:show-password="true"
+					:show-word-limit="false"
+					:input-style="{ color: 'red' }"
 				></jlg-input>
-				<jlg-number-input label="测试全局导入" prop="age"></jlg-number-input>
+				<jlg-number-input
+					:min="10"
+					:max="20"
+					placeholder="placeholder"
+					:autosize="true"
+				></jlg-number-input>
 			</jlg-form>
 			<pre>{{ formData }}</pre>
 			<div>

@@ -1,6 +1,6 @@
 {
 	"name": "jlg-admin-components",
-	"version": "1.0.0-alpha.2.0.5",
+	"version": "1.0.0-alpha.2.0.6",
 	"packageManager": "pnpm@7.0.1",
 	"description": "",
 	"keywords": [
@@ -65,7 +65,7 @@
 	"dependencies": {
 		"@pureadmin/table": "1.8.1",
 		"element-plus": "^2.2.22",
-		"jlg-admin-components": "1.0.0-alpha.2.0.5",
+		"jlg-admin-components": "1.0.0-alpha.2.0.6",
 		"vue": "3.2.45"
 	},
 	"devDependencies": {
