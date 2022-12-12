@@ -45,6 +45,7 @@ function getConfigs(): any {
 export default defineConfig({
 	plugins: [vue(), vueJsx(), svgLoader()],
 	server: {
+		port: '9708',
 		host: '0.0.0.0'
 	},
 	...getConfigs()

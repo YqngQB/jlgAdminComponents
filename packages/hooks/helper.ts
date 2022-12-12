@@ -1,6 +1,7 @@
 /**
  * @description is Function
  */
+import { isObject, get } from 'xe-utils'
 export function isFunction(val: unknown): val is Function {
 	return typeof val === 'function'
 }
@@ -36,11 +37,11 @@ function isType(obj: unknown, type: string): boolean {
 
 //获取正则表达式的开关
 function getRegExp(re: RegExp): string {
-	let flags = '';
-	if (re.global) flags += 'g';
-	if (re.ignoreCase) flags += 'i';
-	if (re.multiline) flags += 'm';
-	return flags;
+	let flags = ''
+	if (re.global) flags += 'g'
+	if (re.ignoreCase) flags += 'i'
+	if (re.multiline) flags += 'm'
+	return flags
 }
 export function cloneDeep(parent: unknown): unknown {
 	// 维护两个储存循环引用的数组
@@ -88,4 +89,10 @@ export function cloneDeep(parent: unknown): unknown {
 		return child
 	}
 	return _clone(parent)
+}
+
+let id = 0
+export const getValueKey = (item: unknown, valueKey?: string) => {
+	console.log('getValueKey', id++)
+	return isObject(item) && valueKey ? get(item, valueKey) : item
 }

@@ -1607,6 +1607,514 @@
               }
             ]
           }
+        },
+        {
+          "name": "jlg-select",
+          "source": {
+            "symbol": "jlgSelect"
+          },
+          "description": "当选项过多时，使用下拉菜单展示并选择内容。",
+          "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#select",
+          "props": [
+            {
+              "name": "formItemConfig",
+              "description": "el-form-item 属性",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
+            },
+            {
+              "name": "label",
+              "description": "标签文本",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
+            },
+            {
+              "name": "prop",
+              "description": "model 的键名。 它可以是一个路径数组(例如 ['a', 'b', 0])，或者一个点分隔的路径(例如 'a.b.0')",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
+            },
+            {
+              "name": "rules",
+              "description": "表单校验规则。可以是一个以管状符分隔的字符串 例如 'required'，也可以是一个包含验证规则的对象数组 例如 ['required',{ required: true, message: '请输入邮箱地址', trigger: 'blur' }]",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
+            },
+            {
+              "name": "isVirtualized",
+              "description": "是否启用虚拟化滚动",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "default": "false",
+              "attribute-value": {
+                "type": "of-match"
+              },
+              "values": [
+                {
+                  "name": "boolean"
+                }
+              ]
+            },
+            {
+              "name": "model-value / v-model",
+              "description": "绑定值",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "string",
+                "number",
+                "boolean",
+                "object"
+              ]
+            },
+            {
+              "name": "groupKey",
+              "description": "作为 分组 唯一标识的键名,如果想按照自己的意愿为选项进行分组,必须设置该属性(注意 jlg-select 的 groupKey 只能是 options)",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "string"
+              ]
+            },
+            {
+              "name": "multiple",
+              "description": "是否多选",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "boolean"
+              ],
+              "default": "false"
+            },
+            {
+              "name": "disabled",
+              "description": "是否禁用",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "boolean"
+              ],
+              "default": "false"
+            },
+            {
+              "name": "size",
+              "description": "输入框尺寸",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "string"
+              ],
+              "default": "default",
+              "attribute-value": {
+                "type": "enum"
+              },
+              "values": [
+                {
+                  "name": "large"
+                },
+                {
+                  "name": "default"
+                },
+                {
+                  "name": "small"
+                }
+              ]
+            },
+            {
+              "name": "clearable",
+              "description": "是否可以清空选项",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "boolean"
+              ],
+              "default": "false"
+            },
+            {
+              "name": "clear-icon",
+              "description": "自定义清除图标",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "string"
+              ],
+              "default": "CircleClose"
+            },
+            {
+              "name": "collapse-tags",
+              "description": "多选时是否将选中值按文字的形式展示",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "boolean"
+              ],
+              "default": "false"
+            },
+            {
+              "name": "collapse-tags-tooltip",
+              "description": "当鼠标悬停于折叠标签的文本时，是否显示所有选中的标签。 只有当 `collapse-tags` 设置为 true 时才会生效。",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "boolean"
+              ],
+              "default": "false",
+              "attribute-value": {
+                "type": "of-match"
+              },
+              "values": [
+                {
+                  "name": "true"
+                },
+                {
+                  "name": "false"
+                }
+              ]
+            },
+            {
+              "name": "multiple-limit",
+              "description": "多选时可被选择的最大数目。 当被设置为 0 时，可被选择的数目不设限。",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "number"
+              ],
+              "default": "0"
+            },
+            {
+              "name": "name",
+              "description": "选择器的原生 name 属性",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "string"
+              ]
+            },
+            {
+              "name": "effect",
+              "description": "文字提示（Tooltip）的主题，内置`dark`和`light`两种。",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "string"
+              ],
+              "default": "light",
+              "attribute-value": {
+                "type": "enum"
+              },
+              "values": [
+                {
+                  "name": "string"
+                }
+              ]
+            },
+            {
+              "name": "autocomplete",
+              "description": "自动完成选择输入",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "string"
+              ],
+              "default": "off"
+            },
+            {
+              "name": "placeholder",
+              "description": "select input 的原生 autocomplete 属性",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "string"
+              ],
+              "default": "Please select"
+            },
+            {
+              "name": "filterable",
+              "description": "是否可筛选",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "boolean"
+              ],
+              "default": "false"
+            },
+            {
+              "name": "autoDispatchMethod",
+              "description": "非远程搜索模式下，初始化自动获取 options 数据所调用的方法",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "function"
+              ]
+            },
+            {
+              "name": "beforeAssignOptions",
+              "description": "初始化自动设置 options 前的回调函数，返回 options",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "function"
+              ],
+              "attribute-value": {
+                "type": "of-match"
+              },
+              "values": [
+                {
+                  "name": "function() :options"
+                }
+              ]
+            },
+            {
+              "name": "allow-create",
+              "description": "是否允许创建新条目， 当使用该属性时，`filterable`必须设置为`true`",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "boolean"
+              ],
+              "default": "false"
+            },
+            {
+              "name": "reserve-keyword",
+              "description": "筛选时，是否在选择选项后保留关键字",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "boolean"
+              ],
+              "default": "true"
+            },
+            {
+              "name": "no-data-text",
+              "description": "当在没有数据时显示的文字，你同时可以使用`#empty`插槽进行设置。",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "string"
+              ],
+              "default": "No Data"
+            },
+            {
+              "name": "popper-class",
+              "description": "选择器下拉菜单的自定义类名",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "string"
+              ]
+            },
+            {
+              "name": "popper-append-to-body(deprecated)",
+              "description": "是否将弹出框插入至 body 元素 当弹出框的位置出现问题时，你可以尝试将该属性设置为 false。",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "boolean"
+              ],
+              "default": "false"
+            },
+            {
+              "name": "teleported",
+              "description": "该下拉菜单是否使用 teleport 插入 body 元素",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "boolean"
+              ],
+              "default": "true",
+              "attribute-value": {
+                "type": "of-match"
+              },
+              "values": [
+                {
+                  "name": "true"
+                },
+                {
+                  "name": "false"
+                }
+              ]
+            },
+            {
+              "name": "persistent",
+              "description": "当下拉选择器未被激活并且`persistent`设置为`false`，选择器会被删除。",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "boolean"
+              ],
+              "default": "true",
+              "attribute-value": {
+                "type": "of-match"
+              },
+              "values": [
+                {
+                  "name": "true"
+                },
+                {
+                  "name": "false"
+                }
+              ]
+            },
+            {
+              "name": "popper-options",
+              "description": "自定义 popper 选项，更多请参考 https://popper.js.org/docs/v2/",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "object"
+              ]
+            },
+            {
+              "name": "automatic-dropdown",
+              "description": "对于不可过滤的 Select 组件，此属性决定是否在输入框获得焦点后自动弹出选项菜单",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "boolean"
+              ],
+              "default": "false"
+            },
+            {
+              "name": "height",
+              "description": "下拉菜单的高度，每一个子选项的高度是 34px",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "number"
+              ],
+              "default": "170"
+            },
+            {
+              "name": "scrollbar-always-on",
+              "description": "控制是否总是展示滚动条",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "boolean"
+              ],
+              "default": "false"
+            },
+            {
+              "name": "remote",
+              "description": "是否从服务器搜索数据",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "boolean"
+              ],
+              "default": "false"
+            },
+            {
+              "name": "remote-method",
+              "description": "当输入值发生变化时被调用的函数。 其参数是当前输入值。 只有当 `filterable` 设置为 true 时才会生效。",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "function(keyword: string)"
+              ]
+            },
+            {
+              "name": "validate-event",
+              "description": "输入时是否触发表单的校验",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "boolean"
+              ],
+              "default": "true"
+            },
+            {
+              "name": "placement",
+              "description": "下拉框出现的位置",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "string"
+              ],
+              "default": "bottom-start",
+              "attribute-value": {
+                "type": "enum"
+              },
+              "values": [
+                {
+                  "name": "top"
+                },
+                {
+                  "name": "top-start"
+                },
+                {
+                  "name": "top-end"
+                },
+                {
+                  "name": "bottom"
+                },
+                {
+                  "name": "bottom-start"
+                },
+                {
+                  "name": "bottom-end"
+                },
+                {
+                  "name": "left"
+                },
+                {
+                  "name": "left-start"
+                },
+                {
+                  "name": "left-end"
+                },
+                {
+                  "name": "right"
+                },
+                {
+                  "name": "right-start"
+                },
+                {
+                  "name": "right-end"
+                }
+              ]
+            },
+            {
+              "name": "remote-method",
+              "description": "当输入值发生变化时被调用的函数。 其参数是当前输入值。 只有当 `filterable` 设置为 true 时才会生效。",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "function(keyword: string)"
+              ]
+            },
+            {
+              "name": "label-key",
+              "description": "选项的渲染模板所绑定在键名 (el-option 上显示的字段)",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "string"
+              ],
+              "default": "text"
+            },
+            {
+              "name": "value-key",
+              "description": "作为 value 唯一标识的键名，绑定值为对象类型时必填",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "type": [
+                "string"
+              ],
+              "default": "value"
+            }
+          ],
+          "slots": [
+            {
+              "name": "default",
+              "description": "自定义 Option 模板",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#slots"
+            },
+            {
+              "name": "empty",
+              "description": "自定义当选项为空时的内容",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#slots"
+            },
+            {
+              "name": "prefix",
+              "description": "输入框的前缀",
+              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#slots"
+            }
+          ],
+          "js": {
+            "events": [
+              {
+                "name": "change",
+                "description": "选中值发生变化时触发",
+                "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#events"
+              },
+              {
+                "name": "visible-change",
+                "description": "下拉框出现/隐藏时触发",
+                "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#events"
+              },
+              {
+                "name": "remove-tag",
+                "description": "多选模式下移除 tag 时触发",
+                "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#events"
+              },
+              {
+                "name": "clear",
+                "description": "可清空的单选模式下用户点击清空按钮时触发",
+                "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#events"
+              },
+              {
+                "name": "blur",
+                "description": "当选择器的输入框失去焦点时触发",
+                "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#events"
+              },
+              {
+                "name": "focus",
+                "description": "当选择器的输入框获得焦点时触发",
+                "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#events"
+              }
+            ]
+          }
         }
       ]
     }

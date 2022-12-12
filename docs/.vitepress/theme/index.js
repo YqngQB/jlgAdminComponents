@@ -11,6 +11,7 @@ import JlgInput from '../../../packages/components/input/index.vue'
 import JlgNumberInput from '../../../packages/components/numberInput/index.vue'
 import JlgAutocomplete from '../../../packages/components/autocomplete/index.vue'
 import JlgDatePicker from '../../../packages/components/datePicker/index.vue'
+import JlgSelect from '../../../packages/components/select/index.vue'
 
 export default {
 	...DefaultTheme,
@@ -25,5 +26,6 @@ export default {
 		ctx.app.component(JlgNumberInput.name, JlgNumberInput)
 		ctx.app.component(JlgAutocomplete.name, JlgAutocomplete)
 		ctx.app.component(JlgDatePicker.name, JlgDatePicker)
+		ctx.app.component(JlgSelect.name, JlgSelect)
 	}
 }

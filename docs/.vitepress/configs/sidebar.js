@@ -35,6 +35,10 @@ function getComponentsSidebar() {
 					link: '/components/date-picker'
 				},
 				{
+					text: 'Select 下拉框',
+					link: '/components/select'
+				},
+				{
 					text: 'Form 表单',
 					link: '/components/form'
 				},

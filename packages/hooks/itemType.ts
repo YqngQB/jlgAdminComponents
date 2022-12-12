@@ -7,6 +7,13 @@ export const itemProps = {
 			return {}
 		}
 	},
+	/**
+	 * 如果组件不需要包裹在 el-form-item 内，需要将 notFormItemWrapped 设置为 true
+	 */
+	notFormItemWrapped: {
+		type: Boolean,
+		default: false
+	},
 	// 重新定义一个class,style ,避免 class与style 被透传到组件的根元素上
 	class: String,
 	style: Object,
@@ -23,7 +30,9 @@ export const itemProps = {
 		default: ''
 	},
 	rules: {
-		type: [String, Array] as PropType<string | Array<string | Record<string, any>>>,
+		type: [String, Array] as PropType<
+			string | Array<string | Record<string, any>>
+		>,
 		default: () => {
 			return []
 		}

@@ -7,14 +7,15 @@ import {
 import { ValueOf, InputBasicProps } from './component'
 import { ISelectProps } from 'element-plus'
 import { selectProps } from '../components/select/select'
-type IJlgSelectProps = ExtractPropTypes<typeof selectProps>
+export type IJlgSelectProps = ExtractPropTypes<typeof selectProps>
+export type ICurrentOption = IJlgSelectProps['options'][number]
 
 export type JlgSelectInstance = ComponentPublicInstance<
 	{
 		epRef: {
 			focus: () => void
 			blur: () => void
-		},
+		}
 		currentOption: IJlgSelectProps['options'][number]
 	},
 	JlgSelectConstructor

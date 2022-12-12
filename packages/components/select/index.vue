@@ -5,13 +5,14 @@
 @time: 2022/11/03 14:30
 -->
 <template>
-	<el-form-item
+	<component
+		:is="isFormItemComponent ? ElFormItem : 'div'"
 		class="jlg-form-item"
-		:class="props.class"
+		:class="['jlg-form-item', { select: !isFormItemComponent }, props.class]"
 		:style="props.style"
 		ref="formItemRef"
-		v-bind="formItemBind"
-		:rules="useRules(props.rules)"
+		v-bind="isFormItemComponent ? formItemBind : undefined"
+		:rules="isFormItemComponent ? useRules(props.rules) : undefined"
 	>
 		<!-- Form Item 插槽 -->
 		<template #label="{ label }">
@@ -30,6 +31,7 @@
 			:value-key="props.valueKey"
 			:filterable="props.filterable"
 			:remote="props.remote"
+			:disabled="props.disabled"
 			collapse-tags
 			collapse-tags-tooltip
 			:placeholder="placeholderText"
@@ -39,7 +41,7 @@
 			<!--   传递 ElSelectV2 虚拟插槽   -->
 			<template #default="{ item }" v-if="props.isVirtualized">
 				<slot name="default" :item="item">
-					<span>{{ item[props.labelKey] }}</span>
+					<span>{{ getValueKey(item, props.labelKey) }}</span>
 				</slot>
 			</template>
 			<template v-if="!props.isVirtualized">
@@ -51,10 +53,10 @@
 						:label="groupItem[props.labelKey]"
 					>
 						<el-option
-							v-for="item in groupItem[props.groupKey]"
-							:key="item[props.valueKey]"
-							:label="item[props.labelKey]"
-							:value="item[props.valueKey]"
+							v-for="(item,index) in groupItem[props.groupKey]"
+              :key="index"
+              :label="item[props.labelKey]"
+              :value="item[props.valueKey]"
 							:disabled="item.disabled"
 						>
 							<!--   封装 ElSelect Item 插槽,自定义 Option 模板  -->
@@ -76,7 +78,7 @@
 				</el-option>
 			</template>
 		</component>
-	</el-form-item>
+	</component>
 </template>
 
 <!-- 组合式API setup语法糖 -->
@@ -88,25 +90,15 @@ import {
 	ElSelect,
 	ElSelectV2
 } from 'element-plus'
+
 import { computed, ref, inject, useSlots, watchPostEffect } from 'vue'
 import { selectEmits, selectProps } from './select'
 import useInjectModel from '../../hooks/useInjectModel'
 import { useRules } from '../../hooks/useValidate'
 import { formItemRef, resetField, clearValidate } from '../../hooks/useFormItem'
+import { ICurrentOption } from '../../types/select'
+import { getValueKey } from '../../hooks/helper'
 
-// export interface AxiosResponse<T = any, D = any>  {
-//   data: T;
-//   status: number;
-//   statusText: string;
-//   headers: any;
-//   config: AxiosRequestConfig<D>;
-//   request?: any;
-// }
-
-defineOptions({
-	name: 'JlgSelect',
-	inheritAttrs: false
-})
 let props = defineProps(selectProps)
 let emit = defineEmits(selectEmits)
 const slots = useSlots()
@@ -134,32 +126,43 @@ let formItemBind = computed(() => {
 		prop: props.prop
 	}
 })
+
+let isFormItemComponent = computed(() => {
+	if (props.notFormItemWrapped) {
+		return false
+	}
+	return props.prop && injectModel
+})
+
 /**
  * 劫持 change 事件，传递额外参数
  * @param value 当前选中的值
  * */
 type valueType = string | number | boolean | object
-let
-    currentOption = ref<unknown>(null)
+let currentOption = ref<ICurrentOption>(null)
 function handleChange(value: valueType | Array<valueType>, noEvent?: boolean) {
 	currentOption.value = null
 	if (props.groupKey) {
 		// 数据分组
 		currentOption.value = props.options
-			.map((item) => item[props.groupKey])
+			?.map((item) => item[props.groupKey])
 			.flat()
 			.find((item) => item[props.valueKey] === value)
 	} else if (Array.isArray(value)) {
 		// 多选
 		currentOption.value = value.map((item) => {
-			return props.options.find(
-				(option) => (option[props.valueKey] ?? option[props.labelKey]) === item
+			return (
+				(props.options as Array<Record<string, any>>)?.find(
+					(option) =>
+						(option[props.valueKey] ?? option[props.labelKey]) === item
+				) || null
 			)
 		})
 	} else {
-		currentOption.value = props.options.find(
-			(option) => option[props.valueKey] === value
-		)
+		currentOption.value =
+			(props.options as Array<Record<string, any>>)?.find(
+				(option) => getValueKey(option, props.valueKey) === value
+			) || null
 	}
 	// 分发 change 事件
 	!noEvent ? emit('change', value, currentOption.value, props.options) : null
@@ -172,11 +175,7 @@ const stop = watchPostEffect(() => {
 	}
 })
 type contentType = { selectOptions: Array<any>; defaultValue: string }
-interface ResponseData<T> {
-	content: T
-	message: string | void
-	status: number
-}
+
 let isFunction = (fn: any) => typeof fn === 'function'
 //  初始化自动调用接口，获取options 数据
 if (
@@ -184,7 +183,7 @@ if (
 	isFunction(props.autoDispatchMethod) &&
 	!props.remote
 ) {
-		props.autoDispatchMethod().then((res) => {
+	props.autoDispatchMethod().then((res) => {
 		let { selectOptions, defaultValue } =
 			(res.data.content as contentType) || {}
 		let options =
@@ -226,8 +225,22 @@ defineExpose({
 })
 </script>
 
-<style lang="less" scoped>
+<script lang="ts">
+import { defineComponent } from 'vue'
+export default defineComponent({
+	name: 'JlgSelect',
+	inheritAttrs: false
+})
+</script>
+
+<style lang="scss">
 .jlg-select-v2 {
 	width: 100%;
+}
+.jlg-form-item.select {
+	display: inline-block;
+	position: relative;
+	vertical-align: middle;
+	font-size: 14px;
 }
 </style>

@@ -1,3 +1,5 @@
+import XEUtils from 'xe-utils'
+
 const GlobalConfig = {
 	size: null, // 全局尺寸
 	emptyCell: '　',
@@ -18,13 +20,6 @@ const GlobalConfig = {
 			keyField: '_X_ROW_KEY' // 行数据的唯一主键字段名
 		}
 	},
-	tooltip: {
-		// size: null,
-		trigger: 'hover',
-		theme: 'dark',
-		enterDelay: 500,
-		leaveDelay: 300
-	},
 	form: {},
 	input: {},
 	textarea: {},
@@ -32,3 +27,10 @@ const GlobalConfig = {
 }
 
 export default GlobalConfig
+
+/**
+ * 全局参数设置
+ */
+export const setup = (options: Partial<typeof GlobalConfig>) => {
+	return XEUtils.merge(GlobalConfig, options)
+}
