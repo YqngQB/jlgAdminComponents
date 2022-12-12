@@ -100,8 +100,8 @@ const selectOptions = ref(
 		:options="selectOptions"
 		placeholder="Please select"
 		multiple
-        filterable
-        clearable
+		filterable
+		clearable
 	/>
 </template>
 
@@ -126,23 +126,26 @@ const selectOptions = ref(
 您可以选择禁用 Select 或者 Select 中的某个选项
 
 :::demo
+
 ```vue
 <template>
-  <jlg-select
-    v-model="value"
-    filterable
-    :options="options"
-    placeholder="Please select"
-    multiple
-  />
-  <jlg-select
-    v-model="value"
-    disabled
-    filterable
-    :options="options"
-    placeholder="Please select"
-    multiple
-  />
+	<jlg-select
+		v-model="value"
+		filterable
+		:options="options"
+		placeholder="Please select"
+		multiple
+		:is-virtualized="true"
+	/>
+	<jlg-select
+		v-model="value"
+		disabled
+		filterable
+		:options="options"
+		placeholder="Please select"
+		multiple
+		:is-virtualized="true"
+	/>
 </template>
 
 <script lang="ts" setup>
@@ -151,37 +154,37 @@ const initials = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
 
 const value = ref([])
 const options = Array.from({ length: 100 }).map((_, idx) => ({
-  value: `Option${idx + 1}`,
-  text: `${initials[idx % 10]}${idx}`,
-  disabled: idx % 10 === 0,
+	value: `Option${idx + 1}`,
+	text: `${initials[idx % 10]}${idx}`,
+	disabled: idx % 10 === 0
 }))
 </script>
-
 ```
+
 :::
 
 ## 给选项进行分组
 
 只要数据格式满足特定要求，我们就可以按照自己的意愿为选项进行分组(设置 `groupKey`)。
 
-
 :::tip 注意
-若是启用了虚拟化列表 `isVirtualized: true`,那么 groupKey 必须设置为 `options`, 
+若是启用了虚拟化列表 `isVirtualized: true`,那么 groupKey 必须设置为 `options`,
 :::
 
 :::demo
 
 ```vue
 <template>
-  <jlg-select
-    v-model="value"
-    filterable
-    :options="options"
-    placeholder="Please select"
-    style="width: 240px"
-    multiple
-    group-key="options"
-  />
+	<jlg-select
+		v-model="value"
+		filterable
+		:options="options"
+		placeholder="Please select"
+		style="width: 240px"
+		multiple
+		group-key="options"
+		:is-virtualized="true"
+	/>
 </template>
 
 <script lang="ts" setup>
@@ -190,18 +193,17 @@ const initials = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
 
 const value = ref([])
 const options = Array.from({ length: 10 }).map((_, idx) => {
-  const label = idx + 1
-  return {
-    value: `Group ${label}`,
-    text: `Group ${label}`,
-    options: Array.from({ length: 10 }).map((_, idx) => ({
-      value: `Option ${idx + 1 + 10 * label}`,
-      text: `${initials[idx % 10]}${idx + 1 + 10 * label}`,
-    })),
-  }
+	const label = idx + 1
+	return {
+		value: `Group ${label}`,
+		text: `Group ${label}`,
+		options: Array.from({ length: 10 }).map((_, idx) => ({
+			value: `Option ${idx + 1 + 10 * label}`,
+			text: `${initials[idx % 10]}${idx + 1 + 10 * label}`
+		}))
+	}
 })
 </script>
-
 ```
 
 :::
@@ -211,23 +213,25 @@ const options = Array.from({ length: 10 }).map((_, idx) => {
 我们也可以通过自定义模板来渲染自己想要的选项内容。
 
 :::demo
+
 ```vue
 <template>
-  <jlg-select
-    v-model="value"
-    filterable
-    :options="options"
-    placeholder="Please select"
-    style="width: 240px"
-    multiple
-  >
-    <template #default="{ item }">
-      <span style="margin-right: 8px">{{ item.text }}</span>
-      <span style="color: var(--el-text-color-secondary); font-size: 13px">
-        {{ item.value }}
-      </span>
-    </template>
-  </jlg-select>
+	<jlg-select
+		v-model="value"
+		filterable
+		:options="options"
+		placeholder="Please select"
+		style="width: 240px"
+		multiple
+		:is-virtualized="true"
+	>
+		<template #default="{ item }">
+			<span style="margin-right: 8px">{{ item.text }}</span>
+			<span style="color: var(--el-text-color-secondary); font-size: 13px">
+				{{ item.value }}
+			</span>
+		</template>
+	</jlg-select>
 </template>
 
 <script lang="ts" setup>
@@ -236,12 +240,12 @@ const initials = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
 
 const value = ref([])
 const options = Array.from({ length: 1000 }).map((_, idx) => ({
-  value: `Option ${idx + 1}`,
-  text: `${initials[idx % 10]}${idx}`,
+	value: `Option ${idx + 1}`,
+	text: `${initials[idx % 10]}${idx}`
 }))
 </script>
-
 ```
+
 :::
 
 ## 远程搜索
@@ -249,84 +253,86 @@ const options = Array.from({ length: 1000 }).map((_, idx) => ({
 输入关键字以从远程服务器中查找数据。
 
 :::demo 为了启用远程搜索，需要将 `filterable` 和`remote` 设置为 `true`，同时传入一个 `remote-method`。 `remote-method` 为一个 `Function`，它会在输入值发生变化时调用，参数为当前输入值。
+
 ```vue
 <template>
-  <jlg-select
-    v-model="value"
-    style="width: 240px"
-    multiple
-    filterable
-    remote
-    :remote-method="remoteMethod"
-    clearable
-    :options="options"
-    :loading="loading"
-    placeholder="Please enter a keyword"
-  />
+	<jlg-select
+		v-model="value"
+		style="width: 240px"
+		multiple
+		filterable
+		remote
+		:remote-method="remoteMethod"
+		clearable
+		:options="options"
+		:loading="loading"
+		placeholder="Please enter a keyword"
+		:is-virtualized="true"
+	/>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
 
 const states = [
-  'Alabama',
-  'Alaska',
-  'Arizona',
-  'Arkansas',
-  'California',
-  'Colorado',
-  'Connecticut',
-  'Delaware',
-  'Florida',
-  'Georgia',
-  'Hawaii',
-  'Idaho',
-  'Illinois',
-  'Indiana',
-  'Iowa',
-  'Kansas',
-  'Kentucky',
-  'Louisiana',
-  'Maine',
-  'Maryland',
-  'Massachusetts',
-  'Michigan',
-  'Minnesota',
-  'Mississippi',
-  'Missouri',
-  'Montana',
-  'Nebraska',
-  'Nevada',
-  'New Hampshire',
-  'New Jersey',
-  'New Mexico',
-  'New York',
-  'North Carolina',
-  'North Dakota',
-  'Ohio',
-  'Oklahoma',
-  'Oregon',
-  'Pennsylvania',
-  'Rhode Island',
-  'South Carolina',
-  'South Dakota',
-  'Tennessee',
-  'Texas',
-  'Utah',
-  'Vermont',
-  'Virginia',
-  'Washington',
-  'West Virginia',
-  'Wisconsin',
-  'Wyoming',
+	'Alabama',
+	'Alaska',
+	'Arizona',
+	'Arkansas',
+	'California',
+	'Colorado',
+	'Connecticut',
+	'Delaware',
+	'Florida',
+	'Georgia',
+	'Hawaii',
+	'Idaho',
+	'Illinois',
+	'Indiana',
+	'Iowa',
+	'Kansas',
+	'Kentucky',
+	'Louisiana',
+	'Maine',
+	'Maryland',
+	'Massachusetts',
+	'Michigan',
+	'Minnesota',
+	'Mississippi',
+	'Missouri',
+	'Montana',
+	'Nebraska',
+	'Nevada',
+	'New Hampshire',
+	'New Jersey',
+	'New Mexico',
+	'New York',
+	'North Carolina',
+	'North Dakota',
+	'Ohio',
+	'Oklahoma',
+	'Oregon',
+	'Pennsylvania',
+	'Rhode Island',
+	'South Carolina',
+	'South Dakota',
+	'Tennessee',
+	'Texas',
+	'Utah',
+	'Vermont',
+	'Virginia',
+	'Washington',
+	'West Virginia',
+	'Wisconsin',
+	'Wyoming'
 ]
 const list = states.map((item): ListItem => {
-  return { value: `value:${item}`, text: `text:${item}` }
+	return { value: `value:${item}`, text: `text:${item}` }
 })
 
 interface ListItem {
-  value: string
-  text: string
+	value: string
+	text: string
 }
 
 const value = ref([])
@@ -334,40 +340,37 @@ const options = ref<ListItem[]>([])
 const loading = ref(false)
 
 const remoteMethod = (query: string) => {
-  if (query !== '') {
-    loading.value = true
-    setTimeout(() => {
-      loading.value = false
-      options.value = list.filter((item) => {
-        return item.text.toLowerCase().includes(query.toLowerCase())
-      })
-    }, 200)
-  } else {
-    options.value = []
-  }
+	if (query !== '') {
+		loading.value = true
+		setTimeout(() => {
+			loading.value = false
+			options.value = list.filter((item) => {
+				return item.text.toLowerCase().includes(query.toLowerCase())
+			})
+		}, 200)
+	} else {
+		options.value = []
+	}
 }
 </script>
-
 ```
+
 :::
 
-## 使用 value-key
+## 非远程搜索模式下，初始化自动获取 options
 
-:::demo 当 `options.value` 是一个对象时，您需要指定一个 key
+:::demo
+
 ```vue
 <template>
-  <pre>{{value}}</pre>
-  <jlg-select
-    v-model="value"
-    :options="options"
-    placeholder="Please select"
-    value-key="value"
-    :is-virtualizedalized="false"
-  >
-    <template #default="{ item }">
-      <span>{{ item.value.name }}</span>
-    </template>
-  </jlg-select>
+	<pre>{{ value }}</pre>
+	<jlg-select
+		v-model="value"
+		v-model:options="selectOptions"
+		:auto-dispatch-method="() => getOptions()"
+        :before-assign-options="beforeAssignOptions"
+		@change="handleChange"
+	/>
 </template>
 
 <script lang="ts" setup>
@@ -375,16 +378,87 @@ import { ref } from 'vue'
 const initials = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
 
 const value = ref()
-const options = Array.from({ length: 10 }).map((_, idx) => ({
-  value: {
-    name: `Option ${idx + 1}`,
-    test: `test ${idx % 3}`,
-  },
-  text: `${initials[idx % 10]}${idx}`,
+let selectOptions = ref([])
+const options = Array.from({ length: 30 }).map((_, idx) => ({
+	value: `Option ${idx + 1}`,
+	text: `${initials[idx % 10]}${idx}`
+}))
+
+const getOptions = () => {
+	return new Promise((resolve) => {
+		setTimeout(() => {
+       // 模拟结果返回结果
+			let result = {
+				data: {
+					content: {
+						selectOptions: options,
+						defaultValue: options[3].value
+					}
+				}
+			}
+			resolve(result)
+		}, 1000)
+	})
+}
+/**
+ * 在原有的 change 事件上，增加了2个参数，currentOption:获取当前选中项
+ * */
+const handleChange = (currenValue, currentOption, options) => {
+	console.log(currenValue, currentOption, options)
+}
+const beforeAssignOptions = (options) => {
+  return  options
+  // return options.map((item) => {
+  //   return {
+  //     value: item.value,
+  //     text: item.text
+  //   }
+  // })
+}
+</script>
+```
+
+:::
+
+## 使用 value-key
+
+::: warning 注意
+目前 el-select-v2 值绑定对象有 bug, 2.3.0 版本修复发布;
+所以尽量不要使用对象作为值绑定;
+[相关链接](https://github.com/element-plus/element-plus/pull/9638)
+:::
+
+:::demo 当 `options.value` 是一个对象时，您需要指定一个 key
+
+```vue
+<template>
+	<pre>{{ value }}</pre>
+	<jlg-select
+		v-model="value"
+		:options="options"
+		placeholder="Please select3"
+		value-key="value"
+		label-key="label"
+		option-key="value.name"
+		:is-virtualized="true"
+	/>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+const initials = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+const value = ref()
+const options = Array.from({ length: 1000 }).map((_, idx) => ({
+	value: {
+		name: `Option ${idx + 1}`,
+		test: `test ${idx % 3}`
+	},
+	label: `${initials[idx % 10]}${idx}`
 }))
 </script>
-
 ```
+
 :::
 
 ## Props
@@ -411,8 +485,8 @@ const options = Array.from({ length: 10 }).map((_, idx) => ({
 | autocomplete                      | 自动完成选择输入                                                                                                                                                                  | string                             | —                                                                                                         | off           |
 | placeholder                       | select input 的原生 autocomplete 属性                                                                                                                                             | string                             | —                                                                                                         | Please select |
 | filterable                        | 是否可筛选                                                                                                                                                                        | boolean                            | —                                                                                                         | false         |
-| autoDispatchMethod                | 非远程搜索模式下，初始化自动获取 options 数据所调用的方法                                                                                                                         | function                           |                                                                                                           |               |
-| beforeAssignOptions               | 初始化自动设置 options 前的回调函数，返回 options                                                                                                                                 | function                           | function() :options                                                                                       |               |
+| auto-dispatch-method              | 非远程搜索模式下，初始化自动获取 options 数据所调用的方法                                                                                                                         | function                           |                                                                                                           |               |
+| before-assign-options             | 初始化自动设置 options 前的回调函数，返回 options                                                                                                                                 | function                           | function() :options                                                                                       |               |
 | allow-create                      | 是否允许创建新条目， 当使用该属性时，`filterable`必须设置为`true`                                                                                                                 | boolean                            | —                                                                                                         | false         |
 | reserve-keyword                   | 筛选时，是否在选择选项后保留关键字                                                                                                                                                | boolean                            | —                                                                                                         | true          |
 | no-data-text                      | 当在没有数据时显示的文字，你同时可以使用`#empty`插槽进行设置。                                                                                                                    | string                             | —                                                                                                         | No Data       |

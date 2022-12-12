@@ -7,11 +7,6 @@ export const selectProps = {
     modelValue: [Number, String],
     /*_________________ end ____________________*/
 
-    // 是否禁用
-    disabled: {
-        type: Boolean,
-        default: false
-    },
     // 占位符，注意：禁用时不显示
     placeholder: String,
     // 是否启用虚拟化滚动 https://element-plus.gitee.io/zh-CN/component/select-v2.html
@@ -32,8 +27,14 @@ export const selectProps = {
         // 后端返回的数据中，绝大部分情况是用 text 作为 label 字段名
         default: 'text'
     },
-    // 作为 value 唯一标识的键名，绑定值为对象类型时必填
     valueKey: {
+        type: String,
+        default: 'value'
+    },
+    /**
+     * 作为 value 唯一标识的键名，绑定值为对象类型时必填
+     * */
+    optionKey: {
         type: String,
         default: 'value'
     },

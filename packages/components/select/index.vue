@@ -28,7 +28,7 @@
 			:key="props.isVirtualized ? 'ElSelectV2' : 'ElSelect'"
 			:options="props.isVirtualized ? props.options : undefined"
 			:class="props.isVirtualized ? 'jlg-select-v2' : 'jlg-select'"
-			:value-key="props.valueKey"
+			:value-key="props.optionKey"
 			:filterable="props.filterable"
 			:remote="props.remote"
 			:disabled="props.disabled"
@@ -41,7 +41,7 @@
 			<!--   传递 ElSelectV2 虚拟插槽   -->
 			<template #default="{ item }" v-if="props.isVirtualized">
 				<slot name="default" :item="item">
-					<span>{{ getValueKey(item, props.labelKey) }}</span>
+					<span>{{ item[props.labelKey] }}</span>
 				</slot>
 			</template>
 			<template v-if="!props.isVirtualized">
@@ -161,7 +161,7 @@ function handleChange(value: valueType | Array<valueType>, noEvent?: boolean) {
 	} else {
 		currentOption.value =
 			(props.options as Array<Record<string, any>>)?.find(
-				(option) => getValueKey(option, props.valueKey) === value
+				(option) => option[props.valueKey] === value
 			) || null
 	}
 	// 分发 change 事件
