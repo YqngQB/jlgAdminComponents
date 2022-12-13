@@ -39,6 +39,10 @@ function getComponentsSidebar() {
 					link: '/components/select'
 				},
 				{
+					text: 'SelectCascade 级联下拉框',
+					link: '/components/select-cascade'
+				},
+				{
 					text: 'Form 表单',
 					link: '/components/form'
 				},
