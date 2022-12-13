@@ -5,13 +5,14 @@
 @time: 2022/11/01 09:57
 -->
 <template>
-	<el-form-item
-		class="jlg-form-item"
-		:class="props.class"
-		:style="props.style"
-		ref="formItemRef"
-		v-bind="formItemBind"
-		:rules="useRules(props.rules)"
+	<component
+      :is="isFormItemComponent ? ElFormItem : 'div'"
+      class="jlg-form-item"
+      :class="['jlg-form-item', { autocomplete: !isFormItemComponent }, props.class]"
+      :style="props.style"
+      ref="formItemRef"
+      v-bind="isFormItemComponent ? formItemBind : undefined"
+      :rules="isFormItemComponent ? useRules(props.rules) : undefined"
 	>
     <!-- Form Item 插槽 -->
     <template #label="{ label }">
@@ -34,7 +35,7 @@
 				</slot>
 			</template>
 		</el-autocomplete>
-	</el-form-item>
+	</component>
 </template>
 
 <!-- 组合式API setup语法糖 -->
@@ -79,6 +80,13 @@ let formItemBind = computed(() => {
 		prop: props.prop
 	};
 });
+
+let isFormItemComponent = computed(() => {
+  if (props.notFormItemWrapped) {
+    return false
+  }
+  return props.prop && injectModel
+})
 
 let placeholderText = computed(() => {
 	return !props.disabled ? props.placeholder || '请输入' + props.label : null;
