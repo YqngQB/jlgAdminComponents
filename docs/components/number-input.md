@@ -408,17 +408,17 @@ const textarea = ref('')
 
 ## Exposes
 
-| 名称           | 说明                        | 类型                                        |
-| -------------- | --------------------------- | ------------------------------------------- |
-| blur           | 使 input 失去焦点           | () => void                                  |
-| clear          | 清除 input 值               | () => void                                  |
-| focus          | 使 input 获取焦点           | () => void                                  |
-| input          | Input HTML 元素             | Ref<HTMLInputElement>                       |
-| ref            | HTML 元素 input 或 textarea | Ref<HTMLInputElement / HTMLTextAreaElement> |
-| resizeTextarea | 改变 textarea 大小          | () => void                                  |
-| select         | 选中 input 中的文字         | () => void                                  |
-| textarea       | HTML textarea 元素          | Ref<HTMLTextAreaElement>                    |
-| textareaStyle  | textarea 的样式             | Ref<StyleValue>                             |
+| 名称             | 说明                       |
+|----------------|--------------------------|
+| blur           | 使 input 失去焦点             |
+| clear          | 清除 input 值               |
+| focus          | 使 input 获取焦点             |
+| input          | Input HTML 元素            |
+| ref            | HTML 元素 input 或 textarea |
+| resizeTextarea | 改变 textarea 大小           |
+| select         | 选中 input 中的文字            |
+| textarea       | HTML textarea 元素         |
+| textareaStyle  | textarea 的样式             |
 
 ::: warning 注意
 该组件的 `ref` 指向的是 `jlg-number-input` ，而不是`el-input`,要获取`el-input`的`ref`，需要使用组件`epRef`属性。
