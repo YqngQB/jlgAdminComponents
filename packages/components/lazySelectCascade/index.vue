@@ -1,175 +1,185 @@
 <template>
 	<div class="jlg-cascader" :style="{ width: cascadeProps.width }">
 		<el-tooltip
+			class="jlg-cascader"
+			:style="{ width: cascadeProps.width }"
 			:visible="popperVisible"
 			placement="bottom-start"
 			ref="tooltipRef"
-			width="auto"
+			:fallback-placements="[
+				'bottom-start',
+				'bottom',
+				'top-start',
+				'top',
+				'right',
+				'left'
+			]"
+			:stop-popper-mouse-event="false"
+			:gpu-acceleration="false"
+			effect="light"
+			persistent
 		>
 			<!--内容区域 start -->
-			<template #reference>
-				<div
-					class="el-input"
-					@click.stop="togglePopperVisible(!popperVisible)"
-					:class="isDisabled ? 'is-disabled' : 'cursor-pointer'"
-					@mouseenter="inputHover = true"
-					@mouseleave="inputHover = false"
-				>
-					<div class="el-input__wrapper">
-						<div class="el-input__inner jlg-cascader-input">
-							<span
-								class="jlg-cascader-placeholder"
-								v-show="placeholderVisible"
-							>
-								{{ cascadeProps.placeholder }}
-							</span>
+			<div
+				class="el-input"
+				@click.stop="togglePopperVisible(!popperVisible)"
+				:class="isDisabled ? 'is-disabled' : 'cursor-pointer'"
+				@mouseenter="inputHover = true"
+				@mouseleave="inputHover = false"
+			>
+				<div class="el-input__wrapper">
+					<div class="el-input__inner jlg-cascader-input">
+						<span class="jlg-cascader-placeholder" v-show="placeholderVisible">
+							{{ cascadeProps.placeholder }}
+						</span>
 
-							<div v-if="multiple" ref="tagWrapper">
-								<el-tag
-									class="jlg-cascader-tag"
-									v-for="tag in presentTags"
-									:key="tag.key"
-									:type="cascadeProps.tagType"
-									size="small"
-									:hit="tag.hitState"
-									:closable="tag.closable"
-									disable-transitions
-									@close="deleteTag(tag)"
-								>
-									<template v-if="tag.isCollapseTag === false">
-										<span>{{ tag.text }}</span>
-									</template>
-									<template v-else>
-										<el-tooltip
-											:teleported="false"
-											:disabled="
-												popperVisible || !cascadeProps.collapseTagsTooltip
-											"
-											:fallback-placements="['bottom', 'top', 'right', 'left']"
-											placement="bottom"
-											effect="light"
-										>
-											<template #default>
-												<span>{{ tag.text }}</span>
-											</template>
-											<template #content>
-												<div
-													v-for="(tag2, idx) in allPresentTags.slice(1)"
-													:key="idx"
+						<div v-if="multiple" ref="tagWrapper">
+							<el-tag
+								class="jlg-cascader-tag"
+								v-for="tag in presentTags"
+								:key="tag.key"
+								:type="cascadeProps.tagType"
+								size="small"
+								:hit="tag.hitState"
+								:closable="tag.closable"
+								disable-transitions
+								@close="deleteTag(tag)"
+							>
+								<template v-if="tag.isCollapseTag === false">
+									<span>{{ tag.text }}</span>
+								</template>
+								<template v-else>
+									<el-tooltip
+										:teleported="false"
+										:disabled="
+											popperVisible || !cascadeProps.collapseTagsTooltip
+										"
+										:fallback-placements="['bottom', 'top', 'right', 'left']"
+										placement="bottom"
+										effect="light"
+									>
+										<template #default>
+											<span>{{ tag.text }}</span>
+										</template>
+										<template #content>
+											<div
+												v-for="(tag2, idx) in allPresentTags.slice(1)"
+												:key="idx"
+											>
+												<el-tag
+													:key="tag2.key"
+													class="jlg-cascader-tag"
+													:type="cascadeProps.tagType"
+													size="small"
+													:hit="tag2.hitState"
+													:closable="tag2.closable"
+													disable-transitions
+													@close="deleteTag(tag2)"
 												>
-													<el-tag
-														:key="tag2.key"
-														class="jlg-cascader-tag"
-														:type="cascadeProps.tagType"
-														size="small"
-														:hit="tag2.hitState"
-														:closable="tag2.closable"
-														disable-transitions
-														@close="deleteTag(tag2)"
-													>
-														<span>{{ tag2.text }}</span>
-													</el-tag>
-												</div>
-											</template>
-										</el-tooltip>
-									</template>
-								</el-tag>
-							</div>
-							<div class="jlg-cascader-label" v-else>
-								<el-tooltip placement="top-start" :content="presentText">
-									<span>{{ presentText }}</span>
-								</el-tooltip>
-							</div>
+													<span>{{ tag2.text }}</span>
+												</el-tag>
+											</div>
+										</template>
+									</el-tooltip>
+								</template>
+							</el-tag>
 						</div>
-						<p class="el-input__suffix jlg-cascader-clear">
-							<span class="el-input__suffix-inner">
-								<el-icon
-									v-if="clearBtnVisible"
-									key="clear"
-									:class="['el-icon', 'icon-circle-close']"
-									@click.stop="handleClear"
-								>
-									<circle-close />
-								</el-icon>
-								<el-icon
-									v-else
-									key="arrow-down"
-									:class="[
-										'el-icon',
-										'icon-arrow-down',
-										{ 'is-reverse': popperVisible }
-									]"
-								>
-									<arrow-down />
-								</el-icon>
-							</span>
-						</p>
+						<div class="jlg-cascader-label" v-else>
+							<el-tooltip placement="top-start" :content="presentText">
+								<span>{{ presentText }}</span>
+							</el-tooltip>
+						</div>
 					</div>
+					<p class="el-input__suffix jlg-cascader-clear">
+						<span class="el-input__suffix-inner">
+							<el-icon
+								v-if="clearBtnVisible"
+								key="clear"
+								:class="['el-icon', 'icon-circle-close']"
+								@click.stop="handleClear"
+							>
+								<circle-close />
+							</el-icon>
+							<el-icon
+								v-else
+								key="arrow-down"
+								:class="[
+									'el-icon',
+									'icon-arrow-down',
+									{ 'is-reverse': popperVisible }
+								]"
+							>
+								<arrow-down />
+							</el-icon>
+						</span>
+					</p>
 				</div>
-			</template>
+			</div>
 			<!--内容区域 end-->
 
 			<!--下拉区域 start-->
-			<div
-				v-click-outside[popperPaneRef]="
-					() => (popperVisible ? togglePopperVisible(false) : '')
-				"
-			>
-				<!-- 搜索 start -->
-				<div class="jlg-cascader-search">
-					<el-autocomplete
-						ref="autocomplete"
-						:style="{ width: cascadeProps.searchWidth || '100%' }"
-						:popper-class="cascadeProps.suggestionsPopperClass"
-						v-if="cascadeProps.filterable"
-						class="inline-input"
-						label="name"
-						v-model="store.keyword"
-						:fetch-suggestions="handleFilter"
-						:trigger-on-focus="false"
-						placeholder="请输入"
-						@select="handleSuggestionClick"
-						@blur="store.isSearchEmpty = false"
-					>
-						<template #suffix>
-							<el-icon class="el-input__icon">
-								<edit />
-							</el-icon>
-						</template>
-						<template v-slot="{ item }">
-							<div
-								class="name"
-								:class="isChecked(item[cascadeProps.props.value || 'value'])"
-							>
-								{{
-									item[cascadeProps.props.label || 'label'].join(
-										cascadeProps.separator
-									)
-								}}
-							</div>
-						</template>
-					</el-autocomplete>
-					<div class="empty" v-show="store.isSearchEmpty">
-						{{ cascadeProps.searchEmptyText }}
+			<template #content>
+				<div
+					v-click-outside[popperPaneRef]="
+						() => (popperVisible ? togglePopperVisible(false) : '')
+					"
+				>
+					<!-- 搜索 start -->
+					<div class="jlg-cascader-search">
+						<el-autocomplete
+							ref="autocomplete"
+							:style="{ width: cascadeProps.searchWidth || '100%' }"
+							:popper-class="cascadeProps.suggestionsPopperClass"
+							v-if="cascadeProps.filterable"
+							class="inline-input"
+							label="name"
+							v-model="store.keyword"
+							:fetch-suggestions="handleFilter"
+							:trigger-on-focus="false"
+							placeholder="请输入"
+							@select="handleSuggestionClick"
+							@blur="store.isSearchEmpty = false"
+						>
+							<template #suffix>
+								<el-icon class="el-input__icon">
+									<edit />
+								</el-icon>
+							</template>
+							<template v-slot="{ item }">
+								<div
+									class="name"
+									:class="isChecked(item[cascadeProps.props.value || 'value'])"
+								>
+									{{
+										item[cascadeProps.props.label || 'label'].join(
+											cascadeProps.separator
+										)
+									}}
+								</div>
+							</template>
+						</el-autocomplete>
+						<div class="empty" v-show="store.isSearchEmpty">
+							{{ cascadeProps.searchEmptyText }}
+						</div>
 					</div>
+					<!-- 搜索 end -->
+					<!-- 级联面板 start -->
+					<div class="jlg-cascader-panel">
+						<el-cascader-panel
+							ref="panel"
+							:key="store.panelKey"
+							v-model="store.current"
+							:options="store.options"
+							:props="store.currentProps"
+							@change="change"
+							:render-label="$slots.default"
+							@expand-change="handleExpandChange"
+							@close="$nextTick(() => togglePopperVisible(false))"
+						/>
+					</div>
+					<!-- 级联面板 end -->
 				</div>
-				<!-- 搜索 end -->
-				<!-- 级联面板 start -->
-				<div class="jlg-cascader-panel">
-					<el-cascader-panel
-						ref="panel"
-						:key="store.panelKey"
-						v-model="store.current"
-						:options="store.options"
-						:props="store.currentProps"
-						@change="change"
-						:render-label="$slots.default"
-						@expand-change="handleExpandChange"
-						@close="$nextTick(() => togglePopperVisible(false))"
-					/>
-				</div>
-				<!-- 级联面板 end -->
-			</div>
+			</template>
 			<!--下拉区域 end-->
 		</el-tooltip>
 	</div>
@@ -188,7 +198,6 @@ import {
 	ElIcon,
 	ElTag,
 	ElTooltip,
-	ElPopover,
 	ElAutocomplete,
 	ElCascaderPanel
 } from 'element-plus'
@@ -199,7 +208,7 @@ import type { CascaderProps } from 'element-plus'
 const { form, formItem } = useFormItem()
 
 let panel = ref<InstanceType<typeof ElCascaderPanel> | null>(null)
-let tooltipRef = ref<InstanceType<typeof ElPopover> | null>(null)
+let tooltipRef = ref<InstanceType<typeof ElTooltip> | null>(null)
 
 const tagWrapper = ref(null)
 const presentTags = ref<Tag[]>([])
@@ -516,45 +525,31 @@ const handleFilter = (query: string, callback: Resolve) => {
  * 选中搜索下拉搜索项
  * */
 
-const handleSuggestionClick = (item: any) => {
-	let nodeIndex = panel.value
-		?.getFlattedNodes(!cascadeProps.props.checkStrictly)
-		?.findIndex((node: CascaderNode) => {
-			if (node.isDisabled) return false
-			return (
-				node.pathValues.join() ==
-				item[cascadeProps.props.value || 'value'].join()
-			)
+const handleSuggestionClick = (suggestionObj: any) => {
+	let currentItem = suggestionObj[cascadeProps.props.value || 'value']
+	let isExist: boolean
+	let findIndex = 0
+	if (
+		multiple.value &&
+		store.current.length &&
+		Array.isArray(store.current[0])
+	) {
+		findIndex = store.current.findIndex((item: Array<string | number>) => {
+			return item.join() == currentItem.join()
 		})
-	let node = panel.value
-		?.getFlattedNodes(!cascadeProps.props.checkStrictly)
-		?.find((node: CascaderNode) => {
-			if (node.isDisabled) return false
-			return (
-				node.pathValues.join() ==
-				item[cascadeProps.props.value || 'value'].join()
-			)
-		})
-	console.log('nodeIndex', nodeIndex)
-	console.log('node', node)
-	if (nodeIndex) {
-		let node2 = panel.value?.getFlattedNodes(
-			!cascadeProps.props.checkStrictly
-		)?.[nodeIndex]
-		console.log(node2 === node)
-	}
-	if (!node) {
-		return
-	}
-	const { checked } = node
-	if (multiple.value) {
-		console.log('选中搜索下拉搜索项', node, checked)
-		panel.value?.handleCheckChange(node, true, false)
-		store.panelKey++
+		isExist = findIndex > -1
 	} else {
-		!checked && panel.value?.handleCheckChange(node, true, false)
+		isExist = currentItem.join() === store.current.join()
+	}
+	if (multiple.value) {
+		isExist
+			? store.current.splice(findIndex, 1)
+			: store.current.push(currentItem)
+	} else {
+		store.current = isExist ? [] : currentItem
 		togglePopperVisible(false)
 	}
+
 	store.keyword = ''
 }
 

@@ -5,13 +5,14 @@
 @time: 2022/10/28 22:06
 -->
 <template>
-	<el-form-item
-		class="jlg-form-item"
-		:class="props.class"
-		:style="props.style"
-		ref="formItemRef"
-		v-bind="formItemBind"
-		:rules="useRules(props.rules)"
+	<component
+      :is="isFormItemComponent ? ElFormItem : 'div'"
+      class="jlg-form-item"
+      :class="['jlg-form-item', { input: !isFormItemComponent }, props.class]"
+      :style="props.style"
+      ref="formItemRef"
+      v-bind="isFormItemComponent ? formItemBind : undefined"
+      :rules="isFormItemComponent ? useRules(props.rules) : undefined"
 	>
 		<!-- Form Item 插槽 -->
 		<template #label="{ label }">
@@ -34,7 +35,7 @@
 				</slot>
 			</template>
 		</el-input>
-	</el-form-item>
+	</component>
 </template>
 
 <!-- 组合式API setup语法糖 -->
@@ -80,6 +81,13 @@ let formItemBind = computed(() => {
 	};
 });
 
+let isFormItemComponent = computed(() => {
+  if (props.notFormItemWrapped) {
+    return false
+  }
+  return props.prop && injectModel
+})
+
 // 在原有插槽基础上扩展,简单文本不必要使用插槽
 let getFullSlots = computed(() => {
 	let fullSlots = ['prepend', 'append', 'prefix', 'suffix'];
@@ -119,4 +127,13 @@ export default defineComponent({
 })
 </script>
 
-<style scoped></style>
+<style lang="scss">
+.jlg-form-item.input {
+  position: relative;
+  font-size: 14px;
+  display: inline-flex;
+  width: 100%;
+  box-sizing: border-box;
+  vertical-align: middle;
+}
+</style>
