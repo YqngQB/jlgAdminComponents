@@ -51,9 +51,6 @@
 		"preview": "vite preview",
 		"lib": "vite build && vue-tsc -p tsconfig.build.json && node scripts/generateHelper.js",
 		"lint": "prettier --write  \"packages/**/*.{ts,tsx}\" \"src/*.{ts,tsx,vue}\"",
-		"lint:lint-staged": "lint-staged -c ./.husky/lintstagedrc.js",
-		"lint:pretty": "pretty-quick --staged",
-		"prepare": "husky install",
 		"docs:dev": "pnpm run register:components && vitepress dev docs",
 		"docs:build": "pnpm run register:components && cross-env BASE=/vitepress-demo/ vitepress build docs",
 		"docs:serve": "vitepress serve docs",
@@ -71,8 +68,6 @@
 		"xe-utils": "^3.5.7"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^17.0.2",
-		"@commitlint/config-conventional": "^17.0.2",
 		"@esbuild-kit/cjs-loader": "^2.4.1",
 		"@types/node": "^18.0.0",
 		"@vitejs/plugin-vue": "^3.2.0",
@@ -80,9 +75,7 @@
 		"@vue/test-utils": "^2.2.3",
 		"components-helper": "^2.1.4",
 		"cross-env": "^7.0.3",
-		"husky": "^8.0.1",
 		"jsdom": "^20.0.2",
-		"lint-staged": "^13.0.2",
 		"prettier": "^2.7.1",
 		"resize-observer-polyfill": "^1.5.1",
 		"rollup": "^2.79.1",
