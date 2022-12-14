@@ -155,7 +155,7 @@ const handleResetFields = () => {
 			prop="date"
 			placeholder="请选择活动时间"
 		/>
-		<template v-for="(item, index) in formData.items">
+		<template v-for="(item, index) in formData.items" :key="index">
 			<jlg-input
 				:key="item.prop + index"
 				:label="item.label"
