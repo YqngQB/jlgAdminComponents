@@ -6,8 +6,11 @@ ElementPlus 级联选择组件懒加载的拓展
 
 ElementPlus 的 `Cascader`级联选择器懒加载的时候，无法搜索出未加载的选项.在网上没有搜索到好的解决方案，所以决定开发此组件
 
-:::tip
-只有`jlg-lazy-cascade` 组件渲染完成后， 再设置 `inputValue` 的值才能正确回显
+:::tip 注意事项
+
+- 只有`jlg-lazy-cascade` 组件渲染完成后， 再设置 `v-model` 的绑定值才能正确回显
+- 如果需要在 `jlg-form`内使用，注意放在 `jlg-form-item` 组件内部
+
 :::
 
 ## 单选
@@ -268,3 +271,26 @@ const props = {
 ```
 
 :::
+
+## Props 
+
+|属性名|说明|类型|可选值|默认值|
+|---|---|---|---|---|
+|v-model|选中项绑定值|-|-|-|
+|props|配置选项，具体见下表|object|-|-|
+|placeholder|输入框占位文本	|string|-|请选择|
+|disabled|是否禁用|boolean|-|false|
+|filterable|是否开启搜索|boolean|-|false|
+|clearable|是否支持清空选项|boolean|-|false|
+
+## Props 属性
+
+|参数|说明|类型|可选值|默认值|
+|---|---|---|---|---|
+|multiple|是否多选	|boolean|-|false|
+|checkStrictly|是否严格的遵守父子节点不互相关联|boolean|-|false|
+|value|指定选项的值为选项对象的某个属性值|string|-|'value'|
+|label|指定选项标签为选项对象的某个属性值	|string|-|'label'|
+|leaf|指定选项的叶子节点的标志位为选项对象的某个属性值|string|-|leaf|
+|lazyLoad|加载动态数据的方法|Function|-|-|
+|lazySearch|动态搜索数据的方法|Function|-|-|

@@ -39,8 +39,8 @@ function getComponentsSidebar() {
 					link: '/components/select'
 				},
 				{
-					text: 'SelectCascade 级联下拉框',
-					link: '/components/select-cascade'
+					text: 'LazyCascade 级联下拉框',
+					link: '/components/lazy-cascade'
 				},
 				{
 					text: 'Form 表单',
