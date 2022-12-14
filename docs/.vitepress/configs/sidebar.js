@@ -12,11 +12,15 @@ function getComponentsSidebar() {
 				{
 					text: 'Layout 布局',
 					link: '/components/layout'
+				},
+				{
+					text: 'LazyCascade 懒加载级联下拉',
+					link: '/components/lazy-cascade'
 				}
 			]
 		},
 		{
-			text: 'Form 组件',
+			text: 'ElForm 扩展',
 			items: [
 				{
 					text: 'Input 输入框',
@@ -39,19 +43,25 @@ function getComponentsSidebar() {
 					link: '/components/select'
 				},
 				{
-					text: 'LazyCascade 级联下拉框',
-					link: '/components/lazy-cascade'
-				},
-				{
 					text: 'Form 表单',
 					link: '/components/form'
-				},
+				}
+			]
+		},
+		{
+			text: 'Vxe 扩展',
+			collapsible: true,
+			items: [
 				{
 					text: 'Modal 对话框',
 					link: '/components/modal'
+				},
+				{
+					text: 'Table 表格',
+					link: '/components/table'
 				}
 			]
-		}
+		},
 	]
 }
 

@@ -29,10 +29,10 @@ const reComponentName = (title) => {
 
 /**
  * 重写文档路径
- * @example src/back-top/README.md -> https://github.com/bfehub/vlib-starter/components/back-top/
+ * @example src/back-top/README.md -> https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/back-top/
  */
 const reDocUrl = (_, header, path) => {
-	const docs = 'https://github.com/bfehub/vlib-starter/components/'
+	const docs = 'https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components'
 	const name = path?.split('/')[1] + '/'
 	const _header = header
 		? header.replace(/[ ]+/g, '-').toLowerCase()

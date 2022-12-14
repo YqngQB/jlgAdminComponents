@@ -265,7 +265,7 @@ const props = {
 
 ```vue
 <template>
-	<jlg-lazy-cascade filterable v-model="inputValue" :props="cascadeProps" />
+	<jlg-lazy-cascade filterable :show-all-levels="false" v-model="inputValue" :props="cascadeProps" />
 	<pre>inputValue:{{ inputValue }}</pre>
 </template>
 
@@ -705,6 +705,13 @@ const cascadeProps = {
 |disabled|是否禁用|boolean|-|false|
 |filterable|是否开启搜索|boolean|-|false|
 |clearable|是否支持清空选项|boolean|-|false|
+|show-all-levels|输入框中是否显示选中值的完整路径|boolean|-|true|
+|collapse-tags|多选模式下是否折叠Tag|boolean|\-|false|
+|collapse-tags-tooltip|当鼠标悬停于折叠标签的文本时，是否显示所有选中的标签。 要使用此属性，`collapse-tags`属性必须设定为 true|boolean|-|false|
+|separator|用于分隔选项的字符|string||' > '|
+|suggestions-popper-class|搜索下拉列表的类名|string||'suggestions-popper-class'|
+|search-empty-text|搜索框搜索无数据的时候展示的默认文案|string||'暂无数据'|
+|search-width|搜索框宽度||||
 
 ## Props 属性
 

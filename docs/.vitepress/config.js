@@ -47,8 +47,7 @@ export default defineConfig({
 		sidebar,
 
 		editLink: {
-			pattern:
-				'https://github.com/xinlei3166/vitepress-demo/edit/master/docs/:path',
+			pattern: '',
 			text: '在 GitHub 上编辑此页'
 		}
 	}
