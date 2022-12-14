@@ -1,6 +1,6 @@
 {
 	"name": "jlg-admin-components",
-	"version": "1.0.0-alpha.2.0.6",
+	"version": "1.0.0-alpha.2.1.1",
 	"packageManager": "pnpm@7.0.1",
 	"description": "",
 	"keywords": [
@@ -30,7 +30,8 @@
 			"require": "./dist/index.umd.js",
 			"import": "./dist/index.es.js",
 			"types": "./dist/index.d.ts"
-		}
+		},
+		"./dist/style.css": "./dist/style.css"
 	},
 	"files": [
 		"dist",
@@ -39,11 +40,14 @@
 		"web-types.json",
 		"global.d.ts"
 	],
-	"sideEffects": false,
+	"sideEffects": [
+		"dist/*",
+		"*.css"
+	],
 	"publishConfig": {
 		"access": "public"
 	},
-	"style": "dist/index.css",
+	"style": "dist/style.css",
 	"scripts": {
 		"dev": "vite",
 		"test": "vitest run",
@@ -52,7 +56,7 @@
 		"lib": "vite build && vue-tsc -p tsconfig.build.json && node scripts/generateHelper.js",
 		"lint": "prettier --write  \"packages/**/*.{ts,tsx}\" \"src/*.{ts,tsx,vue}\"",
 		"docs:dev": "pnpm run register:components && vitepress dev docs",
-		"docs:build": "pnpm run register:components && cross-env BASE=/vitepress-demo/ vitepress build docs",
+		"docs:build": "pnpm run register:components && vitepress build docs",
 		"docs:serve": "vitepress serve docs",
 		"register:components": "vitepress-rc"
 	},
@@ -62,7 +66,7 @@
 	"dependencies": {
 		"@pureadmin/table": "1.8.1",
 		"element-plus": "^2.2.22",
-		"jlg-admin-components": "1.0.0-alpha.2.0.6",
+		"jlg-admin-components": "1.0.0-alpha.2.1.1",
 		"vue": "3.2.44",
 		"vxe-table": "^4.3.6",
 		"xe-utils": "^3.5.7"

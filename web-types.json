@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/web-types",
   "framework": "vue",
   "name": "jlg-admin-components",
-  "version": "1.0.0-alpha.2.0.6",
+  "version": "1.0.0-alpha.2.1.1",
   "js-types-syntax": "typescript",
   "description-markup": "markdown",
   "contributions": {
@@ -14,32 +14,32 @@
             "symbol": "jlgAutocomplete"
           },
           "description": "根据输入内容提供对应的输入建议。",
-          "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#autocomplete",
+          "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#autocomplete",
           "props": [
             {
               "name": "formItemConfig",
               "description": "el-form-item 属性",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#props"
             },
             {
               "name": "label",
               "description": "标签文本",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#props"
             },
             {
               "name": "prop",
               "description": "model 的键名。 它可以是一个路径数组(例如 ['a', 'b', 0])",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#props"
             },
             {
               "name": "rules",
               "description": "表单校验规则",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#props"
             },
             {
               "name": "prependText",
               "description": "输入框前置文本",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#props",
               "type": [
                 "string"
               ]
@@ -47,7 +47,7 @@
             {
               "name": "appendText",
               "description": "输入框后置文本内容",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#props",
               "type": [
                 "string"
               ]
@@ -55,7 +55,7 @@
             {
               "name": "prefixText",
               "description": "输入框头部文本内容",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#props",
               "type": [
                 "string"
               ]
@@ -63,7 +63,7 @@
             {
               "name": "suffixTex",
               "description": "输入框尾部文本内容",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#props",
               "type": [
                 "string"
               ]
@@ -71,7 +71,7 @@
             {
               "name": "disabled",
               "description": "自动补全组件是否被禁用",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#props",
               "type": [
                 "boolean"
               ],
@@ -80,7 +80,7 @@
             {
               "name": "value-key",
               "description": "输入建议对象中用于显示的键名",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#props",
               "type": [
                 "string"
               ],
@@ -89,7 +89,7 @@
             {
               "name": "model-value / v-model",
               "description": "选中项绑定值",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#props",
               "type": [
                 "string"
               ]
@@ -97,7 +97,7 @@
             {
               "name": "debounce",
               "description": "获取输入建议的防抖延时，单位为毫秒",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#props",
               "type": [
                 "number"
               ],
@@ -106,13 +106,13 @@
             {
               "name": "placement",
               "description": "菜单弹出位置",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#props",
               "default": "bottom-start"
             },
             {
               "name": "fetch-suggestions",
               "description": "获取输入建议的方法， 仅当你的输入建议数据 resolve 时，通过调用 `callback(data:[]) ` 来返回它",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#props",
               "type": [
                 "Function"
               ]
@@ -120,7 +120,7 @@
             {
               "name": "popper-class",
               "description": "下拉列表的类名",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#props",
               "type": [
                 "string"
               ]
@@ -128,7 +128,7 @@
             {
               "name": "trigger-on-focus",
               "description": "获取焦点时是否显示建议",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#props",
               "type": [
                 "boolean"
               ],
@@ -137,7 +137,7 @@
             {
               "name": "name",
               "description": "等价于原生 input `name` 属性",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#props",
               "type": [
                 "string"
               ]
@@ -145,7 +145,7 @@
             {
               "name": "select-when-unmatched",
               "description": "在输入没有任何匹配建议的情况下，按下回车是否触发 `select` 事件",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#props",
               "type": [
                 "boolean"
               ],
@@ -154,7 +154,7 @@
             {
               "name": "hide-loading",
               "description": "是否隐藏远程加载时的加载图标",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#props",
               "type": [
                 "boolean"
               ],
@@ -163,7 +163,7 @@
             {
               "name": "popper-append-to-body(deprecated)",
               "description": "是否将下拉列表插入至 body 元素。 在下拉列表的定位出现问题时，可将该属性设置为 false",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#props",
               "type": [
                 "boolean"
               ],
@@ -172,7 +172,7 @@
             {
               "name": "teleported",
               "description": "是否将下拉列表元素插入 append-to 指向的元素下",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#props",
               "type": [
                 "boolean"
               ],
@@ -181,7 +181,7 @@
             {
               "name": "highlight-first-item",
               "description": "是否默认高亮远程搜索结果的第一项",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#props",
               "type": [
                 "boolean"
               ],
@@ -190,7 +190,7 @@
             {
               "name": "fit-input-width",
               "description": "下拉框的宽度是否与输入框相同",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#props",
               "type": [
                 "boolean"
               ],
@@ -201,27 +201,27 @@
             {
               "name": "prefix",
               "description": "输入框头部内容，只对非 `type=\"textarea\"` 有效",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#slots"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#slots"
             },
             {
               "name": "suffix",
               "description": "输入框尾部内容，只对非 `type=\"textarea\"` 有效",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#slots"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#slots"
             },
             {
               "name": "prepend",
               "description": "输入框前置内容，只对非 `type=\"textarea\"` 有效",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#slots"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#slots"
             },
             {
               "name": "append",
               "description": "输入框后置内容，只对非 `type=\"textarea\"` 有效",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#slots"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#slots"
             },
             {
               "name": "default",
               "description": "自定义输入建议的内容",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#slots"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#slots"
             }
           ],
           "js": {
@@ -229,12 +229,12 @@
               {
                 "name": "select",
                 "description": "点击选中建议项时触发",
-                "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#events"
+                "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#events"
               },
               {
                 "name": "change",
                 "description": "在 Input 值改变时触发",
-                "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#events"
+                "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#events"
               }
             ]
           }
@@ -245,12 +245,12 @@
             "symbol": "jlgDatePicker 日期选择器"
           },
           "description": "用于选择或输入日期",
-          "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#datepicker-日期选择器",
+          "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/date-picker/#datepicker-日期选择器",
           "props": [
             {
               "name": "model-value / v-model",
               "description": "绑定值，如果它是数组，长度应该是 2",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/date-picker/#props",
               "type": [
                 "Date",
                 "number",
@@ -261,7 +261,7 @@
             {
               "name": "readonly",
               "description": "只读",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/date-picker/#props",
               "type": [
                 "boolean"
               ],
@@ -270,7 +270,7 @@
             {
               "name": "disabled",
               "description": "禁用",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/date-picker/#props",
               "type": [
                 "boolean"
               ],
@@ -279,7 +279,7 @@
             {
               "name": "size",
               "description": "输入框尺寸",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/date-picker/#props",
               "type": [
                 "string"
               ],
@@ -288,7 +288,7 @@
             {
               "name": "editable",
               "description": "文本框可输入",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/date-picker/#props",
               "type": [
                 "boolean"
               ],
@@ -297,7 +297,7 @@
             {
               "name": "clearable",
               "description": "是否显示清除按钮",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/date-picker/#props",
               "type": [
                 "boolean"
               ],
@@ -306,7 +306,7 @@
             {
               "name": "placeholder",
               "description": "非范围选择时的占位内容",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/date-picker/#props",
               "type": [
                 "string"
               ]
@@ -314,7 +314,7 @@
             {
               "name": "start-placeholder",
               "description": "范围选择时开始日期的占位内容",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/date-picker/#props",
               "type": [
                 "string"
               ]
@@ -322,7 +322,7 @@
             {
               "name": "end-placeholder",
               "description": "范围选择时结束日期的占位内容",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/date-picker/#props",
               "type": [
                 "string"
               ]
@@ -330,7 +330,7 @@
             {
               "name": "type",
               "description": "显示类型",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/date-picker/#props",
               "type": [
                 "string"
               ],
@@ -339,7 +339,7 @@
             {
               "name": "format",
               "description": "显示在输入框中的格式",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/date-picker/#props",
               "type": [
                 "string"
               ],
@@ -348,7 +348,7 @@
             {
               "name": "popper-class",
               "description": "DatePicker 下拉框的类名",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/date-picker/#props",
               "type": [
                 "string"
               ]
@@ -356,7 +356,7 @@
             {
               "name": "range-separator",
               "description": "选择范围时的分隔符",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/date-picker/#props",
               "type": [
                 "string"
               ],
@@ -365,7 +365,7 @@
             {
               "name": "default-value",
               "description": "可选，选择器打开时默认显示的时间",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/date-picker/#props",
               "type": [
                 "Date",
                 "[Date, Date]"
@@ -374,7 +374,7 @@
             {
               "name": "default-time",
               "description": "范围选择时选中日期所使用的当日内具体时刻",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/date-picker/#props",
               "type": [
                 "Date",
                 "[Date, Date]"
@@ -383,7 +383,7 @@
             {
               "name": "value-format",
               "description": "可选，绑定值的格式。 不指定则绑定值为 Date 对象",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/date-picker/#props",
               "type": [
                 "string"
               ]
@@ -391,7 +391,7 @@
             {
               "name": "id",
               "description": "等价于原生 `id` 属性",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/date-picker/#props",
               "type": [
                 "string",
                 "[string, string]"
@@ -400,7 +400,7 @@
             {
               "name": "name",
               "description": "等价于原生 `name` 属性",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/date-picker/#props",
               "type": [
                 "string"
               ]
@@ -408,7 +408,7 @@
             {
               "name": "unlink-panels",
               "description": "在范围选择器里取消两个日期面板之间的联动",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/date-picker/#props",
               "type": [
                 "boolean"
               ]
@@ -416,17 +416,17 @@
             {
               "name": "prefix-icon",
               "description": "自定义前缀图标",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/date-picker/#props"
             },
             {
               "name": "clear-icon",
               "description": "自定义清除图标",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/date-picker/#props"
             },
             {
               "name": "validate-event",
               "description": "输入时是否触发表单的校验",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/date-picker/#props",
               "type": [
                 "boolean"
               ],
@@ -435,7 +435,7 @@
             {
               "name": "disabled-date",
               "description": "一个用来判断该日期是否被禁用的函数，接受一个 Date 对象作为参数。 应该返回一个 Boolean 值。",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/date-picker/#props",
               "type": [
                 "function"
               ]
@@ -443,12 +443,12 @@
             {
               "name": "shortcuts",
               "description": "设置快捷选项，需要传入数组对象",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/date-picker/#props"
             },
             {
               "name": "cell-class-name",
               "description": "设置自定义类名",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/date-picker/#props",
               "type": [
                 "Function(Date)"
               ]
@@ -456,7 +456,7 @@
             {
               "name": "teleported",
               "description": "是否将 date-picker 的下拉列表插入至 body 元素",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/date-picker/#props",
               "type": [
                 "boolean"
               ],
@@ -470,12 +470,12 @@
             "symbol": "jlgForm"
           },
           "description": "基于 el-form，并对其一些常用的表单组件进行二次封装。",
-          "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#form",
+          "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/form/#form",
           "props": [
             {
               "name": "`model`",
               "description": "表单数据对象",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/form/#props",
               "type": [
                 "Record<string, any>"
               ]
@@ -483,7 +483,7 @@
             {
               "name": "`inline`",
               "description": "行内表单模式",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/form/#props",
               "type": [
                 "boolean"
               ],
@@ -492,7 +492,7 @@
             {
               "name": "`label-position`",
               "description": "表单域标签的位置， 当设置为 `left` 或 `right` 时，则也需要设置 `label-width` 属性",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/form/#props",
               "type": [
                 "'left'",
                 {
@@ -507,7 +507,7 @@
             {
               "name": "`label-width`",
               "description": "标签的长度，例如 `'50px'`。 作为 Form 直接子元素的 form-item 会继承该值。 可以使用 `auto`。",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/form/#props",
               "type": [
                 "string",
                 "number"
@@ -516,7 +516,7 @@
             {
               "name": "`hide-required-asterisk`",
               "description": "是否隐藏必填字段标签旁边的红色星号。",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/form/#props",
               "type": [
                 "boolean"
               ],
@@ -525,7 +525,7 @@
             {
               "name": "`require-asterisk-position`",
               "description": "星号的位置。",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/form/#props",
               "type": [
                 "'left'",
                 "'right'"
@@ -534,7 +534,7 @@
             {
               "name": "`show-message`",
               "description": "是否显示校验错误信息",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/form/#props",
               "type": [
                 "boolean"
               ],
@@ -543,7 +543,7 @@
             {
               "name": "`inline-message`",
               "description": "是否以行内形式展示校验信息",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/form/#props",
               "type": [
                 "boolean"
               ],
@@ -552,7 +552,7 @@
             {
               "name": "`status-icon`",
               "description": "是否在输入框中显示校验结果反馈图标",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/form/#props",
               "type": [
                 "boolean"
               ],
@@ -561,7 +561,7 @@
             {
               "name": "`validate-on-rule-change`",
               "description": "是否在 `rules` 属性改变后立即触发一次验证",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/form/#props",
               "type": [
                 "boolean"
               ],
@@ -570,7 +570,7 @@
             {
               "name": "`size`",
               "description": "用于控制该表单内组件的尺寸",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/form/#props",
               "type": [
                 "'large'",
                 "'default'",
@@ -580,7 +580,7 @@
             {
               "name": "`disabled`",
               "description": "是否禁用该表单内的所有组件。 如果设置为 `true`, 它将覆盖内部组件的 `disabled` 属性",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/form/#props",
               "type": [
                 "boolean"
               ],
@@ -589,7 +589,7 @@
             {
               "name": "`scroll-to-error`",
               "description": "当校验失败时，滚动到第一个错误表单项",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/form/#props",
               "type": [
                 "boolean"
               ],
@@ -603,32 +603,32 @@
             "symbol": "jlgInput"
           },
           "description": "输入框,通过鼠标或键盘输入字符",
-          "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#input",
+          "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#input",
           "props": [
             {
               "name": "formItemConfig",
               "description": "el-form-item 属性",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props"
             },
             {
               "name": "label",
               "description": "标签文本",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props"
             },
             {
               "name": "prop",
               "description": "model 的键名。 它可以是一个路径数组(例如 ['a', 'b', 0])，或者一个点分隔的路径(例如 'a.b.0')",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props"
             },
             {
               "name": "rules",
               "description": "表单校验规则。可以是一个以管状符分隔的字符串 例如 'required'，也可以是一个包含验证规则的对象数组 例如 ['required',{ required: true, message: '请输入邮箱地址', trigger: 'blur' }]",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props"
             },
             {
               "name": "prependText",
               "description": "输入框前置文本",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props",
               "type": [
                 "string"
               ]
@@ -636,7 +636,7 @@
             {
               "name": "appendText",
               "description": "输入框后置文本内容",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props",
               "type": [
                 "string"
               ]
@@ -644,7 +644,7 @@
             {
               "name": "prefixText",
               "description": "输入框头部文本内容",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props",
               "type": [
                 "string"
               ]
@@ -652,7 +652,7 @@
             {
               "name": "suffixTex",
               "description": "输入框尾部文本内容",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props",
               "type": [
                 "string"
               ]
@@ -660,7 +660,7 @@
             {
               "name": "type",
               "description": "类型",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props",
               "type": [
                 "string"
               ]
@@ -668,7 +668,7 @@
             {
               "name": "model-value / v-model",
               "description": "绑定值",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props",
               "type": [
                 "string",
                 "number"
@@ -677,7 +677,7 @@
             {
               "name": "maxlength",
               "description": "最大输入长度",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props",
               "type": [
                 "string",
                 "number"
@@ -686,7 +686,7 @@
             {
               "name": "minlength",
               "description": "原生属性，最小输入长度",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props",
               "type": [
                 "number"
               ]
@@ -694,7 +694,7 @@
             {
               "name": "show-word-limit",
               "description": "是否显示统计字数, 只在 `type` 为 'text' 或 'textarea' 的时候生效",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props",
               "type": [
                 "boolean"
               ],
@@ -703,7 +703,7 @@
             {
               "name": "placeholder",
               "description": "输入框占位文本",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props",
               "type": [
                 "string"
               ]
@@ -711,7 +711,7 @@
             {
               "name": "clearable",
               "description": "是否显示清除按钮，只有当 `type` 不是 textarea 时生效",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props",
               "type": [
                 "boolean"
               ],
@@ -720,7 +720,7 @@
             {
               "name": "formatter",
               "description": "指定输入值的格式。(只有当 `type` 是\"text\"时才能工作)",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props",
               "type": [
                 "(value: any) => string"
               ]
@@ -728,7 +728,7 @@
             {
               "name": "parser",
               "description": "指定从格式化器输入中提取的值。(仅当 `type` 是\"text\"时才起作用)",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props",
               "type": [
                 "(value: string) => string"
               ]
@@ -736,7 +736,7 @@
             {
               "name": "show-password",
               "description": "是否显示切换密码图标",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props",
               "type": [
                 "boolean"
               ],
@@ -745,7 +745,7 @@
             {
               "name": "disabled",
               "description": "是否禁用",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props",
               "type": [
                 "boolean"
               ],
@@ -754,7 +754,7 @@
             {
               "name": "size",
               "description": "输入框尺寸，只在 `type` 不为 'textarea' 时有效",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props",
               "type": [
                 "'large'",
                 "'default'",
@@ -764,7 +764,7 @@
             {
               "name": "prefix-icon",
               "description": "自定义前缀图标",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props",
               "type": [
                 "string"
               ]
@@ -772,7 +772,7 @@
             {
               "name": "suffix-icon",
               "description": "自定义后缀图标",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props",
               "type": [
                 "string"
               ]
@@ -780,7 +780,7 @@
             {
               "name": "rows",
               "description": "输入框行数，仅 `type` 为 'textarea' 时有效",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props",
               "type": [
                 "number"
               ],
@@ -789,17 +789,17 @@
             {
               "name": "autosize",
               "description": "textarea 高度是否自适应，仅 `type` 为 'textarea' 时生效。 可以接受一个对象，比如: `{ minRows: 2, maxRows: 6 }`",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props",
               "type": [
                 "boolean",
-                "{minRows?: numer, maxRows?: number }"
+                "Object"
               ],
               "default": "false"
             },
             {
               "name": "autocomplete",
               "description": "原生 `autocomplete` 属性",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props",
               "type": [
                 "string"
               ],
@@ -808,7 +808,7 @@
             {
               "name": "name",
               "description": "等价于原生 input `name` 属性",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props",
               "type": [
                 "string"
               ]
@@ -816,7 +816,7 @@
             {
               "name": "readonly",
               "description": "原生 `readonly` 属性，是否只读",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props",
               "type": [
                 "boolean"
               ],
@@ -825,22 +825,22 @@
             {
               "name": "max",
               "description": "原生 `max` 属性，设置最大值",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props"
             },
             {
               "name": "min",
               "description": "原生属性，设置最小值",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props"
             },
             {
               "name": "step",
               "description": "原生属性，设置输入字段的合法数字间隔",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props"
             },
             {
               "name": "resize",
               "description": "控制是否能被用户缩放",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props",
               "type": [
                 "string"
               ]
@@ -848,7 +848,7 @@
             {
               "name": "autofocus",
               "description": "原生属性，自动获取焦点",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props",
               "type": [
                 "boolean"
               ],
@@ -857,7 +857,7 @@
             {
               "name": "form",
               "description": "原生属性",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props",
               "type": [
                 "string"
               ]
@@ -865,7 +865,7 @@
             {
               "name": "label",
               "description": "等价于原生 input `aria-label` 属性",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props",
               "type": [
                 "string"
               ]
@@ -873,7 +873,7 @@
             {
               "name": "tabindex",
               "description": "输入框的 tabindex",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props",
               "type": [
                 "string",
                 "number"
@@ -882,7 +882,7 @@
             {
               "name": "validate-event",
               "description": "输入时是否触发表单的校验",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props",
               "type": [
                 "boolean"
               ],
@@ -891,7 +891,7 @@
             {
               "name": "input-style",
               "description": "input 元素或 textarea 元素的 style",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#props",
               "type": [
                 {
                   "name": "any",
@@ -906,22 +906,22 @@
             {
               "name": "prefix",
               "description": "输入框头部内容，只对非 `type=\"textarea\"` 有效",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#slots"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#slots"
             },
             {
               "name": "suffix",
               "description": "输入框尾部内容，只对非 `type=\"textarea\"` 有效",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#slots"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#slots"
             },
             {
               "name": "prepend",
               "description": "输入框前置内容，只对非 `type=\"textarea\"` 有效",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#slots"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#slots"
             },
             {
               "name": "append",
               "description": "输入框后置内容，只对非 `type=\"textarea\"` 有效",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#slots"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#slots"
             }
           ],
           "js": {
@@ -929,27 +929,27 @@
               {
                 "name": "blur",
                 "description": "当选择器的输入框失去焦点时触发",
-                "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#events"
+                "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#events"
               },
               {
                 "name": "focus",
                 "description": "当选择器的输入框获得焦点时触发",
-                "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#events"
+                "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#events"
               },
               {
                 "name": "change",
                 "description": "仅当 modelValue 改变时，当输入框失去焦点或用户按 Enter 时触发",
-                "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#events"
+                "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#events"
               },
               {
                 "name": "input",
                 "description": "在 Input 值改变时触发",
-                "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#events"
+                "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#events"
               },
               {
                 "name": "clear",
                 "description": "在点击由 `clearable` 属性生成的清空按钮时触发",
-                "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#events"
+                "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#events"
               }
             ]
           }
@@ -960,12 +960,12 @@
             "symbol": "jlgLayout"
           },
           "description": "一个简单的布局组件，用于在页面上创建一个布局。",
-          "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#layout",
+          "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/layout/#layout",
           "props": [
             {
               "name": "layout",
               "description": "布局类型",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/layout/#props",
               "type": [
                 "string"
               ],
@@ -985,7 +985,7 @@
             {
               "name": "headerHeight",
               "description": "顶部栏高度",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/layout/#props",
               "type": [
                 "string"
               ],
@@ -994,7 +994,7 @@
             {
               "name": "showHeader",
               "description": "顶部栏是否显示",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/layout/#props",
               "type": [
                 "boolean"
               ],
@@ -1014,7 +1014,7 @@
             {
               "name": "asideWidth",
               "description": "侧边栏宽度",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/layout/#props",
               "type": [
                 "string"
               ],
@@ -1023,7 +1023,7 @@
             {
               "name": "showAside",
               "description": "侧边栏是否显示",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/layout/#props",
               "type": [
                 "boolean"
               ],
@@ -1043,7 +1043,7 @@
             {
               "name": "footerHeight",
               "description": "底部区域高度",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/layout/#props",
               "type": [
                 "string"
               ],
@@ -1052,7 +1052,7 @@
             {
               "name": "showFooter",
               "description": "底部区域是否显示",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/layout/#props",
               "type": [
                 "boolean"
               ],
@@ -1074,161 +1074,155 @@
             {
               "name": "aside",
               "description": "侧边栏内容插槽",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#slots"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/layout/#slots"
             },
             {
               "name": "header",
               "description": "顶部内容插槽",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#slots"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/layout/#slots"
             },
             {
               "name": "main",
               "description": "主要内容区域插槽",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#slots"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/layout/#slots"
             },
             {
               "name": "footer",
               "description": "底部内容插槽",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#slots"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/layout/#slots"
             }
           ]
         },
         {
-          "name": "jlg-modal",
+          "name": "jlg-属性",
           "source": {
-            "symbol": "jlgModal"
+            "symbol": "jlg属性"
           },
-          "description": "Modal弹窗",
-          "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#modal",
+          "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/lazy-cascade/#属性"
+        },
+        {
+          "name": "jlg-lazy-select",
+          "source": {
+            "symbol": "jlgLazySelect"
+          },
+          "description": "ElementPlus 级联选择组件懒加载的拓展",
+          "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/lazy-cascade/#lazyselect",
           "props": [
             {
-              "name": "layout",
-              "description": "布局类型",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "name": "model-value",
+              "description": "选中项绑定值",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/lazy-cascade/#props-"
+            },
+            {
+              "name": "props",
+              "description": "配置选项，具体见下表",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/lazy-cascade/#props-",
               "type": [
-                "string"
-              ],
-              "default": "'60px'",
-              "attribute-value": {
-                "type": "enum"
-              },
-              "values": [
-                {
-                  "name": "vertical"
-                },
-                {
-                  "name": "horizontal"
-                }
+                "object"
               ]
             },
             {
-              "name": "headerHeight",
-              "description": "顶部栏高度",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "name": "placeholder",
+              "description": "输入框占位文本",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/lazy-cascade/#props-",
               "type": [
                 "string"
               ],
-              "default": "'60px'"
+              "default": "请选择"
             },
             {
-              "name": "showHeader",
-              "description": "顶部栏是否显示",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "name": "disabled",
+              "description": "是否禁用",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/lazy-cascade/#props-",
               "type": [
                 "boolean"
               ],
-              "default": "true",
+              "default": "false"
+            },
+            {
+              "name": "filterable",
+              "description": "是否开启搜索",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/lazy-cascade/#props-",
+              "type": [
+                "boolean"
+              ],
+              "default": "false"
+            },
+            {
+              "name": "clearable",
+              "description": "是否支持清空选项",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/lazy-cascade/#props-",
+              "type": [
+                "boolean"
+              ],
+              "default": "false"
+            },
+            {
+              "name": "show-all-levels",
+              "description": "输入框中是否显示选中值的完整路径",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/lazy-cascade/#props-",
+              "type": [
+                "boolean"
+              ],
+              "default": "true"
+            },
+            {
+              "name": "collapse-tags",
+              "description": "多选模式下是否折叠Tag",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/lazy-cascade/#props-",
+              "type": [
+                "boolean"
+              ],
+              "default": "false",
               "attribute-value": {
                 "type": "of-match"
               },
               "values": [
                 {
-                  "name": "true"
-                },
-                {
-                  "name": "false"
+                  "name": "\\-"
                 }
               ]
             },
             {
-              "name": "asideWidth",
-              "description": "侧边栏宽度",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
-              "type": [
-                "string"
-              ],
-              "default": "'200px'"
-            },
-            {
-              "name": "showAside",
-              "description": "侧边栏是否显示",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "name": "collapse-tags-tooltip",
+              "description": "当鼠标悬停于折叠标签的文本时，是否显示所有选中的标签。 要使用此属性，`collapse-tags`属性必须设定为 true",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/lazy-cascade/#props-",
               "type": [
                 "boolean"
               ],
-              "default": "true",
-              "attribute-value": {
-                "type": "of-match"
-              },
-              "values": [
-                {
-                  "name": "true"
-                },
-                {
-                  "name": "false"
-                }
-              ]
+              "default": "false"
             },
             {
-              "name": "footerHeight",
-              "description": "底部区域高度",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "name": "separator",
+              "description": "用于分隔选项的字符",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/lazy-cascade/#props-",
               "type": [
                 "string"
               ],
-              "default": "'60px'"
+              "default": "' > '"
             },
             {
-              "name": "showFooter",
-              "description": "底部区域是否显示",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "name": "suggestions-popper-class",
+              "description": "搜索下拉列表的类名",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/lazy-cascade/#props-",
               "type": [
-                "boolean"
+                "string"
               ],
-              "default": "true",
-              "attribute-value": {
-                "type": "of-match"
-              },
-              "values": [
-                {
-                  "name": "true"
-                },
-                {
-                  "name": "false"
-                }
-              ]
-            }
-          ],
-          "slots": [
-            {
-              "name": "aside",
-              "description": "侧边栏内容插槽",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#slots"
+              "default": "'suggestions-popper-class'"
             },
             {
-              "name": "header",
-              "description": "顶部内容插槽",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#slots"
+              "name": "search-empty-text",
+              "description": "搜索框搜索无数据的时候展示的默认文案",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/lazy-cascade/#props-",
+              "type": [
+                "string"
+              ],
+              "default": "'暂无数据'"
             },
             {
-              "name": "main",
-              "description": "主要内容区域插槽",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#slots"
-            },
-            {
-              "name": "footer",
-              "description": "底部内容插槽",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#slots"
+              "name": "search-width",
+              "description": "搜索框宽度",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/lazy-cascade/#props-"
             }
           ]
         },
@@ -1238,32 +1232,32 @@
             "symbol": "jlgNumberInput"
           },
           "description": "数字输入框,对 el-input 二次封装,仅允许输入标准的数字值,可定义精度与范围",
-          "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#numberinput",
+          "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#numberinput",
           "props": [
             {
               "name": "formItemConfig",
               "description": "el-form-item 属性",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props"
             },
             {
               "name": "label",
               "description": "标签文本",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props"
             },
             {
               "name": "prop",
               "description": "model 的键名。 它可以是一个路径数组(例如 ['a', 'b', 0])",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props"
             },
             {
               "name": "rules",
               "description": "表单校验规则",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props"
             },
             {
               "name": "prependText",
               "description": "输入框前置文本",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props",
               "type": [
                 {
                   "name": "'string’",
@@ -1276,7 +1270,7 @@
             {
               "name": "appendText",
               "description": "输入框后置文本内容",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props",
               "type": [
                 {
                   "name": "'string’",
@@ -1289,7 +1283,7 @@
             {
               "name": "prefixText",
               "description": "输入框头部文本内容",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props",
               "type": [
                 {
                   "name": "'string’",
@@ -1302,7 +1296,7 @@
             {
               "name": "suffixTex",
               "description": "输入框尾部文本内容",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props",
               "type": [
                 {
                   "name": "'string’",
@@ -1315,7 +1309,7 @@
             {
               "name": "type",
               "description": "类型",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props",
               "type": [
                 "'text'",
                 "'textarea'"
@@ -1324,7 +1318,7 @@
             {
               "name": "model-value / v-model",
               "description": "绑定值",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props",
               "type": [
                 "'string'",
                 "'number'"
@@ -1333,7 +1327,7 @@
             {
               "name": "maxlength",
               "description": "最大输入长度",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props",
               "type": [
                 "'string'",
                 "'number'"
@@ -1342,7 +1336,7 @@
             {
               "name": "minlength",
               "description": "原生属性，最小输入长度",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props",
               "type": [
                 "'number'"
               ]
@@ -1350,7 +1344,7 @@
             {
               "name": "placeholder",
               "description": "输入框占位文本",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props",
               "type": [
                 "'string'"
               ]
@@ -1358,7 +1352,7 @@
             {
               "name": "clearable",
               "description": "是否显示清除按钮",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props",
               "type": [
                 "'boolean'"
               ],
@@ -1367,7 +1361,7 @@
             {
               "name": "disabled",
               "description": "是否禁用",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props",
               "type": [
                 "'boolean'"
               ],
@@ -1376,7 +1370,7 @@
             {
               "name": "size",
               "description": "输入框尺寸，只在 `type` 不为 'textarea' 时有效",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props",
               "type": [
                 "'large'",
                 "'default'",
@@ -1391,7 +1385,7 @@
             {
               "name": "prefix-icon",
               "description": "自定义前缀图标",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props",
               "type": [
                 "string",
                 {
@@ -1405,7 +1399,7 @@
             {
               "name": "suffix-icon",
               "description": "自定义后缀图标",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props",
               "type": [
                 "string",
                 {
@@ -1419,7 +1413,7 @@
             {
               "name": "rows",
               "description": "输入框行数，仅 `type` 为 'textarea' 时有效",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props",
               "type": [
                 "number"
               ],
@@ -1428,7 +1422,7 @@
             {
               "name": "autosize",
               "description": "textarea 高度是否自适应，仅 `type` 为 'textarea' 时生效。 可以接受一个对象，比如: `{ minRows: 2, maxRows: 6 }`",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props",
               "type": [
                 "boolean",
                 {
@@ -1443,7 +1437,7 @@
             {
               "name": "autocomplete",
               "description": "原生 `autocomplete` 属性",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props",
               "type": [
                 "string"
               ],
@@ -1452,7 +1446,7 @@
             {
               "name": "name",
               "description": "等价于原生 input `name` 属性",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props",
               "type": [
                 "string"
               ]
@@ -1460,7 +1454,7 @@
             {
               "name": "readonly",
               "description": "原生 `readonly` 属性，是否只读",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props",
               "type": [
                 "boolean"
               ],
@@ -1469,7 +1463,7 @@
             {
               "name": "max",
               "description": "设置最大值",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props",
               "type": [
                 "number"
               ]
@@ -1477,20 +1471,20 @@
             {
               "name": "min",
               "description": "设置最小值",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props",
               "type": [
                 "number"
               ]
             },
             {
               "name": "step",
-              "description": "设置输入字段的合法数字间隔number",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
+              "description": "设置输入字段的合法数字间隔 number",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props"
             },
             {
               "name": "resize",
               "description": "控制是否能被用户缩放",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props",
               "type": [
                 "'none'",
                 "'both'",
@@ -1501,7 +1495,7 @@
             {
               "name": "autofocus",
               "description": "原生属性，自动获取焦点",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props",
               "type": [
                 "boolean"
               ],
@@ -1510,7 +1504,7 @@
             {
               "name": "form",
               "description": "原生属性",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props",
               "type": [
                 "string"
               ]
@@ -1518,7 +1512,7 @@
             {
               "name": "label",
               "description": "等价于原生 input `aria-label` 属性",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props",
               "type": [
                 "string"
               ]
@@ -1526,7 +1520,7 @@
             {
               "name": "tabindex",
               "description": "输入框的 tabindex",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props",
               "type": [
                 "string",
                 "number"
@@ -1535,7 +1529,7 @@
             {
               "name": "validate-event",
               "description": "输入时是否触发表单的校验",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props",
               "type": [
                 "boolean"
               ],
@@ -1544,13 +1538,13 @@
             {
               "name": "input-style",
               "description": "input 元素的 style",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props",
               "default": "{}"
             },
             {
               "name": "precision",
               "description": "设置精度（小数位数，四舍五入）",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#props",
               "type": [
                 "number"
               ]
@@ -1560,22 +1554,22 @@
             {
               "name": "prefix",
               "description": "输入框头部内容，只对非 `type=\"textarea\"` 有效",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#slots"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#slots"
             },
             {
               "name": "suffix",
               "description": "输入框尾部内容，只对非 `type=\"textarea\"` 有效",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#slots"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#slots"
             },
             {
               "name": "prepend",
               "description": "输入框前置内容，只对非 `type=\"textarea\"` 有效",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#slots"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#slots"
             },
             {
               "name": "append",
               "description": "输入框后置内容，只对非 `type=\"textarea\"` 有效",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#slots"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#slots"
             }
           ],
           "js": {
@@ -1583,27 +1577,27 @@
               {
                 "name": "blur",
                 "description": "当选择器的输入框失去焦点时触发",
-                "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#events"
+                "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#events"
               },
               {
                 "name": "focus",
                 "description": "当选择器的输入框获得焦点时触发",
-                "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#events"
+                "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#events"
               },
               {
                 "name": "change",
                 "description": "仅当 modelValue 改变时，当输入框失去焦点或用户按 Enter 时触发",
-                "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#events"
+                "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#events"
               },
               {
                 "name": "input",
                 "description": "在 Input 值改变时触发",
-                "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#events"
+                "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#events"
               },
               {
                 "name": "clear",
                 "description": "在点击由 `clearable` 属性生成的清空按钮时触发",
-                "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#events"
+                "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#events"
               }
             ]
           }
@@ -1614,32 +1608,32 @@
             "symbol": "jlgSelect"
           },
           "description": "当选项过多时，使用下拉菜单展示并选择内容。",
-          "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#select",
+          "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#select",
           "props": [
             {
               "name": "formItemConfig",
               "description": "el-form-item 属性",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props"
             },
             {
               "name": "label",
               "description": "标签文本",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props"
             },
             {
               "name": "prop",
               "description": "model 的键名。 它可以是一个路径数组(例如 ['a', 'b', 0])，或者一个点分隔的路径(例如 'a.b.0')",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props"
             },
             {
               "name": "rules",
               "description": "表单校验规则。可以是一个以管状符分隔的字符串 例如 'required'，也可以是一个包含验证规则的对象数组 例如 ['required',{ required: true, message: '请输入邮箱地址', trigger: 'blur' }]",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props"
             },
             {
               "name": "isVirtualized",
               "description": "是否启用虚拟化滚动",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "default": "false",
               "attribute-value": {
                 "type": "of-match"
@@ -1653,7 +1647,7 @@
             {
               "name": "model-value / v-model",
               "description": "绑定值",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "string",
                 "number",
@@ -1664,7 +1658,7 @@
             {
               "name": "groupKey",
               "description": "作为 分组 唯一标识的键名,如果想按照自己的意愿为选项进行分组,必须设置该属性(注意 jlg-select 的 groupKey 只能是 options)",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "string"
               ]
@@ -1672,7 +1666,7 @@
             {
               "name": "multiple",
               "description": "是否多选",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "boolean"
               ],
@@ -1681,7 +1675,7 @@
             {
               "name": "disabled",
               "description": "是否禁用",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "boolean"
               ],
@@ -1690,7 +1684,7 @@
             {
               "name": "size",
               "description": "输入框尺寸",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "string"
               ],
@@ -1713,7 +1707,7 @@
             {
               "name": "clearable",
               "description": "是否可以清空选项",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "boolean"
               ],
@@ -1722,7 +1716,7 @@
             {
               "name": "clear-icon",
               "description": "自定义清除图标",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "string"
               ],
@@ -1731,7 +1725,7 @@
             {
               "name": "collapse-tags",
               "description": "多选时是否将选中值按文字的形式展示",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "boolean"
               ],
@@ -1740,7 +1734,7 @@
             {
               "name": "collapse-tags-tooltip",
               "description": "当鼠标悬停于折叠标签的文本时，是否显示所有选中的标签。 只有当 `collapse-tags` 设置为 true 时才会生效。",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "boolean"
               ],
@@ -1760,7 +1754,7 @@
             {
               "name": "multiple-limit",
               "description": "多选时可被选择的最大数目。 当被设置为 0 时，可被选择的数目不设限。",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "number"
               ],
@@ -1769,7 +1763,7 @@
             {
               "name": "name",
               "description": "选择器的原生 name 属性",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "string"
               ]
@@ -1777,7 +1771,7 @@
             {
               "name": "effect",
               "description": "文字提示（Tooltip）的主题，内置`dark`和`light`两种。",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "string"
               ],
@@ -1794,7 +1788,7 @@
             {
               "name": "autocomplete",
               "description": "自动完成选择输入",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "string"
               ],
@@ -1803,7 +1797,7 @@
             {
               "name": "placeholder",
               "description": "select input 的原生 autocomplete 属性",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "string"
               ],
@@ -1812,24 +1806,24 @@
             {
               "name": "filterable",
               "description": "是否可筛选",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "boolean"
               ],
               "default": "false"
             },
             {
-              "name": "autoDispatchMethod",
+              "name": "auto-dispatch-method",
               "description": "非远程搜索模式下，初始化自动获取 options 数据所调用的方法",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "function"
               ]
             },
             {
-              "name": "beforeAssignOptions",
+              "name": "before-assign-options",
               "description": "初始化自动设置 options 前的回调函数，返回 options",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "function"
               ],
@@ -1845,7 +1839,7 @@
             {
               "name": "allow-create",
               "description": "是否允许创建新条目， 当使用该属性时，`filterable`必须设置为`true`",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "boolean"
               ],
@@ -1854,7 +1848,7 @@
             {
               "name": "reserve-keyword",
               "description": "筛选时，是否在选择选项后保留关键字",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "boolean"
               ],
@@ -1863,7 +1857,7 @@
             {
               "name": "no-data-text",
               "description": "当在没有数据时显示的文字，你同时可以使用`#empty`插槽进行设置。",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "string"
               ],
@@ -1872,7 +1866,7 @@
             {
               "name": "popper-class",
               "description": "选择器下拉菜单的自定义类名",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "string"
               ]
@@ -1880,7 +1874,7 @@
             {
               "name": "popper-append-to-body(deprecated)",
               "description": "是否将弹出框插入至 body 元素 当弹出框的位置出现问题时，你可以尝试将该属性设置为 false。",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "boolean"
               ],
@@ -1889,7 +1883,7 @@
             {
               "name": "teleported",
               "description": "该下拉菜单是否使用 teleport 插入 body 元素",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "boolean"
               ],
@@ -1909,7 +1903,7 @@
             {
               "name": "persistent",
               "description": "当下拉选择器未被激活并且`persistent`设置为`false`，选择器会被删除。",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "boolean"
               ],
@@ -1929,7 +1923,7 @@
             {
               "name": "popper-options",
               "description": "自定义 popper 选项，更多请参考 https://popper.js.org/docs/v2/",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "object"
               ]
@@ -1937,7 +1931,7 @@
             {
               "name": "automatic-dropdown",
               "description": "对于不可过滤的 Select 组件，此属性决定是否在输入框获得焦点后自动弹出选项菜单",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "boolean"
               ],
@@ -1946,7 +1940,7 @@
             {
               "name": "height",
               "description": "下拉菜单的高度，每一个子选项的高度是 34px",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "number"
               ],
@@ -1955,7 +1949,7 @@
             {
               "name": "scrollbar-always-on",
               "description": "控制是否总是展示滚动条",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "boolean"
               ],
@@ -1964,7 +1958,7 @@
             {
               "name": "remote",
               "description": "是否从服务器搜索数据",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "boolean"
               ],
@@ -1973,7 +1967,7 @@
             {
               "name": "remote-method",
               "description": "当输入值发生变化时被调用的函数。 其参数是当前输入值。 只有当 `filterable` 设置为 true 时才会生效。",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "function(keyword: string)"
               ]
@@ -1981,7 +1975,7 @@
             {
               "name": "validate-event",
               "description": "输入时是否触发表单的校验",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "boolean"
               ],
@@ -1990,7 +1984,7 @@
             {
               "name": "placement",
               "description": "下拉框出现的位置",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "string"
               ],
@@ -2040,7 +2034,7 @@
             {
               "name": "remote-method",
               "description": "当输入值发生变化时被调用的函数。 其参数是当前输入值。 只有当 `filterable` 设置为 true 时才会生效。",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "function(keyword: string)"
               ]
@@ -2048,7 +2042,7 @@
             {
               "name": "label-key",
               "description": "选项的渲染模板所绑定在键名 (el-option 上显示的字段)",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "string"
               ],
@@ -2057,7 +2051,7 @@
             {
               "name": "value-key",
               "description": "作为 value 唯一标识的键名，绑定值为对象类型时必填",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#props",
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#props",
               "type": [
                 "string"
               ],
@@ -2068,17 +2062,17 @@
             {
               "name": "default",
               "description": "自定义 Option 模板",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#slots"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#slots"
             },
             {
               "name": "empty",
               "description": "自定义当选项为空时的内容",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#slots"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#slots"
             },
             {
               "name": "prefix",
               "description": "输入框的前缀",
-              "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#slots"
+              "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#slots"
             }
           ],
           "js": {
@@ -2086,32 +2080,32 @@
               {
                 "name": "change",
                 "description": "选中值发生变化时触发",
-                "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#events"
+                "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#events"
               },
               {
                 "name": "visible-change",
                 "description": "下拉框出现/隐藏时触发",
-                "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#events"
+                "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#events"
               },
               {
                 "name": "remove-tag",
                 "description": "多选模式下移除 tag 时触发",
-                "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#events"
+                "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#events"
               },
               {
                 "name": "clear",
                 "description": "可清空的单选模式下用户点击清空按钮时触发",
-                "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#events"
+                "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#events"
               },
               {
                 "name": "blur",
                 "description": "当选择器的输入框失去焦点时触发",
-                "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#events"
+                "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#events"
               },
               {
                 "name": "focus",
                 "description": "当选择器的输入框获得焦点时触发",
-                "doc-url": "https://github.com/bfehub/vlib-starter/components/components/#events"
+                "doc-url": "https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#events"
               }
             ]
           }

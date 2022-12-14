@@ -32,8 +32,8 @@ const reComponentName = (title) => {
  * @example src/back-top/README.md -> https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/back-top/
  */
 const reDocUrl = (_, header, path) => {
-	const docs = 'https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components'
-	const name = path?.split('/')[1] + '/'
+	const docs = 'https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/'
+	const name = path?.split('/')[2]?.split('.')[0] + '/'
 	const _header = header
 		? header.replace(/[ ]+/g, '-').toLowerCase()
 		: undefined

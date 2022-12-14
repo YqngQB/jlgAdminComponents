@@ -27,7 +27,7 @@
       "select",
       "change"
     ],
-    "description": "根据输入内容提供对应的输入建议。\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#autocomplete)"
+    "description": "根据输入内容提供对应的输入建议。\n\n[Docs](https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/autocomplete/#autocomplete)"
   },
   "jlg-date-picker-日期选择器": {
     "attributes": [
@@ -58,7 +58,7 @@
       "cell-class-name",
       "teleported"
     ],
-    "description": "用于选择或输入日期\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#datepicker-日期选择器)"
+    "description": "用于选择或输入日期\n\n[Docs](https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/date-picker/#datepicker-日期选择器)"
   },
   "jlg-form": {
     "attributes": [
@@ -76,7 +76,7 @@
       "`disabled`",
       "`scroll-to-error`"
     ],
-    "description": "基于 el-form，并对其一些常用的表单组件进行二次封装。\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#form)"
+    "description": "基于 el-form，并对其一些常用的表单组件进行二次封装。\n\n[Docs](https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/form/#form)"
   },
   "jlg-input": {
     "attributes": [
@@ -123,7 +123,7 @@
       "input",
       "clear"
     ],
-    "description": "输入框,通过鼠标或键盘输入字符\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#input)"
+    "description": "输入框,通过鼠标或键盘输入字符\n\n[Docs](https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/input/#input)"
   },
   "jlg-layout": {
     "attributes": [
@@ -135,19 +135,28 @@
       "footerHeight",
       "showFooter"
     ],
-    "description": "一个简单的布局组件，用于在页面上创建一个布局。\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#layout)"
+    "description": "一个简单的布局组件，用于在页面上创建一个布局。\n\n[Docs](https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/layout/#layout)"
   },
-  "jlg-modal": {
+  "jlg-属性": {
+    "description": "[Docs](https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/lazy-cascade/#属性)"
+  },
+  "jlg-lazy-select": {
     "attributes": [
-      "layout",
-      "headerHeight",
-      "showHeader",
-      "asideWidth",
-      "showAside",
-      "footerHeight",
-      "showFooter"
+      "model-value",
+      "props",
+      "placeholder",
+      "disabled",
+      "filterable",
+      "clearable",
+      "show-all-levels",
+      "collapse-tags",
+      "collapse-tags-tooltip",
+      "separator",
+      "suggestions-popper-class",
+      "search-empty-text",
+      "search-width"
     ],
-    "description": "Modal弹窗\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#modal)"
+    "description": "ElementPlus 级联选择组件懒加载的拓展\n\n[Docs](https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/lazy-cascade/#lazyselect)"
   },
   "jlg-number-input": {
     "attributes": [
@@ -191,7 +200,7 @@
       "input",
       "clear"
     ],
-    "description": "数字输入框,对 el-input 二次封装,仅允许输入标准的数字值,可定义精度与范围\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#numberinput)"
+    "description": "数字输入框,对 el-input 二次封装,仅允许输入标准的数字值,可定义精度与范围\n\n[Docs](https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/number-input/#numberinput)"
   },
   "jlg-select": {
     "attributes": [
@@ -215,8 +224,8 @@
       "autocomplete",
       "placeholder",
       "filterable",
-      "autoDispatchMethod",
-      "beforeAssignOptions",
+      "auto-dispatch-method",
+      "before-assign-options",
       "allow-create",
       "reserve-keyword",
       "no-data-text",
@@ -242,6 +251,6 @@
       "blur",
       "focus"
     ],
-    "description": "当选项过多时，使用下拉菜单展示并选择内容。\n\n[Docs](https://github.com/bfehub/vlib-starter/components/components/#select)"
+    "description": "当选项过多时，使用下拉菜单展示并选择内容。\n\n[Docs](https://github.com/YqngQB/jlgAdminComponents/tree/master/docs/components/select/#select)"
   }
 }
