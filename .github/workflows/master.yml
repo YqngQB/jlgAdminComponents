@@ -19,9 +19,24 @@ jobs:
         with:
           persist-credentials: false
 
+      # 安装 pnpm
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v2
+        with:
+         version: 7
+
+      - name: Use Node.js 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
       # 生成静态文件
       - name: Docs
-        run: npm run docs:build
+        run: pnpm run docs:build
 
       # 部署到 GitHub Pages
       - name: Deploy
