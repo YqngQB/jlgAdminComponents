@@ -20,8 +20,8 @@ jobs:
           persist-credentials: false
 
       # 生成静态文件
-      - name: Build
-        run: pnpm install &&  pnpm docs:build
+      - name: Docs
+        run: npm docs:build
 
       # 部署到 GitHub Pages
       - name: Deploy
