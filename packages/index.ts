@@ -8,6 +8,7 @@ import DatePicker from './components/datePicker/index.vue'
 import Input from './components/input/index.vue'
 import NumberInput from './components/numberInput/index.vue'
 import Select from './components/select/index.vue'
+import LazyCascade from './components/lazySelectCascade/index.vue'
 
 export * from './components/layout/index.vue'
 export const JlgLayout = Object.assign(Layout, {
@@ -58,6 +59,13 @@ export const JlgSelect = Object.assign(Select, {
 	}
 })
 
+export * from './components/lazySelectCascade/index.vue'
+export const JlgLazyCascade = Object.assign(LazyCascade, {
+	install: function (app: App) {
+		app.component(LazyCascade.name, LazyCascade)
+	}
+})
+
 const components = [
 	Layout,
 	Form,
@@ -65,7 +73,8 @@ const components = [
 	DatePicker,
 	Input,
 	NumberInput,
-	Select
+	Select,
+	LazyCascade
 ]
 
 const jlgAdminComponents = (app: App) => {

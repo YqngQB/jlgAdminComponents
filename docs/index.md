@@ -1,13 +1,12 @@
 ---
 layout: home
 
-title: Vitepress Demo
+title: jlg-admin-components
 titleTemplate: 使用 Vitepress 搭建组件库文档站点。
 
 hero:
   name: Vitepress
-  text:  Vitepress 组件库文档。
-  tagline: 基于 vitepress-theme-demoblock 插件来实现 Vue 组件的支持。
+  tagline:  jlgAdminComponents 组件库文档。
   image:
     src: /logo.svg
     alt: Vite Logo  
@@ -17,7 +16,7 @@ hero:
       link: /components/layout
     - theme: alt
       text: 查看指南
-      link: /guide/
+      link: /guide/installation
 
 features:
   - icon: ⚡️

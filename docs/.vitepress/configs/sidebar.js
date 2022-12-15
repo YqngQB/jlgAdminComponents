@@ -72,7 +72,7 @@ function getGuideSidebar() {
 			items: [
 				{
 					text: '安装',
-					link: '/guide/'
+					link: '/guide/installation'
 				},
 				{
 					text: '开发常见问题',
