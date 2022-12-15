@@ -11,7 +11,7 @@ export default defineConfig({
 	lastUpdated: true,
 	cleanUrls: 'without-subfolders',
 
-	base: process.env.BASE || '/',
+	base: /jlgAdminComponents/,
 	head: [['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }]],
 
 	markdown: {
