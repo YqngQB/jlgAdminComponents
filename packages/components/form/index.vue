@@ -8,7 +8,7 @@
 <script lang="ts" setup>
 import { ref, provide } from 'vue'
 import { ElForm, ElMessage, FormInstance } from 'element-plus'
-import { cloneDeep } from '../../hooks/helper'
+import { cloneDeep } from '../../utils/helper'
 
 let epRef = ref<FormInstance>()
 let props = defineProps({

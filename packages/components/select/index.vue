@@ -7,8 +7,7 @@
 <template>
 	<component
 		:is="isFormItemComponent ? ElFormItem : 'div'"
-		class="jlg-form-item"
-		:class="['jlg-form-item', { select: !isFormItemComponent }, props.class]"
+		:class="['jlg-form-item', { [props.isVirtualized ? 'el-select-v2' : 'el-select']: !isFormItemComponent }, props.class]"
 		:style="props.style"
 		ref="formItemRef"
 		v-bind="isFormItemComponent ? formItemBind : undefined"
@@ -97,7 +96,7 @@ import useInjectModel from '../../hooks/useInjectModel'
 import { useRules } from '../../hooks/useValidate'
 import { formItemRef, resetField, clearValidate } from '../../hooks/useFormItem'
 import { ICurrentOption } from '../../types/select'
-import { getValueKey } from '../../hooks/helper'
+import { getValueKey } from '../../utils/helper'
 
 let props = defineProps(selectProps)
 let emit = defineEmits(selectEmits)
@@ -236,11 +235,5 @@ export default defineComponent({
 <style lang="scss">
 .jlg-select-v2 {
 	width: 100%;
-}
-.jlg-form-item.select {
-	display: inline-block;
-	position: relative;
-	vertical-align: middle;
-	font-size: 14px;
 }
 </style>

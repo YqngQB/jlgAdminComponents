@@ -50,7 +50,7 @@ import { numberInputEmits, numberInputProps } from './inputNumber'
 import { formItemRef, resetField, clearValidate } from '../../hooks/useFormItem'
 import useInjectModel from '../../hooks/useInjectModel'
 import { useRules } from '../../hooks/useValidate'
-import { isNil, isUndefined } from '../../hooks/helper'
+import { isNil, isUndefined } from '../../utils/helper'
 
 let props = defineProps(numberInputProps)
 let emit = defineEmits(numberInputEmits)

@@ -96,12 +96,15 @@ const selectOptions = ref(
 ```vue
 <template>
 	<jlg-select
+        style="width: 240px"
 		v-model="value"
 		:options="selectOptions"
 		placeholder="Please select"
 		multiple
 		filterable
 		clearable
+        label-key="label"
+        :is-virtualized="true"
 	/>
 </template>
 
@@ -113,7 +116,7 @@ const value = ref([])
 const selectOptions = ref(
 	Array.from({ length: 1000 }).map((_, idx) => ({
 		value: `Option ${idx + 1}`,
-		text: `${initials[idx % 10]}${idx}`
+        label: `${initials[idx % 10]}${idx}`
 	}))
 )
 </script>
@@ -130,20 +133,24 @@ const selectOptions = ref(
 ```vue
 <template>
 	<jlg-select
+        style="width: 240px"
 		v-model="value"
 		filterable
 		:options="options"
 		placeholder="Please select"
 		multiple
+        label-key="label"
 		:is-virtualized="true"
 	/>
 	<jlg-select
+        style="width: 240px"
 		v-model="value"
 		disabled
 		filterable
 		:options="options"
 		placeholder="Please select"
 		multiple
+        label-key="label"
 		:is-virtualized="true"
 	/>
 </template>
@@ -155,7 +162,7 @@ const initials = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
 const value = ref([])
 const options = Array.from({ length: 100 }).map((_, idx) => ({
 	value: `Option${idx + 1}`,
-	text: `${initials[idx % 10]}${idx}`,
+	label: `${initials[idx % 10]}${idx}`,
 	disabled: idx % 10 === 0
 }))
 </script>
@@ -169,6 +176,7 @@ const options = Array.from({ length: 100 }).map((_, idx) => ({
 
 :::tip 注意
 若是启用了虚拟化列表 `isVirtualized: true`,那么 groupKey 必须设置为 `options`,
+labelKey 必须设置为 `label`, valueKey 必须设置为 `value`
 :::
 
 :::demo
@@ -176,6 +184,7 @@ const options = Array.from({ length: 100 }).map((_, idx) => ({
 ```vue
 <template>
 	<jlg-select
+        style="width: 240px"
 		v-model="value"
 		filterable
 		:options="options"
@@ -183,6 +192,7 @@ const options = Array.from({ length: 100 }).map((_, idx) => ({
 		style="width: 240px"
 		multiple
 		group-key="options"
+        label-key="label"
 		:is-virtualized="true"
 	/>
 </template>
@@ -196,10 +206,10 @@ const options = Array.from({ length: 10 }).map((_, idx) => {
 	const label = idx + 1
 	return {
 		value: `Group ${label}`,
-		text: `Group ${label}`,
+		label: `Group ${label}`,
 		options: Array.from({ length: 10 }).map((_, idx) => ({
 			value: `Option ${idx + 1 + 10 * label}`,
-			text: `${initials[idx % 10]}${idx + 1 + 10 * label}`
+			label: `${initials[idx % 10]}${idx + 1 + 10 * label}`
 		}))
 	}
 })
@@ -217,16 +227,18 @@ const options = Array.from({ length: 10 }).map((_, idx) => {
 ```vue
 <template>
 	<jlg-select
+        style="width: 240px"
 		v-model="value"
 		filterable
 		:options="options"
 		placeholder="Please select"
 		style="width: 240px"
 		multiple
+        label-key="label"
 		:is-virtualized="true"
 	>
 		<template #default="{ item }">
-			<span style="margin-right: 8px">{{ item.text }}</span>
+			<span style="margin-right: 8px">{{ item.label }}</span>
 			<span style="color: var(--el-text-color-secondary); font-size: 13px">
 				{{ item.value }}
 			</span>
@@ -241,7 +253,7 @@ const initials = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
 const value = ref([])
 const options = Array.from({ length: 1000 }).map((_, idx) => ({
 	value: `Option ${idx + 1}`,
-	text: `${initials[idx % 10]}${idx}`
+	label: `${initials[idx % 10]}${idx}`
 }))
 </script>
 ```
@@ -267,7 +279,6 @@ const options = Array.from({ length: 1000 }).map((_, idx) => ({
 		:options="options"
 		:loading="loading"
 		placeholder="Please enter a keyword"
-		:is-virtualized="true"
 	/>
 </template>
 
@@ -434,6 +445,7 @@ const beforeAssignOptions = (options) => {
 <template>
 	<pre>{{ value }}</pre>
 	<jlg-select
+        style="width: 240px"
 		v-model="value"
 		:options="options"
 		placeholder="Please select3"
