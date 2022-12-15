@@ -319,45 +319,6 @@ const textarea = ref('')
 
 :::
 
-:::demo
-
-```vue
-<template>
-	<jlg-select
-		v-model="value"
-		:options="options"
-		placeholder="Please select"
-		size="large"
-	/>
-	<jlg-select v-model="value" :options="options" placeholder="Please select" />
-	<jlg-select
-		v-model="value"
-		:options="options"
-		placeholder="Please select"
-		size="small"
-	/>
-</template>
-
-<script lang="ts" setup>
-import { ref } from 'vue'
-const initials = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
-
-const value = ref()
-const options = Array.from({ length: 1000 }).map((_, idx) => ({
-	value: `Option ${idx + 1}`,
-	label: `${initials[idx % 10]}${idx}`
-}))
-</script>
-
-<style scoped>
-.example-showcase .jlg-select {
-	margin-right: 20px;
-}
-</style>
-```
-
-:::
-
 :::tip el-input 属性扩展
 
 `element-plus` 属性扩展，额外增加 `formItemConfig` 、`label` 、`prop` 、`rules` 四个属性
