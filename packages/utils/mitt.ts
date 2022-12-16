@@ -1,9 +1,9 @@
 import type { Emitter } from 'mitt'
-import type { ComponentOptions } from 'vue'
 import mitt from 'mitt'
+import type {UseModalOptionsPrivate} from "../types/dynamicModal";
 
 type Events = {
-	setDynamicModals: Array<ComponentOptions>
+	setDynamicModals: Array<UseModalOptionsPrivate>
 }
 
 export const emitter: Emitter<Events> = mitt<Events>()

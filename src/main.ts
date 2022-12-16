@@ -5,6 +5,7 @@ import ElementPlus from 'element-plus'
 import jlgAdminComponents from 'jlg-admin-components'
 import 'jlg-admin-components/dist/style.css'
 import Table from 'vxe-table'
+import 'vxe-table/lib/style.css'
 import './index.scss'
 import 'element-plus/dist/index.css'
 

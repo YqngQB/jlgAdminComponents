@@ -1,17 +1,12 @@
 <template>
-	<div class="modals-container" v-if="props.api">
+	<div class="modals-container">
 		<component
 			v-for="(modal, index) in dynamicModals"
 			:is="modal.component"
-			:ref="'modal_' + index"
 			:key="index"
-			v-bind="modal.bind"
-			v-model="modal.value"
-			v-on="modal.on"
-			:name="modal.name"
-			:data="modal.data"
-			@close="close(index, modal)"
-			@closeAll="closeAll"
+			:id="modal.id"
+			v-bind="modal.attrs"
+			v-model="modal.modelValue"
 		/>
 		<el-popover
 			v-if="dynamicModals.length > 0"
@@ -23,13 +18,13 @@
 		>
 			<ul class="minimize-modal-list" style="height: auto">
 				<li
-					v-for="(modal, index) in dynamicModals.value"
+					v-for="(modal, index) in dynamicModals"
 					:key="modal.id"
 					class="modal-item"
 					@dblclick="restoreModal(index, modal)"
 				>
-					<p class="g-text-overflow-hidden" :title="modal.bind.title">
-						{{ modal.bind.title }}
+					<p class="g-text-overflow-hidden" :title="modal?.attrs?.title">
+						{{ modal?.attrs?.title }}
 					</p>
 					<p>
 						<i
@@ -67,31 +62,22 @@
 <script lang="ts" setup>
 // import { $vdm } from './modalInstance'
 import { emitter } from '../../utils/mitt'
-import { ComponentOptions, ref } from 'vue'
-import type { PropType } from 'vue'
+import { ref } from 'vue'
+import type { UseModalOptionsPrivate } from '../../types/dynamicModal'
 
-let props = defineProps({
-	api: {
-		type: Object as PropType<any>
-	}
+let dynamicModals = ref({
+	value: []
 })
-
-let dynamicModals = ref<Array<ComponentOptions>>([])
-emitter.on('setDynamicModals', (list: Array<ComponentOptions>) => {
+emitter.on('setDynamicModals', (list: Array<UseModalOptionsPrivate>) => {
+	console.log('setDynamicModals', list)
 	dynamicModals.value = list
 })
 
-function slice(index) {
+function close(index) {
 	dynamicModals.value.splice(index, 1)
 }
-function close(index) {
-	slice(index)
-}
-function closeAll() {
-	dynamicModals.value.splice(0, dynamicModals.value.length)
-}
 function restoreModal(index, modal) {
-	// $vdm.open(modal.name)
+	modal.modelValue = true
 }
 </script>
 
