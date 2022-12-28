@@ -145,7 +145,6 @@ import { jlgTableProps } from './props'
 import { EmitsOptions, JlgTableProps } from '../../types'
 import { useTable } from './hooks/useTable'
 import { VxeTableInstance } from 'vxe-table'
-import { Plus, Delete, Edit, View } from '@element-plus/icons-vue'
 
 const props = defineProps(jlgTableProps)
 const emit = defineEmits<EmitsOptions>()
