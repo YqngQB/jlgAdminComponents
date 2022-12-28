@@ -31,7 +31,6 @@ function getConfigs() {
             }
         }
         : {
-            base: '/jlg-admin-components/',
             build: {
                 sourcemap: false,
                 chunkSizeWarningLimit: 4000
@@ -42,6 +41,7 @@ function getConfigs() {
 export default defineConfig({
     plugins: [vue(), vueJsx(), svgLoader()],
     server: {
+        port: 10100,
         host: '0.0.0.0'
     },
     ...getConfigs()
