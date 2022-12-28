@@ -17,7 +17,6 @@ type BtList = {
 	disabled?: boolean
 	// 是否加载中
 	loading?: boolean
-	link?: boolean
 }
 
 interface HandleType {

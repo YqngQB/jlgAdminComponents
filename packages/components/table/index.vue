@@ -101,7 +101,7 @@
 								:icon="item.icon"
 								:disabled="item.disabled"
 								:loading="item.loading"
-                :link="props.handle.link"
+                link
 								@click.stop="handleClick(item.event, scope.row)"
 							>
 								{{ item.label }}
