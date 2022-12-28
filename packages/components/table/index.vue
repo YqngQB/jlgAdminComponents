@@ -98,7 +98,7 @@
 								:key="item.label"
 								size="small"
 								:type="item.type"
-								:icon="item.icon ? useRenderIcon(item.icon) : ''"
+								:icon="item.icon"
 								:disabled="item.disabled"
 								:loading="item.loading"
                 :link="props.handle.link"
@@ -122,7 +122,7 @@
 									<el-dropdown-item
 										v-for="item in fullButtonFilter(scope.row)?.extraButtonList"
 										:key="item.label"
-										:icon="item.icon ? useRenderIcon(item.icon) : ''"
+										:icon="item.icon"
 										:disabled="item.disabled"
 										@click.stop="handleClick(item.event, scope.row)"
 									>
@@ -281,24 +281,6 @@ function fullButtonFilter(row) {
 	return {
 		buttonList,
 		extraButtonList
-	}
-}
-
-function useRenderIcon(icon: string | Component) {
-	if (typeof icon !== 'string') {
-		return icon
-	}
-	switch (icon) {
-		case 'add':
-			return Plus
-    case 'delete':
-      return Delete
-    case 'edit':
-      return Edit
-    case 'view':
-      return View
-		default:
-			return icon
 	}
 }
 
