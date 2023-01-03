@@ -16,7 +16,7 @@
 			<vxe-table
 				ref="xTable"
 				class="sortable-table-wrapper"
-				:id="props.id"
+				:id="props.id || undefined"
 				:data="props.data"
 				:height="listInfo.tableHeight || undefined"
 				:show-overflow="props.showOverflow"
@@ -30,8 +30,6 @@
 					fontWeight: 'bold',
 					...props.headerCellStyle
 				}"
-				:height="listInfo.tableHeight || undefined"
-				:data="props.data"
 				:show-footer="props.showFooter"
 				:footer-method="getSummaries"
 				:footer-cell-class-name="props.footerCellClassName"
@@ -43,6 +41,11 @@
 				:radio-config="{ trigger: 'row', ...props.radioConfig }"
 				:menu-config="tableMenu"
 				v-bind="$attrs"
+				@checkbox-all="selectAllEvent"
+				@cell-click="cellClick"
+				@cell-dblclick="cellDblclick"
+				@sort-change="serverSideSorting"
+				@menu-click="contextMenuClickEvent"
 			>
 				<vxe-column
 					v-if="props.isCheckBox"
@@ -57,7 +60,7 @@
 					v-if="props.tableIndex"
 					type="seq"
 					align="center"
-					:width="props.fieldList.length === 0 ? '' : 60"
+					:width="props.columns.length === 0 ? '' : 60"
 					title="序号"
 					fixed="left"
 					tree-node
@@ -101,7 +104,7 @@
 								:icon="item.icon"
 								:disabled="item.disabled"
 								:loading="item.loading"
-                link
+								link
 								@click.stop="handleClick(item.event, scope.row)"
 							>
 								{{ item.label }}
@@ -115,7 +118,7 @@
 								class="el-filter-link m-l-12px color-[#909399] font-bold"
 								link
 							>
-								...
+								<el-icon><MoreFilled /></el-icon>
 							</el-button>
 							<template #dropdown>
 								<el-dropdown-menu>
@@ -133,6 +136,44 @@
 						</el-dropdown>
 					</template>
 				</vxe-column>
+				<jlg-column
+					v-for="item in state.columns"
+          header-class-name="sortable-header--column"
+					:key="item.field"
+					:field="item.field"
+					:title="item.title"
+					:width="item.width"
+					:min-width="item.minWidth || 100"
+					:max-width="item?.maxWidth"
+					:resizable="item.resizable"
+					:fixed="item.fixed"
+					:align="item.align || 'left'"
+					:header-align="item.headerAlign || undefined"
+					:footer-align="item.footerAlign || undefined"
+					:show-overflow="item.showOverflow || undefined"
+					:show-header-overflow="item.showHeaderOverflow || undefined"
+					:show-footer-overflow="item.showFooterOverflow || undefined"
+					:class-name="item.className"
+					:sortable="item.sortable || false"
+					:formatter="item.formatter"
+					:children="item.children"
+					:visible="item.visible"
+					:cell-render="item.cellRender"
+					:edit-render="item.editRender || undefined"
+					:titlePrefix="item.titlePrefix || undefined"
+					:is-auto-fit="item.isAutoFit || false"
+				>
+					<template #header="{ column }">
+						<span>{{ column.title }}</span>
+						<span style="color: #4381e6">
+							{{ ' ' + setSortIndex(column.field) }}
+						</span>
+					</template>
+					<!-- slot 自定义列-->
+					<template v-if="item.type === 'slot'" v-slot="scope">
+						<slot :name="'col-' + item.field" :row="scope.row" :data="scope" />
+					</template>
+				</jlg-column>
 			</vxe-table>
 		</div>
 		<div class="jlg-table--footer"></div>
@@ -140,12 +181,54 @@
 </template>
 
 <script lang="ts" setup>
-import { nextTick, ref, computed, reactive, Component } from 'vue'
+import { nextTick, watch, ref, reactive, unref, provide } from 'vue'
 import { jlgTableProps } from './props'
-import { EmitsOptions, JlgTableProps } from '../../types'
+import { JlgColumnProps, JlgTableProps } from '../../types'
 import { useTable } from './hooks/useTable'
 import { VxeTableInstance } from 'vxe-table'
+import { MoreFilled } from '@element-plus/icons-vue'
+import JlgColumn from './jlgColumn.vue'
+import { cloneDeep } from 'lodash-unified'
+import { VxeTableEvents, VxeTableDefines } from 'vxe-table'
+type EmitsOptions = {
+  (e: "update:query", query: any): void;
+  (e: "handleEvent", type: string, selection: any, row?: object): void;
+  (
+      e: "handleEvent",
+      row: object,
+      rowIndex: number,
+      column?: object,
+      columnIndex?: number,
+      triggerRadio?: boolean,
+      triggerCheckbox?: boolean
+  ): void;
 
+  (
+      e: "rowDblclick",
+      row: object,
+      rowIndex: number,
+      column?: object,
+      columnIndex?: number
+  ): void;
+
+  (
+      e: "cellClick",
+      row: object,
+      rowIndex: number,
+      column: object,
+      columnIndex: number,
+      triggerRadio: boolean,
+      triggerCheckbox: boolean
+  ): void;
+
+  (e: "handleClick", type: string, row: object): void;
+
+  (e: "update:data", data: Array<object>): void;
+
+  (e: "update:columns", data: Array<JlgColumnProps>): void;
+
+  (e: "reset"): void;
+}
 const props = defineProps(jlgTableProps)
 const emit = defineEmits<EmitsOptions>()
 
@@ -174,13 +257,14 @@ const state = reactive({
 	// 存储全表已选中的数据
 	selection: [],
 	// 列配置
-	columns: [],
+	columns: [] as JlgColumnProps[],
 	columnData: {
 		isAutoFit: false
 	}
 })
 
 let xTable = ref<VxeTableInstance>(null)
+let sortList: VxeTableDefines.SortCheckedParams[] = ref([])
 
 let {
 	refresh,
@@ -189,8 +273,16 @@ let {
 	getSelectedRecordset,
 	sortColumns,
 	getSummaries,
-	menuVisibleMethod
-} = useTable(props as JlgTableProps, emit, xTable, state, listInfo)
+	menuVisibleMethod,
+	setSortIndex,
+  getViewportOffset
+} = useTable(props as JlgTableProps, emit, xTable, state, listInfo, sortList)
+
+provide("$setSortIndex", setSortIndex);
+provide("$tableGather",{
+  props: props,
+  xTable: xTable,
+})
 
 let tableMenu = reactive({
 	className: 'page-table--menus',
@@ -244,8 +336,14 @@ let tableMenu = reactive({
 	visibleMethod: menuVisibleMethod
 })
 
-// 初始化前先排序
-sortColumns()
+// 存储默认列配置（用于重置）
+let columnDefaults = cloneDeep(props.columns)
+// 列配置
+state.columns = sortColumns(cloneDeep(props.columns) as  JlgColumnProps[])
+
+watch(state.columns, (newVal: JlgColumnProps[]) => {
+	emit('update:columns', newVal)
+})
 
 // 获取数据
 nextTick(() => {
@@ -259,17 +357,17 @@ nextTick(() => {
 function fullButtonFilter(row) {
 	let buttonList = []
 	let extraButtonList = []
-	if (props.handle.btList.length < 3) {
+	if (props.handle?.btList?.length < 3) {
 		return {
 			buttonList:
-				props.handle.btList.filter((btItem) => {
+          (props.handle?.btList || []).filter((btItem) => {
 					return !btItem.ifRender || btItem.ifRender(row)
 				}) || [],
 			extraButtonList: []
 		}
 	}
 	// 只有长度大于2的时候才进行计算，减少计算消耗
-	props.handle.btList.forEach((btItem) => {
+	props.handle?.btList.forEach((btItem) => {
 		let ifRender = !btItem.ifRender || btItem.ifRender(row)
 		if (buttonList.length < 2 && ifRender) {
 			buttonList.push(btItem)
@@ -283,8 +381,99 @@ function fullButtonFilter(row) {
 	}
 }
 
+function getTableHeight() {
+  const $xtable = xTable.value;
+  if (!$xtable) return;
+  const pagerH = props.isPagination ? 52 : 0;
+  const footerH = props.showSummary ? 65 : 0;
+  setTimeout(() => {
+    listInfo.tableHeight =
+        getViewportOffset($xtable.$el).bottomIncludeBody -
+        pagerH -
+        footerH -
+        Number(props.extraFooterHeight);
+  }, 100);
+}
+
 function handleClick(event, data) {
-  emit("handleClick", event, data);
+	emit('handleClick', event, data)
+}
+
+const selectAllEvent: VxeTableEvents.CheckboxAll = () => {
+	getSelectedRecordset()
+	emit('handleEvent', 'tableCheck', state.selection)
+}
+
+const cellClick: VxeTableEvents.CellClick = ({
+	row,
+	rowIndex,
+	column,
+	columnIndex,
+	triggerRadio,
+	triggerCheckbox
+}) => {
+	getSelectedRecordset()
+	if (props.isCheckBox && columnIndex === 0) {
+		// 复选
+		emit('handleEvent', 'tableCheck', state.selection, row)
+	}
+	emit(
+		'cellClick',
+		row,
+		rowIndex,
+		column,
+		columnIndex,
+		triggerRadio,
+		triggerCheckbox
+	)
+}
+
+const cellDblclick: VxeTableEvents.CellDblclick = ({
+	row,
+	rowIndex,
+	column,
+	columnIndex
+}) => {
+	emit('rowDblclick', row, rowIndex, column, columnIndex)
+}
+
+// 服务器端排序 升序 降序
+const serverSideSorting: VxeTableEvents.SortChange = ({
+	sortList: sortListValue
+}) => {
+	updateColumnsSortFunc(sortListValue)
+	sortList.value = sortListValue
+	if (listInfo.query) {
+		// listInfo.query.sorts = sortList.value.map(item => {
+		//   // 将有多层级的列字段名拆成数组，并取最后一个字段传递给后端（例如：aa.bb.cc，取 cc 传递给后端排序）
+		//   const fieldSplitArray = item.field.split(".");
+		//   return {
+		//     name: fieldSplitArray[fieldSplitArray.length - 1],
+		//     order: item.order
+		//   };
+		// });
+	}
+	refresh()
+}
+
+// 将最新的列排序信息更新到 state.columns 当中
+let updateColumnsSortFunc = (sortList: VxeTableDefines.SortCheckedParams[]) => {
+	unref(sortList).forEach((sortItem) => {
+		let { item } = XEUtils.findTree(state.columns, (column: JlgColumnProps) => {
+			return column.field === sortItem.field
+		})
+		if (item) {
+			item.order = sortItem.order
+		}
+	})
+}
+
+/**
+ * 用于清空排序条件，数据会恢复成未排序的状态
+ * */
+function clearSort() {
+	sortList.value = []
+	xTable.value.clearSort()
 }
 </script>
 

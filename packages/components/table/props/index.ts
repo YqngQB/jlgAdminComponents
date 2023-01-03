@@ -1,6 +1,7 @@
 import type { Component, PropType } from 'vue'
 import vxeProps from './vxeProps'
 import GlobalConfig from '../../../hooks/useGlobalConfig'
+import { JlgColumnProps } from '../../../types'
 type BtList = {
 	label: string
 	// 是否使用插槽
@@ -95,15 +96,23 @@ export const jlgTableProps = {
 	// 仅对 type=selection 的table有效，类型为 Function，Function 的返回值用来决定这一行的 CheckBox 是否可以勾选
 	selectable: Function,
 	// field 字段配置
-	fieldList: {
-		type: Array,
+	columns: {
+		type: Array as PropType<Array<JlgColumnProps>>,
 		default: () => {
 			return []
 		}
 	},
 	// 操作列配置
 	handle: {
-		type: Object as PropType<HandleType>
+		type: Object as PropType<HandleType>,
+		default: () => {
+			return {
+				fixed: 'right',
+				title: '操作',
+				width: '200px',
+				btList: []
+			}
+		}
 	},
 	// 是否分页
 	isPagination: {

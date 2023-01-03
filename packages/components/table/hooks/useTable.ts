@@ -2,7 +2,12 @@ import { cloneDeep } from 'lodash-unified'
 import { ref, reactive, nextTick } from 'vue'
 
 import type { Ref } from 'vue'
-import type { JlgTableProps, EmitsOptions, SummaryItem } from '../../../types'
+import type {
+	JlgTableProps,
+	EmitsOptions,
+	SummaryItem,
+	JlgColumnProps
+} from '../../../types'
 import {
 	VxeTableConstructor,
 	VxeTableDefines,
@@ -22,7 +27,8 @@ export function useTable(
 	emit: EmitsOptions,
 	xTable: Ref,
 	state: Record<string, any>,
-	listInfo: Record<string, any>
+	listInfo: Record<string, any>,
+	sortList: Ref<VxeTableDefines.SortCheckedParams[]>
 ) {
 	let tableQuery = ref(cloneDeep(props.query))
 
@@ -42,7 +48,7 @@ export function useTable(
 			clearSelections()
 		}
 
-		getList(props.api)
+		getList(props.api).then((r) => r)
 	}
 	/**
 	 * 清空用户的选择
@@ -145,16 +151,15 @@ export function useTable(
 		return state.selection
 	}
 
-	function sortColumns() {
-		const sort = (data: Array<{ sort: number }>) => {
+	function sortColumns(columns: JlgColumnProps[]) {
+		const sort = (data: JlgColumnProps[]) => {
 			return data.sort((s, e) => {
-				let a = Number.isNaN(Number(s.sort)) ? 0 : Number(s.sort)
-				let b = Number.isNaN(Number(e.sort)) ? 0 : Number(e.sort)
+				let a = Number.isNaN(Number(s.rank)) ? 0 : Number(s.rank)
+				let b = Number.isNaN(Number(e.rank)) ? 0 : Number(e.rank)
 				return a - b
 			})
 		}
-		state.columns = sort(state.columns)
-		return state.columns
+		return sort(columns)
 	}
 
 	function getSummaries(params: {
@@ -224,7 +229,7 @@ export function useTable(
 		}
 		return r
 	}
-    /**
+	/**
 	 *  控制快捷菜单是否可见
 	 */
 	function menuVisibleMethod(params: {
@@ -245,11 +250,15 @@ export function useTable(
 		state.columnData = filterTableMater(code, key, state.columns)
 		options.forEach((list) => {
 			list.forEach((item) => {
-				if (['hideColumn', 'allColumnWidthAdaptive'].includes(item.code as string)) {
+				if (
+					['hideColumn', 'allColumnWidthAdaptive'].includes(item.code as string)
+				) {
 					item.visible = isVisible
 				}
 				if (
-					['resetColumnWidth', 'currentColumnWidthAdaptive'].includes(item.code as string)
+					['resetColumnWidth', 'currentColumnWidthAdaptive'].includes(
+						item.code as string
+					)
 				) {
 					const isAutoFit = state.columnData && state.columnData.isAutoFit
 					item.visible =
@@ -268,7 +277,11 @@ export function useTable(
 	 * @param {array} arr
 	 * @returns {object}
 	 */
-	function filterTableMater(code: string, key: string, arr: Array<any>): unknown {
+	function filterTableMater(
+		code: string,
+		key: string,
+		arr: Array<any>
+	): unknown {
 		for (const item of arr) {
 			if (item[key] === code) {
 				return item
@@ -280,6 +293,84 @@ export function useTable(
 		}
 	}
 
+	/**
+	 * 显示当前的 索引
+	 * */
+	function setSortIndex(value: string) {
+		let result = 0
+		if (!sortList.value) {
+			return ''
+		}
+		for (let i = 0; i < sortList.value.length; i++) {
+			const valueElement = sortList.value[i]
+			if (value === valueElement.field) {
+				result = i + 1
+				break
+			}
+		}
+		return result || ''
+	}
+
+	/**
+	 * 获取当前元素的left、top偏移
+	 *   left：元素最左侧距离文档左侧的距离
+	 *   top:元素最顶端距离文档顶端的距离
+	 *   right:元素最右侧距离文档右侧的距离
+	 *   bottom：元素最底端距离文档底端的距离
+	 *   rightIncludeBody：元素最左侧距离文档右侧的距离
+	 *   bottomIncludeBody：元素最底端距离文档最底部的距离
+	 */
+	function getViewportOffset(element: HTMLElement) {
+		const doc = document.documentElement
+
+		const docScrollLeft = doc.scrollLeft
+		const docScrollTop = doc.scrollTop
+		const docClientLeft = doc.clientLeft
+		const docClientTop = doc.clientTop
+
+		const pageXOffset = window.pageXOffset || window.scrollX
+		const pageYOffset = window.pageYOffset || window.scrollY
+
+		const box = getBoundingClientRect(element)
+
+		const {
+			x: retLeft,
+			y: rectTop,
+			width: rectWidth,
+			height: rectHeight
+		} = box
+
+		const scrollLeft = (pageXOffset || docScrollLeft) - (docClientLeft || 0)
+		const scrollTop = (pageYOffset || docScrollTop) - (docClientTop || 0)
+		const offsetLeft = retLeft + pageXOffset
+		const offsetTop = rectTop + pageYOffset
+
+		const left = offsetLeft - scrollLeft
+		const top = offsetTop - scrollTop
+
+		const clientWidth = window.document.documentElement.clientWidth
+		const clientHeight = window.document.documentElement.clientHeight
+		return {
+			left: left,
+			top: top,
+			right: clientWidth - rectWidth - left,
+			bottom: clientHeight - rectHeight - top,
+			rightIncludeBody: clientWidth - left,
+			bottomIncludeBody: clientHeight - top
+		}
+	}
+	function getBoundingClientRect(element: HTMLElement): { width: number; x: number; y: number; height: number } {
+		if (!element || !element.getBoundingClientRect) {
+			return {
+				height: 0,
+				width: 0,
+				x: 0,
+				y: 0,
+			}
+		}
+		return element.getBoundingClientRect()
+	}
+
 	return {
 		refresh,
 		clearSelections,
@@ -287,6 +378,8 @@ export function useTable(
 		sortColumns,
 		getSummaries,
 		getSelectedRecordset,
-		menuVisibleMethod
+		menuVisibleMethod,
+		setSortIndex,
+		getViewportOffset
 	}
 }

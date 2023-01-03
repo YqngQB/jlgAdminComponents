@@ -1,6 +1,6 @@
 import { SetupContext, RenderFunction, ComponentPublicInstance } from 'vue'
 import { ValueOf } from './component'
-import type { VxeTableEmits, VxeTableInstance, VxeTableProps } from 'vxe-table'
+import type { VxeTableEmits, VxeTableInstance, VxeTableProps,VxeColumnProps } from 'vxe-table'
 
 export type JlgTableInstance = ComponentPublicInstance<
 	{ xTable: VxeTableInstance },
@@ -120,7 +120,23 @@ export type EmitsOptions = {
 
     (e: "update:data", data: Array<object>): void;
 
-    (e: "update:field-list", data: Array<object>): void;
+    (e: "update:columns", data: Array<JlgColumnProps>): void;
 
     (e: "reset"): void;
+}
+
+export interface JlgColumnProps extends  Omit<VxeColumnProps, 'type'> {
+	order: number
+	/**
+	 * 排序等级，值越大，排序约越靠后
+	 */
+	rank: number
+	/**
+	 * 是否设置列宽自适应
+	 */
+	isAutoFit: boolean
+    /**
+    * 子列配置项
+    */
+	children: Array<JlgColumnProps>
 }
