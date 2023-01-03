@@ -1,9 +1,9 @@
 <template>
 	<div class="modals-container">
 		<component
-			v-for="(modal, index) in dynamicModals"
+			v-for="modal in dynamicModals"
 			:is="modal.component"
-			:key="index"
+			:key="modal.id"
 			:id="modal.id"
 			v-bind="modal.attrs"
 			v-model="modal.modelValue"
