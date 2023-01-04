@@ -10,11 +10,10 @@
 		:lock-view="lockView"
 		:showHeader="showHeader"
 		:show-footer="showFooter"
-		:show-zoom="showZoom"
 		type="modal"
 		v-bind="$attrs"
 		:destroy-on-close="false"
-		class="scrollBar"
+		@show="emit('show')"
 	>
 		<template #header>
 			<span class="vxe-modal--title">{{ title }}</span>
@@ -38,6 +37,7 @@
 				placement="bottom"
 			>
 				<i
+					v-if="showZoom"
 					:class="[
 						'vxe-modal--zoom-btn',
 						'trigger--btn',
@@ -61,11 +61,7 @@
 			</el-tooltip>
 		</template>
 		<template #default>
-			<div>
-				<pre>attrs:{{ attrs }}</pre>
-				____________
-				<pre>props:{{ props }}</pre>
-			</div>
+			<slot />
 		</template>
 		<template #footer>
 			<slot name="footer" :close="() => close()">
@@ -76,25 +72,25 @@
 </template>
 
 <script lang="ts" setup>
-import { PropType, ref, computed, useAttrs } from 'vue'
+import { PropType, ref, useAttrs } from 'vue'
 import { $vdm } from './modalInstance'
 import type { VxeModalInstance } from 'vxe-table'
-import type { ModalKey } from '../../types/dynamicModal'
+import type { ModalKey } from '../../types'
+import { emitter } from '../../utils/mitt'
+import XEUtils from 'xe-utils'
 
 let props = defineProps({
 	slots: {
 		type: Object as PropType<Record<string, any>>,
 		default: () => ({})
 	},
-  id: Symbol,
+	id: Symbol,
 	title: String,
 	data: Object,
 	formKitData: Object,
 	// 设置唯一的 name, 可用于手动关闭或打开指定的 Modal。
 	name: String,
 	type: { type: String, default: 'add' },
-	anchorPointNavigation: { type: Boolean, default: true },
-	collapseList: { type: Array, default: () => [] },
 	resize: { type: Boolean, default: true },
 	mask: { type: Boolean, default: false },
 	disabled: { type: Boolean, default: false },
@@ -108,28 +104,63 @@ let props = defineProps({
 	minHeight: { type: [Number, String], default: 300 },
 	maxWidth: { type: [Number, String], default: Infinity },
 	maxHeight: { type: [Number, String], default: Infinity },
-	confirmText: { type: String, default: '保存' },
-	cancelText: { type: String, default: '关闭' }
+	confirmButtonText: { type: String, default: '保存' },
+	cancelButtonText: { type: String, default: '关闭' },
+	beforeCloseMethod: Function as PropType<() => Promise<any>>
 })
 
-let emits = defineEmits(['show', 'hide', 'close'])
+let emit = defineEmits(['hide', 'close'])
+
+emitter.on('hideEmitter', (name) => {
+	if (name === props.name) {
+		emit('hide')
+	}
+})
+emitter.on('hideAllEmitter', () => {
+	emit('hide')
+})
+
+emitter.on('closeEmitter', (modalKey) => {
+	let key = typeof modalKey === 'string' ? 'name' : 'id'
+	if (modalKey === props[key]) {
+		emit('close')
+	}
+})
+
+emitter.on('closeAllEmitter', () => {
+	emit('close')
+})
+
+emitter.on('beforeCloseEmitter', (callback) => {
+	let beforeCloseMethod = props.beforeCloseMethod
+	if (!beforeCloseMethod) {
+		callback(true)
+    return
+	}
+	Promise.resolve(beforeCloseMethod())
+		.then((rest) => {
+			callback(!XEUtils.isError(rest))
+		})
+		.catch((e) => {
+			return e
+		})
+})
 
 let attrs = useAttrs()
 
 let modalRef = ref<VxeModalInstance>()
 
 /**
- *  关闭当前弹窗（不会销毁）
+ * 隐藏当前弹窗（不会销毁）
  */
 const hide = () => {
-	modalRef.value.close()
+	$vdm.hide(props.name as ModalKey)
 }
 
 /**
- * 关闭当前弹窗（会销毁）
+ * 关闭当前弹窗（销毁）
  */
 const close = () => {
-  console.log('close',props)
 	$vdm.close(props.id as ModalKey)
 }
 </script>
@@ -137,7 +168,7 @@ const close = () => {
 <script lang="ts">
 export default {
 	name: 'VueDynamicModal',
-	// inheritAttrs: false
+	inheritAttrs: false
 }
 </script>
 

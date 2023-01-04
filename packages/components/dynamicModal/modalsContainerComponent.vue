@@ -1,12 +1,14 @@
 <template>
 	<div class="modals-container">
 		<component
-			v-for="modal in dynamicModals"
+			v-for="(modal,index) in dynamicModals"
 			:is="modal.component"
-			:key="modal.id"
+			:key="modal?.name || index"
 			:id="modal.id"
-			v-bind="modal.attrs"
-			v-model="modal.modelValue"
+      :name="modal.name"
+			v-bind="modal.bind || {}"
+      v-on="modal.on || {}"
+      v-model="modal.modelValue"
 		/>
 		<el-popover
 			v-if="dynamicModals.length > 0"
@@ -23,8 +25,8 @@
 					class="modal-item"
 					@dblclick="restoreModal(index, modal)"
 				>
-					<p class="g-text-overflow-hidden" :title="modal?.attrs?.title">
-						{{ modal?.attrs?.title }}
+					<p class="g-text-overflow-hidden" :title="modal?.bind?.title">
+						{{ modal?.bind?.title }}
 					</p>
 					<p>
 						<i
@@ -37,7 +39,7 @@
 							style="display: inline-block; margin-left: 10px"
 							class="vxe-modal--close-btn trigger--btn vxe-icon-close"
 							title="关闭"
-							@click="close(index, modal)"
+							@click="close(modal.id)"
 						/>
 					</p>
 				</li>
@@ -64,17 +66,18 @@
 import { emitter } from '../../utils/mitt'
 import { ref } from 'vue'
 import type { UseModalOptionsPrivate } from '../../types/dynamicModal'
+import { $vdm } from "./modalInstance";
+import { ModalKey } from "../../types/dynamicModal";
 
 let dynamicModals = ref({
 	value: []
 })
 emitter.on('setDynamicModals', (list: Array<UseModalOptionsPrivate>) => {
-	console.log('setDynamicModals', list)
 	dynamicModals.value = list
 })
 
-function close(index) {
-	dynamicModals.value.splice(index, 1)
+function close(id: ModalKey) {
+  $vdm.close(id)
 }
 function restoreModal(index, modal) {
 	modal.modelValue = true

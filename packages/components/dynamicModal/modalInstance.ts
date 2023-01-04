@@ -2,12 +2,12 @@ import VueDynamicModalComponent from './VueDynamicModal.vue'
 import ModalsContainerComponent from './ModalsContainerComponent.vue'
 import { markRaw, reactive, nextTick, shallowReactive } from 'vue'
 import type { Component, ComponentOptions } from 'vue'
-import type { UseModalOptionsPrivate, ModalKey } from '../../types/dynamicModal'
+import type { UseModalOptionsPrivate, ModalKey } from '../../types'
 import { emitter } from '../../utils/mitt'
 
 export class ModalInstance {
 	readonly VueDynamicModal: Component
-	private dynamicModals: Array<UseModalOptionsPrivate>
+	private readonly dynamicModals: Array<UseModalOptionsPrivate>
 	public ModalsContainer: ComponentOptions
 	constructor() {
 		const bindApi = (component: ComponentOptions) => {
@@ -40,14 +40,18 @@ export class ModalInstance {
 			}
 		)
 		if (index !== -1) {
-			this.dynamicModals.splice(index, 1)
+			emitter.emit('beforeCloseEmitter', (result) => {
+				if (result) {
+					emitter.emit('closeEmitter', modalKey)
+					this.dynamicModals.splice(index, 1)
+				}
+			})
 		}
 	}
 	/**
 	 * @description 将所有打开的modal 最小化
 	 */
 	hideAll() {
-		debugger
 		let names = this.dynamicModals.map((modal) => modal.name) as ModalKey[]
 		return this.hide(...names)
 	}
@@ -55,8 +59,9 @@ export class ModalInstance {
 	 * @description 销毁所有modal
 	 */
 	closeAll() {
-		this.dynamicModals = []
+		this.dynamicModals.splice(0, this.dynamicModals.length)
 		emitter.emit('setDynamicModals', this.dynamicModals)
+		emitter.emit('closeAllEmitter')
 	}
 
 	open(...names: ModalKey[]) {
@@ -64,6 +69,11 @@ export class ModalInstance {
 	}
 
 	hide(...names: Array<ModalKey>) {
+		if (Array.isArray(names)) {
+			emitter.emit('hideAllEmitter')
+		} else {
+			emitter.emit('hideEmitter', names)
+		}
 		return this.toggle(names, false)
 	}
 
@@ -73,7 +83,13 @@ export class ModalInstance {
 	toggle(name: ModalKey | ModalKey[], isShow: boolean) {
 		const modals = Array.isArray(name) ? this.get(...name) : this.get(name)
 		return Promise.allSettled(
-			modals.map((modal) => (modal.modelValue = isShow))
+			modals.map((modal) => {
+				// 【fix】: 修复设置modal的beforeHideMethod属性后，只触发第一次的bug
+				modal.modelValue = true
+				nextTick(() => {
+					modal.modelValue = isShow
+				}).then((r) => r)
+			})
 		)
 	}
 
@@ -113,7 +129,7 @@ export class ModalInstance {
 				nextTick(() => {
 					this.dynamicModals.push(options)
 				}).then((_) =>
-					console.info(
+					console.warn(
 						'[Vue Dynamic Modal] 存在同名modal，已经删除原modal，重新添加一个新的modal！'
 					)
 				)
