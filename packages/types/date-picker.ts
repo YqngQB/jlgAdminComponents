@@ -42,8 +42,8 @@ interface DatePickerProps {
 	clearIcon: string
 	validateEvent: boolean
 	disabledDate: (date: Date) => boolean
-	shortcuts: Array<{ text: string; value: Date | Function }>,
-	cellClassName: (date: Date) => string,
+	shortcuts: Array<{ text: string; value: Date | Function }>
+	cellClassName: (date: Date) => string
 	teleported: boolean
 }
 export type JlgDatePickerProps = InputBasicProps | DatePickerProps
@@ -57,4 +57,11 @@ export interface DatePickerMethods {
 }
 export interface JlgDatePickerMethods extends DatePickerMethods {}
 
-export type JlgDatePickerEmits = ['change', 'focus', 'blur', 'calendarChange', 'panelChange', 'visibleChange']
+export type JlgDatePickerEmits = [
+	'change',
+	'focus',
+	'blur',
+	'calendarChange',
+	'panelChange',
+	'visibleChange'
+]

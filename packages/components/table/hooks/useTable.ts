@@ -1,11 +1,10 @@
 import { cloneDeep } from 'lodash-unified'
-import { ref, reactive, nextTick } from 'vue'
+import { ref, nextTick } from 'vue'
 
 import type { Ref } from 'vue'
 import type {
 	JlgTableProps,
 	EmitsOptions,
-	SummaryItem,
 	JlgColumnProps
 } from '../../../types'
 import {
@@ -21,7 +20,6 @@ import {
  * @param state 组件状态
  * @param listInfo 列表相关配置
  * */
-
 export function useTable(
 	props: JlgTableProps,
 	emit: EmitsOptions,
@@ -93,7 +91,7 @@ export function useTable(
 		return new Promise((resolve, reject) => {
 			// 每次调用接口时都自动绑定最新的数据
 			api(handleParams())
-				.then((res) => {
+				.then((res: unknown) => {
 					let responseList = props.beforeResponseCallback
 						? props.beforeResponseCallback(res)
 						: res
@@ -102,9 +100,10 @@ export function useTable(
 					 * 当需要跨页勾选且数据中没有唯一主键时,可以将 props.useRowKey 设置为一个函数,返回一个唯一值
 					 */
 					if (props.useRowKey && typeof props.useRowKey === 'function') {
+						let useRowKey = props.useRowKey
 						responseList = responseList.map(
 							(item: Record<string, any>, index: number) => {
-								let _X_ROW_KEY = props.useRowKey(item, index)
+								let _X_ROW_KEY = useRowKey(item, index)
 								if (_X_ROW_KEY) {
 									let keyField = props.rowConfig?.keyField as string
 									item[keyField || '_X_ROW_KEY'] = _X_ROW_KEY
@@ -122,7 +121,7 @@ export function useTable(
 					resolve(responseList)
 					emit('handleEvent', 'list', responseList)
 				})
-				.catch((e) => {
+				.catch((e: unknown) => {
 					reject(e)
 				})
 				.finally(() => {
@@ -173,7 +172,8 @@ export function useTable(
 		if (props.summaryMethod) {
 			sums = props.summaryMethod(params)
 		} else {
-			const summaryOptions: Array<SummaryItem> = props.summaryOptions
+			const summaryOptions: JlgTableProps['summaryOptions'] =
+				props.summaryOptions
 			sums = [
 				columns.map((column, _columnIndex) => {
 					if (_columnIndex === 1) {
@@ -181,7 +181,7 @@ export function useTable(
 					}
 					if (
 						summaryOptions
-							.map((obj) => obj.value)
+							?.map((obj) => obj.value)
 							.includes(column.field as string)
 					) {
 						const type = summaryOptions.find(
@@ -333,12 +333,7 @@ export function useTable(
 
 		const box = getBoundingClientRect(element)
 
-		const {
-			x: retLeft,
-			y: rectTop,
-			width: rectWidth,
-			height: rectHeight
-		} = box
+		const { x: retLeft, y: rectTop, width: rectWidth, height: rectHeight } = box
 
 		const scrollLeft = (pageXOffset || docScrollLeft) - (docClientLeft || 0)
 		const scrollTop = (pageYOffset || docScrollTop) - (docClientTop || 0)
@@ -359,13 +354,18 @@ export function useTable(
 			bottomIncludeBody: clientHeight - top
 		}
 	}
-	function getBoundingClientRect(element: HTMLElement): { width: number; x: number; y: number; height: number } {
+	function getBoundingClientRect(element: HTMLElement): {
+		width: number
+		x: number
+		y: number
+		height: number
+	} {
 		if (!element || !element.getBoundingClientRect) {
 			return {
 				height: 0,
 				width: 0,
 				x: 0,
-				y: 0,
+				y: 0
 			}
 		}
 		return element.getBoundingClientRect()

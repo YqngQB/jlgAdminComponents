@@ -3,7 +3,7 @@
 		<el-button type="primary" @click="openModal(1)">打开弹窗</el-button>
 		<el-button type="primary" @click="openModal(2)">打开弹窗2</el-button>
 		<el-button type="primary" @click="openModal(3)">打开弹窗3</el-button>
-		<el-button type="primary" @click="$vdm.closeAll()">删除所有</el-button>
+		<el-button type="primary" @click="$jdm.closeAll()">删除所有</el-button>
 		<modals-container ref="modalsContainer" />
 		<jlg-table
 			ref="table"
@@ -21,12 +21,13 @@ import { ref, reactive } from 'vue'
 import type { JlgLayoutInstance } from 'jlg-admin-components'
 import type { JlgFormInstance } from '../packages'
 import {
-	$vdm,
+	$jdm,
 	ModalsContainer
 } from '../packages/components/dynamicModal/modalInstance'
 import ModalDemo from '../src/views/modal_a/index.vue'
 
 import JlgTable from '../packages/components/table/index.vue'
+import { ElMessageBox } from 'element-plus'
 let layoutRef = ref<JlgLayoutInstance>()
 let formRef = ref<JlgFormInstance>()
 formRef.value?.submit().then((res) => {
@@ -76,25 +77,44 @@ const tableInfo = reactive({
 })
 
 const openModal = (id: number) => {
-	$vdm.show({
+	$jdm.show({
 		name: 'modal' + id,
 		component: ModalDemo,
 		bind: {
 			title: '弹窗' + id,
-			width: '40%'
+			width: '40%',
+			beforeCloseMethod: () => {
+				return new Promise((resolve) => {
+					if (id !== 2) {
+						resolve(true)
+						return
+					}
+					ElMessageBox.confirm('确定要关闭弹窗2吗？', '提示', {
+						confirmButtonText: 'yes',
+						cancelButtonText: 'no',
+						type: 'warning'
+					})
+						.then(() => {
+							resolve(true)
+						})
+						.catch(() => {
+							resolve(new Error())
+						})
+				})
+			}
 		},
 		on: {
 			customEvent: (data: string) => {
 				debugger
 				console.log(data)
 			},
-      hide: () => {
-        console.log('hide')
-      },
-      close: (data:string | null) => {
-        debugger
-        console.log('close', data)
-      }
+			hide: () => {
+				console.log('hide')
+			},
+			close: (data: string | null) => {
+				debugger
+				console.log('close', data)
+			}
 		}
 	})
 }

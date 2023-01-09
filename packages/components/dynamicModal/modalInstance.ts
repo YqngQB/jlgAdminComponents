@@ -1,23 +1,23 @@
-import VueDynamicModalComponent from './VueDynamicModal.vue'
-import ModalsContainerComponent from './ModalsContainerComponent.vue'
+import JlgDynamicModalComponent from './jlgDynamicModal.vue'
+import JlgModalsContainer from './JlgModalsContainer.vue'
 import { markRaw, reactive, nextTick, shallowReactive } from 'vue'
-import type { Component, ComponentOptions } from 'vue'
+import type { Component } from 'vue'
 import type { UseModalOptionsPrivate, ModalKey } from '../../types'
 import { emitter } from '../../utils/mitt'
 
 export class ModalInstance {
-	readonly VueDynamicModal: Component
+	readonly JlgDynamicModal: Component
 	private readonly dynamicModals: Array<UseModalOptionsPrivate>
-	public ModalsContainer: ComponentOptions
+	public ModalsContainer: Component
 	constructor() {
-		const bindApi = (component: ComponentOptions) => {
+		const bindApi = (component: Component) => {
 			return markRaw(component)
 		}
 
-		this.VueDynamicModal = bindApi(VueDynamicModalComponent)
+		this.JlgDynamicModal = bindApi(JlgDynamicModalComponent)
 
 		this.dynamicModals = reactive([])
-		this.ModalsContainer = bindApi(ModalsContainerComponent)
+		this.ModalsContainer = bindApi(JlgModalsContainer)
 	}
 	/**
 	 *  @description 打开modal
@@ -40,10 +40,12 @@ export class ModalInstance {
 			}
 		)
 		if (index !== -1) {
-			emitter.emit('beforeCloseEmitter', (result) => {
-				if (result) {
-					emitter.emit('closeEmitter', modalKey)
-					this.dynamicModals.splice(index, 1)
+			emitter.emit('beforeCloseEmitter', {
+				modalKey: modalKey,
+				callback: (result) => {
+					if (result) {
+						this.dynamicModals.splice(index, 1)
+					}
 				}
 			})
 		}
@@ -56,7 +58,7 @@ export class ModalInstance {
 		return this.hide(...names)
 	}
 	/**
-	 * @description 销毁所有modal
+	 * @description 销毁所有modal,不会触发beforeCloseMethod
 	 */
 	closeAll() {
 		this.dynamicModals.splice(0, this.dynamicModals.length)
@@ -110,11 +112,11 @@ export class ModalInstance {
 	 */
 	useModal(_options: UseModalOptionsPrivate) {
 		if (!_options.name) {
-			_options.name = _options?.component?.name || 'VueDynamicModal'
+			_options.name = _options?.component?.name || 'JlgDynamicModal'
 		}
 		const options = shallowReactive({
 			modelValue: false,
-			component: this.VueDynamicModal,
+			component: this.JlgDynamicModal,
 			id: Symbol('modal'),
 			attrs: {},
 			..._options
@@ -147,12 +149,12 @@ export class ModalInstance {
 const createModalInstance = () => {
 	const modalInstance = new ModalInstance()
 	return {
-		$vdm: modalInstance,
-		VueDynamicModal: modalInstance.VueDynamicModal,
+		$jdm: modalInstance,
+		JlgDynamicModal: modalInstance.JlgDynamicModal,
 		ModalsContainer: modalInstance.ModalsContainer,
 		useModal: modalInstance.useModal.bind(modalInstance)
 	}
 }
 
-export const { $vdm, VueDynamicModal, ModalsContainer, useModal } =
+export const { $jdm, JlgDynamicModal, ModalsContainer, useModal } =
 	createModalInstance()

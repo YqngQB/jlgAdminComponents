@@ -24,12 +24,7 @@
 				:align="props.align"
 				:stripe="props.stripe"
 				:keep-source="props.keepSource"
-				:header-cell-style="{
-					color: '#110920',
-					fontSize: '14px',
-					fontWeight: 'bold',
-					...props.headerCellStyle
-				}"
+				:header-cell-style="headerCellStyle"
 				:show-footer="props.showFooter"
 				:footer-method="getSummaries"
 				:footer-cell-class-name="props.footerCellClassName"
@@ -37,8 +32,8 @@
 				:row-config="props.rowConfig"
 				:checkbox-config="props.checkboxConfig"
 				:column-config="props.columnConfig"
-				:resizable-config="{ minWidth: 60, ...props.resizableConfig }"
-				:radio-config="{ trigger: 'row', ...props.radioConfig }"
+				:resizable-config="resizableConfig"
+				:radio-config="radioConfig"
 				:menu-config="tableMenu"
 				v-bind="$attrs"
 				@checkbox-all="selectAllEvent"
@@ -138,7 +133,7 @@
 				</vxe-column>
 				<jlg-column
 					v-for="item in state.columns"
-          header-class-name="sortable-header--column"
+					header-class-name="sortable-header--column"
 					:key="item.field"
 					:field="item.field"
 					:title="item.title"
@@ -170,8 +165,8 @@
 						</span>
 					</template>
 					<!-- slot 自定义列-->
-					<template v-if="item.type === 'slot'" v-slot="scope">
-						<slot :name="'col-' + item.field" :row="scope.row" :data="scope" />
+					<template v-if="item.slotName" v-slot="scope">
+						<slot :name="item.slotName" :row="scope.row" :data="scope" />
 					</template>
 				</jlg-column>
 			</vxe-table>
@@ -181,53 +176,54 @@
 </template>
 
 <script lang="ts" setup>
-import { nextTick, watch, ref, reactive, unref, provide } from 'vue'
+import { nextTick, watch, ref, reactive, unref, computed, provide } from 'vue'
+import XEUtils from 'xe-utils'
 import { jlgTableProps } from './props'
-import { JlgColumnProps, JlgTableProps } from '../../types'
+import { BtList, JlgColumnProps } from '../../types'
 import { useTable } from './hooks/useTable'
 import { VxeTableInstance } from 'vxe-table'
 import { MoreFilled } from '@element-plus/icons-vue'
 import JlgColumn from './jlgColumn.vue'
 import { cloneDeep } from 'lodash-unified'
-import { VxeTableEvents, VxeTableDefines } from 'vxe-table'
+import { VxeTableEvents, VxeTableDefines, VxeTablePropTypes } from 'vxe-table'
 type EmitsOptions = {
-  (e: "update:query", query: any): void;
-  (e: "handleEvent", type: string, selection: any, row?: object): void;
-  (
-      e: "handleEvent",
-      row: object,
-      rowIndex: number,
-      column?: object,
-      columnIndex?: number,
-      triggerRadio?: boolean,
-      triggerCheckbox?: boolean
-  ): void;
+	(e: 'update:query', query: any): void
+	(e: 'handleEvent', type: string, selection: any, row?: object): void
+	(
+		e: 'handleEvent',
+		row: object,
+		rowIndex: number,
+		column?: object,
+		columnIndex?: number,
+		triggerRadio?: boolean,
+		triggerCheckbox?: boolean
+	): void
 
-  (
-      e: "rowDblclick",
-      row: object,
-      rowIndex: number,
-      column?: object,
-      columnIndex?: number
-  ): void;
+	(
+		e: 'rowDblclick',
+		row: object,
+		rowIndex: number,
+		column?: object,
+		columnIndex?: number
+	): void
 
-  (
-      e: "cellClick",
-      row: object,
-      rowIndex: number,
-      column: object,
-      columnIndex: number,
-      triggerRadio: boolean,
-      triggerCheckbox: boolean
-  ): void;
+	(
+		e: 'cellClick',
+		row: object,
+		rowIndex: number,
+		column: object,
+		columnIndex: number,
+		triggerRadio: boolean,
+		triggerCheckbox: boolean
+	): void
 
-  (e: "handleClick", type: string, row: object): void;
+	(e: 'handleClick', type: string, row: object): void
 
-  (e: "update:data", data: Array<object>): void;
+	(e: 'update:data', data: Array<object>): void
 
-  (e: "update:columns", data: Array<JlgColumnProps>): void;
+	(e: 'update:columns', data: Array<JlgColumnProps>): void
 
-  (e: "reset"): void;
+	(e: 'reset'): void
 }
 const props = defineProps(jlgTableProps)
 const emit = defineEmits<EmitsOptions>()
@@ -263,8 +259,8 @@ const state = reactive({
 	}
 })
 
-let xTable = ref<VxeTableInstance>(null)
-let sortList: VxeTableDefines.SortCheckedParams[] = ref([])
+let xTable = ref<VxeTableInstance>()
+let sortList = ref<VxeTableDefines.SortCheckedParams[]>([])
 
 let {
 	refresh,
@@ -275,16 +271,16 @@ let {
 	getSummaries,
 	menuVisibleMethod,
 	setSortIndex,
-  getViewportOffset
-} = useTable(props as JlgTableProps, emit, xTable, state, listInfo, sortList)
+	getViewportOffset
+} = useTable(props, emit, xTable, state, listInfo, sortList)
 
-provide("$setSortIndex", setSortIndex);
-provide("$tableGather",{
-  props: props,
-  xTable: xTable,
+provide('$setSortIndex', setSortIndex)
+provide('$tableGather', {
+	props: props,
+	xTable: xTable
 })
 
-let tableMenu = reactive({
+let tableMenu = reactive<VxeTablePropTypes.MenuConfig>({
 	className: 'page-table--menus',
 	header: {
 		options: [
@@ -336,10 +332,33 @@ let tableMenu = reactive({
 	visibleMethod: menuVisibleMethod
 })
 
+// 计算属性
+let radioConfig = computed<VxeTablePropTypes.RadioConfig>(() => {
+	return Object.assign(
+		{ trigger: 'row' } as Pick<VxeTablePropTypes.RadioConfig, 'trigger'>,
+		props?.radioConfig || {}
+	)
+})
+let resizableConfig = computed<VxeTablePropTypes.ResizableConfig>(() => {
+	return Object.assign(
+		{ minWidth: 60 } as Pick<VxeTablePropTypes.ResizableConfig, 'minWidth'>,
+		props?.checkboxConfig || {}
+	)
+})
+
+let headerCellStyle = computed<VxeTablePropTypes.HeaderCellStyle>(() => {
+	return {
+		color: '#110920',
+		fontSize: '14px',
+		fontWeight: 'bold',
+		...props.headerCellStyle
+	}
+})
+
 // 存储默认列配置（用于重置）
 let columnDefaults = cloneDeep(props.columns)
 // 列配置
-state.columns = sortColumns(cloneDeep(props.columns) as  JlgColumnProps[])
+state.columns = sortColumns(cloneDeep(props.columns) as JlgColumnProps[])
 
 watch(state.columns, (newVal: JlgColumnProps[]) => {
 	emit('update:columns', newVal)
@@ -354,13 +373,13 @@ nextTick(() => {
  * 如果操作按钮的长度大于2，则拆分 操作按钮 到两个数组，数据量大的情况下可能会有性能问题
  * 【注意：】 如果使用了按钮的自定义插槽，也只对前两个按钮生效（意思就是 不对 Dropdown 下拉菜单预留插槽操作了）
  */
-function fullButtonFilter(row) {
-	let buttonList = []
-	let extraButtonList = []
-	if (props.handle?.btList?.length < 3) {
+function fullButtonFilter(row: Record<string, any>) {
+	let buttonList: BtList[] = []
+	let extraButtonList: BtList[] = []
+	if (props.handle.btList?.length < 3) {
 		return {
 			buttonList:
-          (props.handle?.btList || []).filter((btItem) => {
+				(props.handle?.btList || []).filter((btItem) => {
 					return !btItem.ifRender || btItem.ifRender(row)
 				}) || [],
 			extraButtonList: []
@@ -382,20 +401,20 @@ function fullButtonFilter(row) {
 }
 
 function getTableHeight() {
-  const $xtable = xTable.value;
-  if (!$xtable) return;
-  const pagerH = props.isPagination ? 52 : 0;
-  const footerH = props.showSummary ? 65 : 0;
-  setTimeout(() => {
-    listInfo.tableHeight =
-        getViewportOffset($xtable.$el).bottomIncludeBody -
-        pagerH -
-        footerH -
-        Number(props.extraFooterHeight);
-  }, 100);
+	const $xtable = xTable.value
+	if (!$xtable) return
+	const pagerH = props.isPagination ? 52 : 0
+	const footerH = props.showSummary ? 65 : 0
+	setTimeout(() => {
+		listInfo.tableHeight =
+			getViewportOffset($xtable.$el).bottomIncludeBody -
+			pagerH -
+			footerH -
+			Number(props.extraFooterHeight)
+	}, 100)
 }
 
-function handleClick(event, data) {
+function handleClick(event: string, data: Record<string, any>) {
 	emit('handleClick', event, data)
 }
 
@@ -456,6 +475,8 @@ const serverSideSorting: VxeTableEvents.SortChange = ({
 	refresh()
 }
 
+const contextMenuClickEvent = () => {}
+
 // 将最新的列排序信息更新到 state.columns 当中
 let updateColumnsSortFunc = (sortList: VxeTableDefines.SortCheckedParams[]) => {
 	unref(sortList).forEach((sortItem) => {
@@ -473,7 +494,7 @@ let updateColumnsSortFunc = (sortList: VxeTableDefines.SortCheckedParams[]) => {
  * */
 function clearSort() {
 	sortList.value = []
-	xTable.value.clearSort()
+	xTable.value?.clearSort()
 }
 </script>
 

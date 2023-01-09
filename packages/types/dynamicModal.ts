@@ -1,3 +1,4 @@
+import { ButtonInstance } from 'element-plus'
 import type {
 	Component,
 	ComponentPublicInstance,
@@ -79,4 +80,34 @@ export type UseModalOptionsPrivate<
 	bind?: ModalProps
 	on?: ModalEmits
 	modelValue?: boolean
+}
+
+export type JlgModalFooterConfig = {
+	buttons: JlgModalFooterButtons[]
+}
+export type JlgModalFooterButtons = ButtonInstance['$props'] & {
+	label: string
+	event: string
+	click?: Function
+}
+export type JlgDynamicModalInstance =
+	ComponentPublicInstance<JlgDynamicModalMethods>
+
+export interface JlgDynamicModalMethods {
+	/**
+	 * 关闭当前弹窗（销毁）
+	 */
+	close(): void
+	/**
+	 * 隐藏当前弹窗（不会销毁）
+	 */
+	hide(): void
+	/**
+	 * 切换窗口最大化/还原
+	 */
+	zoom(): void
+	/**
+	 * 获取当前窗口元素
+	 */
+	getBox(): HTMLElement
 }

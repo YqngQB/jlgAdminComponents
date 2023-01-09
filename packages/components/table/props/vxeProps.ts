@@ -3,7 +3,8 @@ import type { VxeTablePropTypes } from 'vxe-table'
 import GlobalConfig from '../../../hooks/useGlobalConfig'
 
 export default {
-	/** 基本属性 */
+	// 基本属性
+	/** id */
 	id: String as PropType<VxeTablePropTypes.ID>,
 	// 数据
 	data: Array as PropType<any[]>,

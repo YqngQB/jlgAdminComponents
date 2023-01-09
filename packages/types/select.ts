@@ -8,7 +8,10 @@ import { ValueOf, InputBasicProps } from './component'
 import { ISelectProps } from 'element-plus'
 import { selectProps } from '../components/select/select'
 export type IJlgSelectProps = ExtractPropTypes<typeof selectProps>
-export type ICurrentOption = IJlgSelectProps['options'][number]
+export type ICurrentOption =
+	| IJlgSelectProps['options'][number]
+	| null
+	| undefined
 
 export type JlgSelectInstance = ComponentPublicInstance<
 	{

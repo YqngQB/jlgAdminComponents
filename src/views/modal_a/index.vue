@@ -10,12 +10,12 @@
 
 <script lang="ts" setup>
 import { ElMessageBox } from 'element-plus'
-import VueDynamicModal from '../../../packages/components/dynamicModal/vueDynamicModal.vue'
-import { $vdm } from '../../../packages/components/dynamicModal/modalInstance'
+import VueDynamicModal from '../../../packages/components/dynamicModal/jlgDynamicModal.vue'
+import { $jdm } from '../../../packages/components/dynamicModal/modalInstance'
 import ModalDemo from '../modal_b/index.vue'
 let emit = defineEmits(['customEvent', 'close'])
 const openModal = (id: number) => {
-	$vdm.show({
+	$jdm.show({
 		name: 'ModalDemo2',
 		component: ModalDemo,
 		bind: {

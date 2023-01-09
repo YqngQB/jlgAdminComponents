@@ -62,31 +62,28 @@
 
 <!-- 组合式API setup语法糖 -->
 <script lang="ts" setup>
-// import { $vdm } from './modalInstance'
 import { emitter } from '../../utils/mitt'
 import { ref } from 'vue'
 import type { UseModalOptionsPrivate } from '../../types/dynamicModal'
-import { $vdm } from "./modalInstance";
+import { $jdm } from "./modalInstance";
 import { ModalKey } from "../../types/dynamicModal";
 
-let dynamicModals = ref({
-	value: []
-})
+let dynamicModals = ref([] as UseModalOptionsPrivate[])
 emitter.on('setDynamicModals', (list: Array<UseModalOptionsPrivate>) => {
 	dynamicModals.value = list
 })
 
 function close(id: ModalKey) {
-  $vdm.close(id)
+  $jdm.close(id)
 }
-function restoreModal(index, modal) {
+function restoreModal(index:number, modal: UseModalOptionsPrivate) {
 	modal.modelValue = true
 }
 </script>
 
 <script lang="ts">
 export default {
-	name: 'ModalsContainerComponent'
+	name: 'JlgModalsContainer'
 }
 </script>
 

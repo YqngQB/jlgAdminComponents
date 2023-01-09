@@ -31,21 +31,13 @@
 			<el-tooltip
 				class="box-item"
 				effect="dark"
-				:content="
-					$refs.modalRef && $refs.modalRef.isMaximized() ? '还原' : '最大化'
-				"
+				:content="maximizeOrSquare === 'vxe-icon-maximize' ? '还原' : '最大化'"
 				placement="bottom"
 			>
 				<i
 					v-if="showZoom"
-					:class="[
-						'vxe-modal--zoom-btn',
-						'trigger--btn',
-						$refs.modalRef && $refs.modalRef.isMaximized()
-							? 'vxe-icon-maximize'
-							: 'vxe-icon-square'
-					]"
-					@click="$refs.modalRef.zoom()"
+					:class="['vxe-modal--zoom-btn', 'trigger--btn', maximizeOrSquare]"
+					@click="zoom"
 				/>
 			</el-tooltip>
 			<el-tooltip
@@ -64,20 +56,31 @@
 			<slot />
 		</template>
 		<template #footer>
-			<slot name="footer" :close="() => close()">
-				<div>footer</div>
+			<slot name="footer">
+				<template
+					v-for="(item, index) in props.footerConfig?.buttons || []"
+					:key="index"
+				>
+					<el-button v-bind="item" @click="handleClickEvent(item)">
+						{{ item.label }}
+					</el-button>
+				</template>
 			</slot>
 		</template>
 	</vxe-modal>
 </template>
 
 <script lang="ts" setup>
-import { PropType, ref, useAttrs } from 'vue'
-import { $vdm } from './modalInstance'
-import type { VxeModalInstance } from 'vxe-table'
-import type { ModalKey } from '../../types'
-import { emitter } from '../../utils/mitt'
+import { computed, PropType, ref, useAttrs } from 'vue'
 import XEUtils from 'xe-utils'
+import { $jdm } from './modalInstance'
+import { emitter } from '../../utils/mitt'
+import type { VxeModalInstance } from 'vxe-table'
+import type {
+	ModalKey,
+	JlgModalFooterConfig,
+	JlgModalFooterButtons
+} from '../../types'
 
 let props = defineProps({
 	slots: {
@@ -106,10 +109,29 @@ let props = defineProps({
 	maxHeight: { type: [Number, String], default: Infinity },
 	confirmButtonText: { type: String, default: '保存' },
 	cancelButtonText: { type: String, default: '关闭' },
+	footerConfig: {
+		type: Object as PropType<JlgModalFooterConfig>,
+		default: {
+			buttons: [
+				{
+					label: '关闭',
+					type: 'default',
+					size: 'small',
+					event: 'close'
+				},
+				{
+					label: '保存',
+					type: 'primary',
+					size: 'small',
+					event: 'save'
+				}
+			]
+		}
+	},
 	beforeCloseMethod: Function as PropType<() => Promise<any>>
 })
 
-let emit = defineEmits(['hide', 'close'])
+let emit = defineEmits(['show', 'hide', 'close', 'submit'])
 
 emitter.on('hideEmitter', (name) => {
 	if (name === props.name) {
@@ -119,55 +141,85 @@ emitter.on('hideEmitter', (name) => {
 emitter.on('hideAllEmitter', () => {
 	emit('hide')
 })
-
-emitter.on('closeEmitter', (modalKey) => {
-	let key = typeof modalKey === 'string' ? 'name' : 'id'
-	if (modalKey === props[key]) {
-		emit('close')
-	}
-})
-
 emitter.on('closeAllEmitter', () => {
 	emit('close')
 })
 
-emitter.on('beforeCloseEmitter', (callback) => {
+/**
+ * 弹窗关闭前触发
+ * */
+emitter.on('beforeCloseEmitter', ({ modalKey, callback }) => {
+	let key = typeof modalKey === 'string' ? 'name' : 'id'
+	if (modalKey !== props[key]) {
+		callback(false)
+		return
+	}
+
 	let beforeCloseMethod = props.beforeCloseMethod
 	if (!beforeCloseMethod) {
 		callback(true)
-    return
+		emit('close')
+		return
 	}
-	Promise.resolve(beforeCloseMethod())
-		.then((rest) => {
-			callback(!XEUtils.isError(rest))
-		})
-		.catch((e) => {
-			return e
-		})
+
+	Promise.resolve(beforeCloseMethod()).then((rest) => {
+		if (!XEUtils.isError(rest)) {
+			emit('close')
+		}
+		callback(!XEUtils.isError(rest))
+	})
 })
 
 let attrs = useAttrs()
 
 let modalRef = ref<VxeModalInstance>()
 
+let maximizeOrSquare = computed(() => {
+	return modalRef.value?.isMaximized() ? 'vxe-icon-maximize' : 'vxe-icon-square'
+})
+
 /**
  * 隐藏当前弹窗（不会销毁）
  */
-const hide = () => {
-	$vdm.hide(props.name as ModalKey)
+function hide() {
+	$jdm.hide(props.name as ModalKey)
 }
 
 /**
  * 关闭当前弹窗（销毁）
  */
-const close = () => {
-	$vdm.close(props.id as ModalKey)
+function close() {
+	$jdm.close(props.id as ModalKey)
 }
+function handleClickEvent(data: JlgModalFooterButtons) {
+	let { event } = data
+	switch (event) {
+		case 'close':
+			close()
+			break
+		default:
+			emit('submit', data)
+			break
+	}
+}
+
+function zoom() {
+	modalRef.value?.zoom()
+}
+function getBox() {
+	return modalRef.value?.getBox()
+}
+defineExpose({
+	hide,
+	close,
+	zoom,
+	getBox
+})
 </script>
 
 <script lang="ts">
 export default {
-	name: 'VueDynamicModal',
+	name: 'JlgDynamicModal',
 	inheritAttrs: false
 }
 </script>

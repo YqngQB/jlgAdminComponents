@@ -9,6 +9,8 @@ import Input from './components/input/index.vue'
 import NumberInput from './components/numberInput/index.vue'
 import Select from './components/select/index.vue'
 import LazyCascade from './components/lazySelectCascade/index.vue'
+import DynamicModal from './components/dynamicModal/jlgDynamicModal.vue'
+import ModalsContainer from './components/dynamicModal/JlgModalsContainer.vue'
 
 export * from './components/layout/index.vue'
 export const JlgLayout = Object.assign(Layout, {
@@ -66,6 +68,20 @@ export const JlgLazyCascade = Object.assign(LazyCascade, {
 	}
 })
 
+export * from './components/dynamicModal/jlgDynamicModal.vue'
+export const JlgDynamicModal = Object.assign(DynamicModal, {
+	install: function (app: App) {
+		app.component(DynamicModal.name, DynamicModal)
+	}
+})
+
+export * from './components/dynamicModal/jlgDynamicModal.vue'
+export const JlgModalsContainer = Object.assign(ModalsContainer, {
+	install: function (app: App) {
+		app.component(ModalsContainer.name, ModalsContainer)
+	}
+})
+
 const components = [
 	Layout,
 	Form,
@@ -74,7 +90,9 @@ const components = [
 	Input,
 	NumberInput,
 	Select,
-	LazyCascade
+	LazyCascade,
+	DynamicModal,
+	ModalsContainer
 ]
 
 const jlgAdminComponents = (app: App) => {

@@ -138,7 +138,7 @@ let isFormItemComponent = computed(() => {
  * @param value 当前选中的值
  * */
 type valueType = string | number | boolean | object
-let currentOption = ref<ICurrentOption>(null)
+let currentOption = ref<ICurrentOption>()
 function handleChange(value: valueType | Array<valueType>, noEvent?: boolean) {
 	currentOption.value = null
 	if (props.groupKey) {

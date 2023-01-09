@@ -6,6 +6,7 @@ export const inputProps = {
 	// 双向绑定的input值
 	modelValue: {
 		type: [String, Number, Object],
+		required: true,
 		default: ''
 	},
 	// 是否禁用

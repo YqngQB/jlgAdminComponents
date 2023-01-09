@@ -6,10 +6,12 @@ import { ModalKey } from '../types'
 type Events = {
 	hideAllEmitter: void
 	hideEmitter: ModalKey
-	closeEmitter: ModalKey
 	closeAllEmitter: void
 	setDynamicModals: Array<UseModalOptionsPrivate>
-	beforeCloseEmitter: (result:boolean) => void
+	beforeCloseEmitter: {
+		modalKey: ModalKey
+		callback: (result: boolean) => void
+	}
 }
 
 export const emitter: Emitter<Events> = mitt<Events>()

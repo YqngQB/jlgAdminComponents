@@ -1,45 +1,19 @@
-import type { Component, PropType } from 'vue'
+import type { PropType } from 'vue'
 import vxeProps from './vxeProps'
 import GlobalConfig from '../../../hooks/useGlobalConfig'
-import { JlgColumnProps } from '../../../types'
-type BtList = {
-	label: string
-	// 是否使用插槽
-	slot: boolean
-	// 触发事件的类型
-	event: string
-	// 自定义显示规则
-	ifRender?: (value: object) => boolean
-	// el-button 的类型
-	type?: string
-	// el-button 的icon
-	icon?: string | Component
-	// 是否禁用
-	disabled?: boolean
-	// 是否加载中
-	loading?: boolean
-}
+import { JlgColumnProps, HandleType, SummaryItem } from '../../../types'
 
-interface HandleType {
-	// 固定列
-	fixed: string
-	title: string
-	width: string
-	btList: Array<BtList>
-}
-type SummaryItem = {
-	value: string
-	type: string
-}
 export const jlgTableProps = {
 	/**vxe-table 原生属性*/
 	...vxeProps,
+	//  扩展属性
 	/**
-	 * 扩展属性
+	 * 获取数据的接口
 	 * */
-	// 获取数据的接口
 	api: {
-		type: Function
+		type: Function as PropType<(parameter: unknown) => Promise<any>>,
+		default: null,
+		required: true
 	},
 	// 查询条件
 	query: {
