@@ -10,7 +10,7 @@ specifiers:
   components-helper: ^2.1.4
   cross-env: ^7.0.3
   element-plus: ^2.2.22
-  jlg-admin-components: 1.0.1-alpha.1.1
+  jlg-admin-components: 1.0.1-alpha.1.3
   jsdom: ^20.0.2
   mitt: ^3.0.0
   prettier: ^2.7.1
@@ -33,7 +33,7 @@ specifiers:
 dependencies:
   '@element-plus/icons-vue': 2.0.10_vue@3.2.44
   element-plus: 2.2.26_vue@3.2.44
-  jlg-admin-components: 1.0.1-alpha.1.1_element-plus@2.2.26
+  jlg-admin-components: 1.0.1-alpha.1.3_x3gw2lvviurgspya7ddp4a7idi
   mitt: 3.0.0
   vue: 3.2.44
   vxe-table: 4.3.6_vue@3.2.44+xe-utils@3.5.7
@@ -1875,12 +1875,16 @@ packages:
       supports-color: 7.2.0
     dev: true
 
-  /jlg-admin-components/1.0.1-alpha.1.1_element-plus@2.2.26:
-    resolution: {integrity: sha512-TToq4sSfnH9iVQhuo4g+Vs3MOCiJyIaXUky2dHrv+FF/QgxzhKe3d9uP1r4lY11cMtgkJjhd58iZj/jBd/vkEw==}
+  /jlg-admin-components/1.0.1-alpha.1.3_x3gw2lvviurgspya7ddp4a7idi:
+    resolution: {integrity: sha512-O07xgimmYn+uihyRvDtcHYh7Aq5eGFnu3uVecLyFlyXMhZNn8FQdrPLVAYjy3ZaRd6/XX0k/0kIAXGYDAbtzog==}
     peerDependencies:
       element-plus: ^2.0.0
+      vxe-table: ^4.3.0
+      xe-utils: ^3.5.0
     dependencies:
+      '@element-plus/icons-vue': 2.0.10_vue@3.2.44
       element-plus: 2.2.26_vue@3.2.44
+      mitt: 3.0.0
       vue: 3.2.44
       vxe-table: 4.3.6_vue@3.2.44+xe-utils@3.5.7
       xe-utils: 3.5.7
