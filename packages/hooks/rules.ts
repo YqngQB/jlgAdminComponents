@@ -121,7 +121,6 @@ export const lengthValidator = (
 	min: number | string,
 	max?: number | string
 ) => {
-	console.log('lengthValidator', min, max)
 	if (min === max) {
 		return {
 			min: parseInt(String(min)),

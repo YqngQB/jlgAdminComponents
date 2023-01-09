@@ -11,7 +11,8 @@ import {
 	VxeTableConstructor,
 	VxeTableDefines,
 	VxeTablePrivateMethods,
-	VxeGridConstructor
+	VxeGridConstructor,
+	VxeTablePropTypes
 } from 'vxe-table'
 /**
  * @param {JlgTableProps} props 组件配置项
@@ -141,7 +142,9 @@ export function useTable(
 		if (props.isCheckBox) {
 			const records = xTable.value.getCheckboxRecords()
 			const reserves = xTable.value.getCheckboxReserveRecords()
-			state.selection = props.checkboxConfig?.reserve
+			state.selection = (
+				props.checkboxConfig as VxeTablePropTypes.CheckboxConfig
+			).reserve
 				? records.concat(reserves)
 				: records
 		} else {

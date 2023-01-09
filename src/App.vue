@@ -4,7 +4,7 @@
 		<el-button type="primary" @click="openModal(2)">打开弹窗2</el-button>
 		<el-button type="primary" @click="openModal(3)">打开弹窗3</el-button>
 		<el-button type="primary" @click="$jdm.closeAll()">删除所有</el-button>
-		<modals-container ref="modalsContainer" />
+		<jlg-modals-container ref="modalsContainer" />
 		<jlg-table
 			ref="table"
 			:check-box="false"
@@ -18,12 +18,11 @@
 
 <script lang="ts" setup>
 import { ref, reactive } from 'vue'
-import type { JlgLayoutInstance } from 'jlg-admin-components'
-import type { JlgFormInstance } from '../packages'
+import type { JlgLayoutInstance, JlgFormInstance } from 'jlg-admin-components'
 import {
 	$jdm,
-	ModalsContainer
-} from '../packages/components/dynamicModal/modalInstance'
+	ModalsContainer as JlgModalsContainer
+} from 'jlg-admin-components'
 import ModalDemo from '../src/views/modal_a/index.vue'
 
 import JlgTable from '../packages/components/table/index.vue'

@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/web-types",
   "framework": "vue",
   "name": "jlg-admin-components",
-  "version": "1.0.1-alpha.1.1",
+  "version": "1.0.1-alpha.1.2",
   "js-types-syntax": "typescript",
   "description-markup": "markdown",
   "contributions": {

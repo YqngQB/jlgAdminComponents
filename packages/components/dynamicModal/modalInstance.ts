@@ -1,6 +1,6 @@
-import JlgDynamicModalComponent from './jlgDynamicModal.vue'
-import JlgModalsContainer from './JlgModalsContainer.vue'
 import { markRaw, reactive, nextTick, shallowReactive } from 'vue'
+import JlgDynamicModalComponent from './jlgDynamicModal.vue'
+import JlgModalsContainerComponent from './JlgModalsContainer.vue'
 import type { Component } from 'vue'
 import type { UseModalOptionsPrivate, ModalKey } from '../../types'
 import { emitter } from '../../utils/mitt'
@@ -13,11 +13,10 @@ export class ModalInstance {
 		const bindApi = (component: Component) => {
 			return markRaw(component)
 		}
-
 		this.JlgDynamicModal = bindApi(JlgDynamicModalComponent)
 
 		this.dynamicModals = reactive([])
-		this.ModalsContainer = bindApi(JlgModalsContainer)
+		this.ModalsContainer = bindApi(JlgModalsContainerComponent)
 	}
 	/**
 	 *  @description 打开modal
@@ -145,16 +144,15 @@ export class ModalInstance {
 		return { show, options }
 	}
 }
-
 const createModalInstance = () => {
 	const modalInstance = new ModalInstance()
 	return {
 		$jdm: modalInstance,
 		JlgDynamicModal: modalInstance.JlgDynamicModal,
-		ModalsContainer: modalInstance.ModalsContainer,
+		JlgModalsContainer: modalInstance.ModalsContainer,
 		useModal: modalInstance.useModal.bind(modalInstance)
 	}
 }
 
-export const { $jdm, JlgDynamicModal, ModalsContainer, useModal } =
+export const { $jdm, JlgDynamicModal, JlgModalsContainer } =
 	createModalInstance()

@@ -12,8 +12,6 @@ declare module '@vue/runtime-core' {
 		JlgDatePicker: typeof import('jlg-admin-components')['JlgDatePicker']
 		JlgNumberInput: typeof import('jlg-admin-components')['JlgNumberInput']
 		JlgLazyCascade: typeof import('jlg-admin-components')['JlgLazyCascade']
-		JlgDynamicModal: typeof import('jlg-admin-components')['JlgDynamicModal']
-		JlgModalsContainer: typeof import('jlg-admin-components')['JlgModalsContainer']
 	}
 }
 

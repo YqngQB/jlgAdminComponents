@@ -51,7 +51,6 @@
 			"vite/client",
 			"element-plus/global",
 			"jlg-admin-components/global",
-			"@pureadmin/table/volar",
 			"unplugin-vue-define-options/macros-global"
 		],
 		// 需要引入的类型声明文件的路径
@@ -59,6 +58,10 @@
 	},
 	// 需要编译的文件
 	"include": [
+		"packages/**/*.ts",
+		"packages/**/*.d.ts",
+		"packages/**/*.tsx",
+		"packages/**/*.vue",
 		"build/**/*.ts",
 		"src/**/*.ts",
 		"src/**/*.d.ts",
