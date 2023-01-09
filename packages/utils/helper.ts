@@ -91,8 +91,6 @@ export function cloneDeep(parent: unknown): unknown {
 	return _clone(parent)
 }
 
-let id = 0
 export const getValueKey = (item: unknown, valueKey?: string) => {
-	console.log('getValueKey', id++)
 	return isObject(item) && valueKey ? get(item, valueKey) : item
 }
