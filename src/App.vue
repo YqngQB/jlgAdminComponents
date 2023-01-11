@@ -18,7 +18,7 @@
 
 <script lang="ts" setup>
 import { ref, reactive } from 'vue'
-import type { JlgLayoutInstance, JlgFormInstance } from 'jlg-admin-components'
+import type { JlgFormInstance } from 'jlg-admin-components'
 import {
 	$jdm,
 	ModalsContainer as JlgModalsContainer
@@ -27,7 +27,6 @@ import ModalDemo from '../src/views/modal_a/index.vue'
 
 import JlgTable from '../packages/components/table/index.vue'
 import { ElMessageBox } from 'element-plus'
-let layoutRef = ref<JlgLayoutInstance>()
 let formRef = ref<JlgFormInstance>()
 formRef.value?.submit().then((res) => {
 	console.log(res)
@@ -100,7 +99,9 @@ const openModal = (id: number) => {
 							resolve(new Error())
 						})
 				})
-			}
+			},
+      //自定义参数
+      custom: 999
 		},
 		on: {
 			customEvent: (data: string) => {

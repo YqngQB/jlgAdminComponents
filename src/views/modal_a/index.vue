@@ -1,6 +1,6 @@
 <template>
 	<jlg-dynamic-modal @hide="handleCustomHide" @close="handleCustomClose">
-		modal_a
+		{{props.custom}}
 		<el-button type="primary" @click="openModal(2)">打开弹窗modal_b</el-button>
 		<el-button type="primary" @click="handleCustomEvent">
 			触发自定义事件
@@ -12,6 +12,7 @@
 import { ElMessageBox } from 'element-plus'
 import { $jdm, JlgDynamicModal } from 'jlg-admin-components'
 import ModalDemo from '../modal_b/index.vue'
+let props = defineProps(['custom'])
 let emit = defineEmits(['customEvent', 'close'])
 const openModal = (id: number) => {
 	$jdm.show({
