@@ -368,9 +368,9 @@ const remoteMethod = (query: string) => {
 
 :::
 
-## 非远程搜索模式下，初始化自动获取 options
+## 自动触发
 
-:::demo
+:::demo 非远程搜索模式下，初始化自动获取 options
 
 ```vue
 <template>
@@ -378,9 +378,10 @@ const remoteMethod = (query: string) => {
 	<jlg-select
 		v-model="value"
 		v-model:options="selectOptions"
-		:auto-dispatch-method="() => getOptions()"
+		:auto-dispatch-method="getOptions"
         :before-assign-options="beforeAssignOptions"
 		@change="handleChange"
+        @default-value-change="handleDefaultValueChange"
 	/>
 </template>
 
@@ -417,14 +418,14 @@ const getOptions = () => {
 const handleChange = (currenValue, currentOption, options) => {
 	console.log(currenValue, currentOption, options)
 }
-const beforeAssignOptions = (options) => {
-  return  options
-  // return options.map((item) => {
-  //   return {
-  //     value: item.value,
-  //     text: item.text
-  //   }
-  // })
+const handleDefaultValueChange = (defaultValue, currenValue, options) => {
+  console.log('设置默认值后触发：',defaultValue, currenValue, options)
+}
+const beforeAssignOptions = (res) => {
+  return  {
+    selectOptions: res.data.content?.selectOptions || [],
+    defaultValue: res.data.content.defaultValue
+  }
 }
 </script>
 ```
