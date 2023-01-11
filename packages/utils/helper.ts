@@ -43,7 +43,7 @@ function getRegExp(re: RegExp): string {
 	if (re.multiline) flags += 'm'
 	return flags
 }
-export function cloneDeep(parent: unknown): unknown {
+export function cloneDeep<T = unknown>(parent: T): T {
 	// 维护两个储存循环引用的数组
 	const parents = [] as unknown[]
 	const children = [] as unknown[]

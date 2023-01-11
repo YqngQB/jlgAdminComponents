@@ -7,7 +7,14 @@
 <template>
 	<component
 		:is="isFormItemComponent ? ElFormItem : 'div'"
-		:class="['jlg-form-item', { [props.isVirtualized ? 'el-select-v2' : 'el-select']: !isFormItemComponent }, props.class]"
+		:class="[
+			'jlg-form-item',
+			{
+				[props.isVirtualized ? 'el-select-v2' : 'el-select']:
+					!isFormItemComponent
+			},
+			props.class
+		]"
 		:style="props.style"
 		ref="formItemRef"
 		v-bind="isFormItemComponent ? formItemBind : undefined"
@@ -52,10 +59,10 @@
 						:label="groupItem[props.labelKey]"
 					>
 						<el-option
-							v-for="(item,index) in groupItem[props.groupKey]"
-              :key="index"
-              :label="item[props.labelKey]"
-              :value="item[props.valueKey]"
+							v-for="(item, index) in groupItem[props.groupKey]"
+							:key="index"
+							:label="item[props.labelKey]"
+							:value="item[props.valueKey]"
 							:disabled="item.disabled"
 						>
 							<!--   封装 ElSelect Item 插槽,自定义 Option 模板  -->
@@ -95,8 +102,8 @@ import { selectEmits, selectProps } from './select'
 import useInjectModel from '../../hooks/useInjectModel'
 import { useRules } from '../../hooks/useValidate'
 import { formItemRef, resetField, clearValidate } from '../../hooks/useFormItem'
-import { ICurrentOption } from '../../types/select'
-import { getValueKey } from '../../utils/helper'
+import { ICurrentOption } from '../../types'
+import { cloneDeep } from '../../utils/helper'
 
 let props = defineProps(selectProps)
 let emit = defineEmits(selectEmits)
@@ -173,7 +180,6 @@ const stop = watchPostEffect(() => {
 		stop()
 	}
 })
-type contentType = { selectOptions: Array<any>; defaultValue: string }
 
 let isFunction = (fn: any) => typeof fn === 'function'
 //  初始化自动调用接口，获取options 数据
@@ -182,25 +188,26 @@ if (
 	isFunction(props.autoDispatchMethod) &&
 	!props.remote
 ) {
-	props.autoDispatchMethod().then((res) => {
-		let { selectOptions, defaultValue } =
-			(res.data.content as contentType) || {}
-		let options =
-			selectOptions && selectOptions.length ? selectOptions : res.data.content
-		props.beforeAssignOptions ? props.beforeAssignOptions(options || []) : null
-		// 特殊情况下，可能需要对options 进行自定义处理
-		if (props.beforeAssignOptions) {
-			options = props.beforeAssignOptions(options || [])
+	props.autoDispatchMethod().then(<T = unknown>(res: T) => {
+		if (props.beforeAssignOptions && isFunction(props.beforeAssignOptions)) {
+			let { selectOptions = [], defaultValue = null } =
+				props.beforeAssignOptions(res) || {}
+			// 如果接口返回的数据中有默认值，则设置默认值
+			if (defaultValue) {
+				inputValue.value = defaultValue
+        currentOption.value = cloneDeep(defaultValue)
+				// 设置默认值后触发的事件，defaultValue 为默认值；currentOption 为当前选中的 option，options 为所有下拉选项
+				emit(
+					'defaultValueChange',
+					defaultValue,
+					currentOption.value,
+					selectOptions
+				)
+			}
+			emit('update:options', selectOptions)
+		} else {
+			console.error('【jlg-select】 缺少 beforeAssignOptions 方法')
 		}
-		// 如果接口返回的数据中有默认值，则设置默认值
-		if (defaultValue) {
-			inputValue.value = defaultValue
-			/**
-			 * 设置默认值后触发的事件，defaultValue 为默认值；currentOption 为当前选中的 option，options 为所有下拉选项
-			 * */
-			emit('defaultValueChange', defaultValue, currentOption.value, options)
-		}
-		emit('update:options', options)
 	})
 }
 // 处理占位符

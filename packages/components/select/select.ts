@@ -1,5 +1,6 @@
 import { computed, PropType } from 'vue'
 import { itemProps } from '../../hooks/itemType'
+import GlobalConfig from "../../hooks/useGlobalConfig";
 
 export const selectProps = {
 	...itemProps,
@@ -54,7 +55,10 @@ export const selectProps = {
 	},
 	// 非远程搜索模式下，自动获取 options 数据所调用的方法
 	autoDispatchMethod: Function,
-	beforeAssignOptions: Function
+	beforeAssignOptions: {
+		type: Function,
+		default: GlobalConfig.select.beforeAssignOptions
+	}
 }
 
 export const selectEmits = ['update:modelValue', 'update:options', 'change']
