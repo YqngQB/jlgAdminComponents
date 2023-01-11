@@ -44,7 +44,9 @@ const GlobalConfig = {
 	form: {},
 	input: {},
 	textarea: {},
-	select: {}
+	select: {
+		beforeAssignOptions:null
+	}
 }
 
 export default GlobalConfig
