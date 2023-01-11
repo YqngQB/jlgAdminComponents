@@ -16,6 +16,10 @@ export type UseModalOptionsPrivate<
 		 * */
 		title?: string
 		/**
+		 * 窗口的类型
+		 * */
+		type?: string
+		/**
 		 * 窗口的宽度
 		 */
 		width?: string | number
@@ -71,6 +75,10 @@ export type UseModalOptionsPrivate<
 		 * 在窗口关闭（销毁）之前执行，可以返回 Error 阻止关闭，支持异步
 		 */
 		beforeCloseMethod?: () => Error | Promise<any>
+		/**
+		 * 其他参数
+		 */
+		[key: string]: any
 	},
 	ModalEmits extends ObjectEmitsOptions = {}
 > = {
