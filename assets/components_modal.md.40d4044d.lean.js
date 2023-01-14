@@ -1,0 +1,1 @@
+import{_ as s,c as n,o as a,d as l}from"./app.b117b098.js";const E=JSON.parse('{"title":"Modal","description":"","frontmatter":{},"headers":[],"relativePath":"components/modal.md","lastUpdated":1673684780000}'),p={name:"components/modal.md"},o=l("",23),t=[o];function e(c,r,y,F,D,i){return a(),n("div",null,t)}const d=s(p,[["render",e]]);export{E as __pageData,d as default};
