@@ -12,14 +12,16 @@ import {
 	VxeTableDefines,
 	VxeTablePrivateMethods,
 	VxeGridConstructor,
-	VxeTablePropTypes
+	VxeTablePropTypes,
+	VxePagerEvents
 } from 'vxe-table'
 /**
- * @param {JlgTableProps} props 组件配置项
- * @param {EmitsOptions} emit 事件
- * @param {Ref} xTable 表格实例
+ * @param props 组件配置项
+ * @param emit 事件
+ * @param xTable 表格实例
  * @param state 组件状态
  * @param listInfo 列表相关配置
+ * @param sortList
  * */
 export function useTable(
 	props: JlgTableProps,
@@ -33,17 +35,19 @@ export function useTable(
 
 	/**
 	 * 表格重新加载方法
-	 * @param [boolean] boolean 如果参数为 true, 则强制刷新到第一页
-	 * @param [boolean] isClear 重新加载数据前，是否清空之前的选中项
-	 * @param isClear 重新加载数据前，是否清空之前的选中项
+	 * @param refreshToFirstPage boolean 如果参数为 true, 则强制刷新到第一页
+	 * @param isClearSelections 重新加载数据前，是否清空之前的选中项 isClearSelections
 	 */
-	function refresh(boolean = false, isClear = !props.isCheckBox) {
+	function refresh(
+		refreshToFirstPage = false,
+		isClearSelections = !props.isCheckBox
+	) {
 		if (!props.api) return
-		if (props.isPagination && boolean) {
+		if (props.isPagination && refreshToFirstPage) {
 			listInfo.query.pageIndex = 1
 		}
 
-		if (isClear) {
+		if (isClearSelections) {
 			clearSelections()
 		}
 
@@ -92,35 +96,27 @@ export function useTable(
 		return new Promise((resolve, reject) => {
 			// 每次调用接口时都自动绑定最新的数据
 			api(handleParams())
-				.then((res: unknown) => {
-					let responseList = props.beforeResponseCallback
-						? props.beforeResponseCallback(res)
-						: res
-
-					/**
-					 * 当需要跨页勾选且数据中没有唯一主键时,可以将 props.useRowKey 设置为一个函数,返回一个唯一值
-					 */
+				.then(<T>(res: T) => {
+					let { list, total } = props.beforeResponseCallback(res) || {}
+					// 当需要跨页勾选且数据中没有唯一主键时,可以将 props.useRowKey 设置为一个函数,返回一个唯一值
 					if (props.useRowKey && typeof props.useRowKey === 'function') {
 						let useRowKey = props.useRowKey
-						responseList = responseList.map(
-							(item: Record<string, any>, index: number) => {
-								let _X_ROW_KEY = useRowKey(item, index)
-								if (_X_ROW_KEY) {
-									let keyField = props.rowConfig?.keyField as string
-									item[keyField || '_X_ROW_KEY'] = _X_ROW_KEY
-								}
-								return item
+						list = list.map((item: Record<string, any>, index: number) => {
+							let _X_ROW_KEY = useRowKey(item, index)
+							if (_X_ROW_KEY) {
+								let keyField = props.rowConfig?.keyField as string
+								item[keyField || '_X_ROW_KEY'] = _X_ROW_KEY
 							}
-						)
+							return item
+						})
 					}
 
-					emit('update:data', responseList)
+					emit('update:data', list)
 					if (props.isPagination) {
-						// item2 : 后端返回的总条数
-						listInfo.total = responseList.item2
+						listInfo.total = total
 					}
-					resolve(responseList)
-					emit('handleEvent', 'list', responseList)
+					resolve(list)
+					emit('handleEvent', 'list', list)
 				})
 				.catch((e: unknown) => {
 					reject(e)
@@ -314,6 +310,20 @@ export function useTable(
 		return result || ''
 	}
 
+	function getTableHeight() {
+		const $xTable = xTable.value;
+		if (!$xTable) return;
+		const pagerH = props.isPagination ? 50 : 0;
+		const footerH = props.showSummary ? 65 : 0;
+		setTimeout(() => {
+			listInfo.tableHeight =
+				getViewportOffset($xTable.$el).bottomIncludeBody -
+				pagerH -
+				footerH -
+				Number(props.extraFooterHeight);
+		}, 100);
+	}
+
 	/**
 	 * 获取当前元素的left、top偏移
 	 *   left：元素最左侧距离文档左侧的距离
@@ -374,15 +384,33 @@ export function useTable(
 		return element.getBoundingClientRect()
 	}
 
+	const handlePageChange: VxePagerEvents.PageChange = ({
+		currentPage,
+		pageSize
+	}) => {
+		if (currentPage !== listInfo.query.pageIndex) {
+			// 手动清除滚动相关信息，还原到初始状态
+			xTable.value.clearScroll()
+		}
+		listInfo.query.pageIndex = currentPage
+		if (pageSize !== listInfo.query.pageSize) {
+			// 每页条数切换，重置当前页
+			listInfo.query.pageIndex = 1
+		}
+		listInfo.query.pageSize = pageSize
+		getList(props.api).then((r) => {})
+	}
+
 	return {
 		refresh,
 		clearSelections,
-		getList,
+		handlePageChange,
 		sortColumns,
 		getSummaries,
 		getSelectedRecordset,
 		menuVisibleMethod,
 		setSortIndex,
-		getViewportOffset
+		getViewportOffset,
+		getTableHeight
 	}
 }

@@ -1,10 +1,13 @@
 <template>
-	<div :class="['jlg-table--wrapper', props.className]">
+	<div
+		v-loading="listInfo.loading"
+		:class="['jlg-table--wrapper', props.className]"
+	>
 		<div class="jlg-table--header">
 			<!--      左侧按钮列表-->
 			<div class="jlg-table--header-left">
 				<div class="jlg-table--header-left-btns">
-					<slot name="buttons" />
+					<slot name="buttons" :data="{ selection: state.selection }" />
 				</div>
 			</div>
 			<!--      右侧工具列表-->
@@ -171,20 +174,61 @@
 				</jlg-column>
 			</vxe-table>
 		</div>
-		<div class="jlg-table--footer"></div>
+		<div class="jlg-table--footer">
+			<div class="jlg-table--footer---left"></div>
+			<div class="jlg-table--footer---right">
+				<vxe-pager
+					size="small"
+					background
+					v-model:current-page="listInfo.query.pageIndex"
+					v-model:page-size="listInfo.query.pageSize"
+					:total="listInfo.total"
+					:page-sizes="listInfo.pageSizes"
+					:layouts="[
+						'PrevJump',
+						'PrevPage',
+						'JumpNumber',
+						'NextPage',
+						'NextJump',
+						'Sizes',
+						'FullJump',
+						'Total'
+					]"
+					@page-change="handlePageChange"
+				>
+					<template #right>
+						<div
+							class="refresh-right flex h-full items-center"
+							@click="refresh"
+						>
+							<el-icon :size="16"><Refresh /></el-icon>
+						</div>
+					</template>
+				</vxe-pager>
+			</div>
+		</div>
 	</div>
 </template>
 
 <script lang="ts" setup>
-import { nextTick, watch, ref, reactive, unref, computed, provide } from 'vue'
+import {
+	nextTick,
+	watch,
+	ref,
+	reactive,
+	unref,
+	computed,
+	provide,
+	onMounted
+} from 'vue'
 import XEUtils from 'xe-utils'
 import { jlgTableProps } from './props'
 import { BtList, JlgColumnProps } from '../../types'
 import { useTable } from './hooks/useTable'
 import { VxeTableInstance } from 'vxe-table'
-import { MoreFilled } from '@element-plus/icons-vue'
+import { MoreFilled, Refresh } from '@element-plus/icons-vue'
 import JlgColumn from './jlgColumn.vue'
-import { cloneDeep } from 'lodash-unified'
+import { cloneDeep } from '../../utils/helper'
 import { VxeTableEvents, VxeTableDefines, VxeTablePropTypes } from 'vxe-table'
 type EmitsOptions = {
 	(e: 'update:query', query: any): void
@@ -265,13 +309,14 @@ let sortList = ref<VxeTableDefines.SortCheckedParams[]>([])
 let {
 	refresh,
 	clearSelections,
-	getList,
 	getSelectedRecordset,
 	sortColumns,
 	getSummaries,
 	menuVisibleMethod,
 	setSortIndex,
-	getViewportOffset
+	getViewportOffset,
+	handlePageChange,
+	getTableHeight
 } = useTable(props, emit, xTable, state, listInfo, sortList)
 
 provide('$setSortIndex', setSortIndex)
@@ -386,32 +431,19 @@ function fullButtonFilter(row: Record<string, any>) {
 		}
 	}
 	// 只有长度大于2的时候才进行计算，减少计算消耗
-	props.handle?.btList.forEach((btItem) => {
-		let ifRender = !btItem.ifRender || btItem.ifRender(row)
-		if (buttonList.length < 2 && ifRender) {
-			buttonList.push(btItem)
-		} else if (ifRender) {
-			extraButtonList.push(btItem)
-		}
-	})
+	props?.handle?.btList &&
+		props.handle.btList.forEach((btItem) => {
+			let ifRender = !btItem.ifRender || btItem.ifRender(row)
+			if (buttonList.length < 2 && ifRender) {
+				buttonList.push(btItem)
+			} else if (ifRender) {
+				extraButtonList.push(btItem)
+			}
+		})
 	return {
 		buttonList,
 		extraButtonList
 	}
-}
-
-function getTableHeight() {
-	const $xtable = xTable.value
-	if (!$xtable) return
-	const pagerH = props.isPagination ? 52 : 0
-	const footerH = props.showSummary ? 65 : 0
-	setTimeout(() => {
-		listInfo.tableHeight =
-			getViewportOffset($xtable.$el).bottomIncludeBody -
-			pagerH -
-			footerH -
-			Number(props.extraFooterHeight)
-	}, 100)
 }
 
 function handleClick(event: string, data: Record<string, any>) {
@@ -496,6 +528,26 @@ function clearSort() {
 	sortList.value = []
 	xTable.value?.clearSort()
 }
+
+onMounted(() => {
+	if (props.isListenHeight) {
+		getTableHeight()
+		// 监听页面大小改变
+		window.addEventListener(
+			'resize',
+        XEUtils.debounce(() => {
+				// 得到表格的高度
+				getTableHeight()
+			}, 200)
+		)
+		// nextTick(() => {
+		//   // 加载完成之后再绑定拖动事件
+		//   initTime = setTimeout(() => {
+		//     sortable = initColumnSortable(xTable.value, state, props.checkBox);
+		//   }, 500);
+		// });
+	}
+})
 </script>
 
 <script lang="ts">
@@ -512,5 +564,27 @@ export default {
 	overflow: hidden;
 	color: var(--el-text-color-primary);
 	transition: var(--el-transition-duration);
+	padding: 6px;
+	.jlg-table--header {
+		display: flex;
+		height: 40px;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.jlg-table--footer {
+		display: flex;
+		min-height: 40px;
+		align-items: center;
+		justify-content: space-between;
+		.refresh-right {
+			display: flex;
+			align-items: center;
+			width: 100%;
+			height: 100%;
+			cursor: pointer;
+			font-size: 14px;
+			color: var(--el-color-primary);
+		}
+	}
 }
 </style>

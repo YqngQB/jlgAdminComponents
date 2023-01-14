@@ -16,20 +16,29 @@
 		<!-- 嵌套多级表头 -->
 		<jlg-column
 			v-for="(item, index) in props.children"
-			:key="item.field + '-' + item.title + '-' + index"
-			:field="item.field"
-			:title="item.title"
-			:fixed="item.fixed"
-			:header-align="item.headerAlign || undefined"
-			:align="item.align || 'left'"
-			:sortable="false"
-			:width="item.width"
-			:formatter="item.formatter"
-			:min-width="item.minWidth || 100"
-			:is-auto-fit="item.isAutoFit || false"
-			:children="item.children"
-			:visible="item.visible"
-			:cell-render="item.cellRender"
+      :key="item.field"
+      :field="item.field"
+      :title="item.title"
+      :width="item.width"
+      :min-width="item.minWidth || 100"
+      :max-width="item?.maxWidth"
+      :resizable="item.resizable"
+      :fixed="item.fixed"
+      :align="item.align || 'left'"
+      :header-align="item.headerAlign || undefined"
+      :footer-align="item.footerAlign || undefined"
+      :show-overflow="item.showOverflow || undefined"
+      :show-header-overflow="item.showHeaderOverflow || undefined"
+      :show-footer-overflow="item.showFooterOverflow || undefined"
+      :class-name="item.className"
+      :sortable="item.sortable || false"
+      :formatter="item.formatter"
+      :children="item.children"
+      :visible="item.visible"
+      :cell-render="item.cellRender"
+      :edit-render="item.editRender || undefined"
+      :titlePrefix="item.titlePrefix || undefined"
+      :is-auto-fit="item.isAutoFit || false"
 		>
 			<template #header="{ column }">
 				<span>{{ column.title }}</span>
@@ -51,7 +60,7 @@
 		:min-width="minColWidth"
 		:formatter="props.formatter"
 	>
-		<template v-if="$slots.header" v-slot:header="scope">
+		<template v-if="$slots.header" #header="scope">
 			<slot name="header" :column="scope.column" :data="scope" />
 		</template>
 		<template v-if="$slots.default" v-slot="scope">

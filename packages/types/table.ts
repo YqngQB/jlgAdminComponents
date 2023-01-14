@@ -111,21 +111,21 @@ export type EmitsOptions = {
 }
 
 export interface JlgColumnProps extends Omit<VxeColumnProps, 'type'> {
-	order: 'asc' | 'desc' | null
+	order?: 'asc' | 'desc' | null
 	/**
 	 * 排序等级，值越大，排序约越靠后
 	 */
-	rank: number
+	rank?: number
 	/**
 	 * 是否设置列宽自适应
 	 */
-	isAutoFit: boolean
+	isAutoFit?: boolean
 	/**
 	 * 子列配置项
 	 */
-	children: Array<JlgColumnProps>
+	children?: Array<JlgColumnProps>
 	/**
 	 * 自定义列插槽名称
 	 */
-	slotName: string
+	slotName?: string
 }

@@ -35,17 +35,18 @@ const GlobalConfig = {
 		/**
 		 * 接口请求成功后的回调
 		 */
-		beforeResponseCallback: (response: any) => {
-			// item1 : 后端返回的数组数据
-			let result = response.item1 ? response.item1 || [] : response
-			return result
+		beforeResponseCallback: (res: {
+			item1: Array<Record<string, any>>
+			item2: number
+		}) => {
+			return { list: res.item1, total: res.item2 }
 		}
 	},
 	form: {},
 	input: {},
 	textarea: {},
 	select: {
-		beforeAssignOptions:null
+		beforeAssignOptions: null
 	}
 }
 

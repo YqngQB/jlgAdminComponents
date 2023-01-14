@@ -127,8 +127,10 @@ export const jlgTableProps = {
 	},
 	// 响应回调之前的钩子
 	beforeResponseCallback: {
-		type: Function,
-		default: () => GlobalConfig.table.beforeResponseCallback
+		type: Function as PropType<
+			<T>(data: T) => { list: Array<Record<string, any>>; total: number }
+		>,
+		default: GlobalConfig.table.beforeResponseCallback
 	},
 	/**
 	 * 当需要跨页勾选且数据中没有唯一主键时,可以将 props.useRowKey 设置为一个函数,返回一个唯一值
